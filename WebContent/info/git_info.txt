@@ -1,6 +1,9 @@
 // git api 주소
 https://git-scm.com/docs
 
+// repository 저장소주소
+https://github.com/BruceYi119/www.git
+
 // git 버전확인
 git --version
 
@@ -68,3 +71,6 @@ git commit -am "description"
 
 // repository 저장소에 소스 올리기
 git push
+
+// repository 저장소에 소스 파일 끌어오기
+git pull origin master
