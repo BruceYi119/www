@@ -65,3 +65,6 @@ git log
 
 // 커밋
 git commit -am "description"
+
+// repository 저장소에 소스 올리기
+git push
