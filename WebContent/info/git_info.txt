@@ -72,5 +72,5 @@ git commit -am "description"
 // repository 저장소에 소스 올리기
 git push
 
-// repository 저장소에 소스 파일 끌어오기
-git pull origin master
+// repository 저장소에서 최신파일 가져오기
+git pull https://github.com/BruceYi119/www.git
