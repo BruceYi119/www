@@ -1,0 +1,24 @@
+header { position: relative;width: 100%;height: 80px;float: left;background-color: #20232a; }
+nav { position: relative;width: 100%;height: 200px;float: left;background-color: #282c34; }
+main { position: relative;width: 100%;height: 550px;max-width: 1500px;float: left; }
+footer { position: relative;width: 100%;height: 80px;clear: both;;background-color: #20232a; }
+.container { margin: 0 auto; }
+#logo { position: absolute;top: 17px;left: 20px; }
+#logo a { color: #fff; }
+#menu { position: absolute;top: 30px;right: 50px; }
+#menu li { float: left;padding: 15px; }
+#menu li a { color: #fff; }
+#copyright { position: absolute;bottom: 20px;right: 20px;color: #fff;margin-bottom: 0; }
+
+header.heesoo, footer.heesoo { background-color: #fade11; }
+nav.heesoo { background-color: #fade11; }
+header.jiwon, footer.jiwon { background-color: #ff974b; }
+nav.jiwon { background-color: #ff974b; }
+header.henry, footer.henry { background-color: #6565f0; }
+nav.henry { background-color: #6565f0; }
+header.minkyu, footer.minkyu { background-color: #95236b; }
+nav.minkyu { background-color: #95236b; }
+header.wooram, footer.wooram { background-color: #f065c2; }
+nav.wooram { background-color: #f065c2; }
+header.yongsoon, footer.yongsoon { background-color: #f54f01; }
+nav.yongsoon { background-color: #f54f01; }
