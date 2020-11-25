@@ -1,5 +1,10 @@
 <%@page import="www.html.nav.Nav"%>
 <%@page import="www.html.header.Header"%>
+<%@page import="www.api.naver.Search"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.io.UnsupportedEncodingException"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -10,6 +15,11 @@ String title = header.getTitle();
 
 Nav nav = new Nav();
 String menu = nav.getMenu();
+
+request.setCharacterEncoding("utf-8");
+
+Search nsapi = new Search();
+String json = nsapi.search("둘리", "INTELLECTUALS");
 %>
 <!DOCTYPE html>
 <html>
@@ -19,39 +29,30 @@ String menu = nav.getMenu();
 <title><%=title%></title>
 <%=css%>
 <%=js%>
-<style type="text/css">
-
-</style>
 </head>
 <body>
 	<div id="wrap">
 		<header>
-			<div class="base_wrap">
-				<h2 id="logo"><a href="/">Doogle</a></h2>
-				<p class="search_wrap">
-					<input type="text" id="search" placeholder="검색" />
-				</p>
-			</div>
+			<h2 id="logo"><a href="/"><%=title%></a></h2>
 		</header>
 		<nav>
-			<div class="base_wrap">
-				<%=menu%>
-			</div>
+			<%=menu%>
 		</nav>
-		<main>
-			<div class="base_wrap">
-				<h2>메인페이지</h2>
-				<table class="table">
-					<tr><td>컨텐츠1</td></tr>
-					<tr><td>컨텐츠2</td></tr>
-					<tr><td>컨텐츠3</td></tr>
-				</table>
-			</div>
-		</main>
+		<div class="container">
+			<main>
+				<h2>전체 지식iN()</h2>
+				<ul>
+					<li>
+						<dl>
+							<dt></dt>
+							<dd></dd>
+						</dl>
+					</li>
+				</ul>
+			</main>
+		</div>
 		<footer>
-			<div class="base_wrap">
-				<p id="copyright">Copyright 2020 1team.</p>
-			</div>
+			<p id="copyright">Copyright 2020 1team.</p>
 		</footer>
 	</div>
 </body>
