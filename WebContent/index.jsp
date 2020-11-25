@@ -6,6 +6,7 @@
 Header header = new Header();
 String css = header.getCss();
 String js = header.getJs();
+String title = header.getTitle();
 
 Nav nav = new Nav();
 String menu = nav.getMenu();
@@ -19,7 +20,7 @@ request.setAttribute("menuHtml", menu);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Doogle</title>
+<title><%=title%></title>
 ${importCss}
 ${importJs}
 <style type="text/css">

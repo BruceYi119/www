@@ -9,7 +9,8 @@ public class Header {
 	private String[] coreCss = { "bootstrap-4.5.3/css/bootstrap.min.css" };
 	private String[] css = { "global.css", "layout.css" };
 	private String[] coreJs = { "jquery-3.5.1/jquery-3.5.1.min.js", "bootstrap-4.5.3/js/bootstrap.bundle.js" };
-	private String[] js = { "test.js" };
+	private String[] js = {};
+	private String title = "Doogle!";
 
 	public String getCss() {
 		sb.setLength(0);
@@ -31,6 +32,10 @@ public class Header {
 			sb.append("<script defer src=\"" + baseJsUrl + js + "\"></script>\n");
 
 		return sb.toString();
+	}
+	
+	public String getTitle() {
+		return title;
 	}
 
 }
