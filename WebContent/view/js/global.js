@@ -15,6 +15,7 @@ const selectTxt = {
 	SHOP: '쇼핑',
 	DOC: '전문자료'
 };
+
 const naverSearch = () => {
 	const search = document.querySelector('#search');
 	const searchType = document.querySelector('#searchType').value;
@@ -41,7 +42,7 @@ window.onload = () => {
 
 	document.querySelector('#search').addEventListener('mouseleave', function() {
 		this.classList.remove('enable');
-		document.querySelector('#searchType').classList.add('hide');
+//		document.querySelector('#searchType').classList.add('hide');
 	});
 
 	document.querySelector('#btn_search').addEventListener('click', naverSearch);

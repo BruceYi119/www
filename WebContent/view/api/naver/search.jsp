@@ -1,10 +1,10 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="www.html.header.Header"%>
 <%@page import="www.html.nav.Nav"%>
 <%@page import="www.api.naver.Search"%>
-<%@page import="java.util.Iterator"%>
 <%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Iterator"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -22,13 +22,12 @@ String title = header.getTitle();
 Nav nav = new Nav();
 String menu = nav.getMenu();
 
-request.setCharacterEncoding("utf-8");
-
 Search nsapi = new Search();
 String json = nsapi.search(searchTxt, searchType);
+
 JSONObject jo = new JSONObject(json);
 String total = jo.get("total").toString();
-JSONArray jsonList = (JSONArray)jo.get("items");
+JSONArray jsonList = (JSONArray)jo.get("items");	
 Iterator it = jsonList.iterator();
 ArrayList<JSONObject> list = new ArrayList();
 
@@ -44,6 +43,11 @@ while(it.hasNext())
 <%=css%>
 <link rel="stylesheet" href="/view/css/api_search.css">
 <%=js%>
+<script type="text/javascript">
+window.onload = () => {
+	console.log(document.querySelector('#search').value);
+};
+</script>
 </head>
 <body>
 	<div id="wrap">
