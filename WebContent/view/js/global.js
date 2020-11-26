@@ -1,5 +1,17 @@
 "use strict";
 window.onload = () => {
+	document.querySelector('#search').addEventListener('keydown', function(e) {
+		if (e.keyCode === 13) {
+			const searchInput = document.querySelector('#search');
+			const val = encodeURIComponent(searchInput.value);
+
+			if (val.length < 1)
+				return;
+
+			location.href = `http://localhost/view/api/naver/search.jsp?search=${val}`;
+		}
+	});
+
 	document.querySelector('#search').addEventListener('mouseenter', function() {
 		this.classList.add('enable');
 	});
