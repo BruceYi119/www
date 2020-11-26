@@ -19,9 +19,6 @@ String menu = nav.getMenu();
 <title><%=title%></title>
 <%=css%>
 <%=js%>
-<style type="text/css">
-
-</style>
 </head>
 <body>
 	<div id="wrap">

@@ -1,10 +1,11 @@
-<%@page import="www.html.nav.Nav"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="www.html.header.Header"%>
+<%@page import="www.html.nav.Nav"%>
 <%@page import="www.api.naver.Search"%>
-<%@page import="java.net.URLEncoder"%>
-<%@page import="java.io.UnsupportedEncodingException"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -20,6 +21,13 @@ request.setCharacterEncoding("utf-8");
 
 Search nsapi = new Search();
 String json = nsapi.search("둘리", "INTELLECTUALS");
+JSONObject jo = new JSONObject(json);
+String total = jo.get("total").toString();
+JSONArray jsonList = (JSONArray)jo.get("items");
+Iterator it = jsonList.iterator();
+ArrayList<JSONObject> list = new ArrayList();
+while(it.hasNext())
+	list.add((JSONObject)it.next());
 %>
 <!DOCTYPE html>
 <html>
@@ -28,31 +36,48 @@ String json = nsapi.search("둘리", "INTELLECTUALS");
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title><%=title%></title>
 <%=css%>
+<link rel="stylesheet" href="/view/css/api_search.css">
 <%=js%>
 </head>
 <body>
 	<div id="wrap">
 		<header>
-			<h2 id="logo"><a href="/"><%=title%></a></h2>
+			<div class="base_wrap">
+				<h2 id="logo"><a href="/">Doogle</a></h2>
+				<p class="search_wrap">
+					<input type="text" id="search" placeholder="검색" />
+				</p>
+			</div>
 		</header>
 		<nav>
-			<%=menu%>
+			<div class="base_wrap">
+				<%=menu%>
+			</div>
 		</nav>
-		<div class="container">
-			<main>
-				<h2>전체 지식iN()</h2>
-				<ul>
+		<main>
+			<div class="base_wrap">
+				<h5>전체 지식iN(<%=total%>)</h5>
+				<ul class="sort">
+					<li><a href="#" id="sort1">정확도</a></li>
+					<li><a href="#" id="sort2">최신순</a></li>
+					<li><a href="#" id="sort3">추천순</a></li>
+				</ul>
+				<ul class="list">
+					<c:forEach items="<%=list%>" var="data">
 					<li>
 						<dl>
-							<dt></dt>
-							<dd></dd>
+							<dt><a href="${data.get("link")}">${data.get("title")}</a></dt>
+							<dd>${data.get("description")}</dd>
 						</dl>
 					</li>
+					</c:forEach>
 				</ul>
-			</main>
-		</div>
+			</div>
+		</main>
 		<footer>
-			<p id="copyright">Copyright 2020 1team.</p>
+			<div class="base_wrap">
+				<p id="copyright">Copyright 2020 1team.</p>
+			</div>
 		</footer>
 	</div>
 </body>
