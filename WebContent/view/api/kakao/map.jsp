@@ -19,6 +19,8 @@ String menu = nav.getMenu();
 <title><%=title%></title>
 <%=css%>
 <%=js%>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6149ea934d2b9a86f22e4c11df7797b0"></script>
+<script defer type="text/javascript" src="/view/js/kakao.map.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -28,21 +30,6 @@ String menu = nav.getMenu();
 				<p class="search_wrap">
 					<input type="text" id="search" placeholder="검색" />
 					<button class="btn btn-success" id="btn_search">검색</button>
-					<select class="custom-select hide" id="searchType">
-						<option value="NEWS" selected="selected">뉴스</option>
-						<option value="BLOG">블로그</option>
-						<option value="BOOK">책</option>
-						<option value="ENCYC">백과사전</option>
-						<option value="MOVIE">영화</option>
-						<option value="CAFE">카페글</option>
-						<option value="KIN">지식iN</option>
-						<option value="LOCAL">지역</option>
-						<option value="ERRATA">오타변환</option>
-						<option value="WEBKR">웹문서</option>
-						<option value="IMAGE">이미지</option>
-						<option value="SHOP">쇼핑</option>
-						<option value="DOC">전문자료</option>
-					</select>
 				</p>
 			</div>
 		</header>
@@ -53,12 +40,7 @@ String menu = nav.getMenu();
 		</nav>
 		<main>
 			<div class="base_wrap">
-				<h2>메인페이지</h2>
-				<table class="table">
-					<tr><td>컨텐츠1</td></tr>
-					<tr><td>컨텐츠2</td></tr>
-					<tr><td>컨텐츠3</td></tr>
-				</table>
+				<div id="map" style="width:500px;height:400px;"></div>
 			</div>
 		</main>
 		<footer>
@@ -68,4 +50,3 @@ String menu = nav.getMenu();
 		</footer>
 	</div>
 </body>
-</html>

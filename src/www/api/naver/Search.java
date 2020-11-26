@@ -14,15 +14,26 @@ import java.util.Map;
 
 public class Search {
 
-//	private Map<api, String> apiUrl = new HashMap<>();
 	private Map<String, String> apiUrl = new HashMap<>();
 	public enum api { INTELLECTUALS; }
 	private String clientId = "tUVE31gRkWWthXP_N4za";	//애플리케이션 클라이언트 아이디값
 	private String clientSecret = "ojSoGAcHkZ";			//애플리케이션 클라이언트 시크릿값
+	private String baseUrl = "https://openapi.naver.com/v1/search/";
 
 	{
-//		apiUrl.put(api.INTELLECTUALS, "https://openapi.naver.com/v1/search/kin.json");
-		apiUrl.put("INTELLECTUALS", "https://openapi.naver.com/v1/search/kin.json?query=");
+		apiUrl.put("NEWS", "news.json");
+		apiUrl.put("BLOG", "blog");
+		apiUrl.put("BOOK", "book.json");
+		apiUrl.put("ENCYC", "encyc.json");
+		apiUrl.put("MOVIE", "movie.json");
+		apiUrl.put("CAFE", "cafearticle.json");
+		apiUrl.put("KIN", "kin.json");
+		apiUrl.put("LOCAL", "local.json");
+		apiUrl.put("ERRATA", "errata.json");
+		apiUrl.put("WEBKR", "webkr.json");
+		apiUrl.put("IMAGE", "image");
+		apiUrl.put("SHOP", "shop.json");
+		apiUrl.put("DOC", "doc.json");
 	}
 
 	public String search(String searchTxt, String api) {
@@ -33,7 +44,7 @@ public class Search {
 			throw new RuntimeException("검색어 인코딩 실패",e);
 		}
 
-		String apiURL = apiUrl.get(api) + text;    // json 결과
+		String apiURL = baseUrl + apiUrl.get(api) + "?query=" + text;    // json 결과
 		//String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
 
 		Map<String, String> requestHeaders = new HashMap<>();

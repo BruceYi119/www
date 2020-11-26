@@ -11,6 +11,8 @@
 <%
 request.setCharacterEncoding("utf-8");
 String searchTxt = request.getParameter("search");
+String searchType = request.getParameter("searchType");
+String searchTitle = request.getParameter("searchTitle");
 
 Header header = new Header();
 String css = header.getCss();
@@ -23,7 +25,7 @@ String menu = nav.getMenu();
 request.setCharacterEncoding("utf-8");
 
 Search nsapi = new Search();
-String json = nsapi.search(searchTxt, "INTELLECTUALS");
+String json = nsapi.search(searchTxt, searchType);
 JSONObject jo = new JSONObject(json);
 String total = jo.get("total").toString();
 JSONArray jsonList = (JSONArray)jo.get("items");
@@ -51,6 +53,21 @@ while(it.hasNext())
 				<p class="search_wrap">
 					<input type="text" id="search" placeholder="검색" value="<%=searchTxt%>" />
 					<button class="btn btn-success" id="btn_search">검색</button>
+					<select class="custom-select hide" id="searchType">
+						<option value="NEWS" selected="selected">뉴스</option>
+						<option value="BLOG">블로그</option>
+						<option value="BOOK">책</option>
+						<option value="ENCYC">백과사전</option>
+						<option value="MOVIE">영화</option>
+						<option value="CAFE">카페글</option>
+						<option value="KIN">지식iN</option>
+						<option value="LOCAL">지역</option>
+						<option value="ERRATA">오타변환</option>
+						<option value="WEBKR">웹문서</option>
+						<option value="IMAGE">이미지</option>
+						<option value="SHOP">쇼핑</option>
+						<option value="DOC">전문자료</option>
+					</select>
 				</p>
 			</div>
 		</header>
@@ -61,7 +78,7 @@ while(it.hasNext())
 		</nav>
 		<main>
 			<div class="base_wrap">
-				<h5>전체 지식iN(<%=total%>)</h5>
+				<h5>전체 <%=searchTitle%> (<%=total%>)</h5>
 				<ul class="sort">
 					<li><a href="#" id="sort1">정확도</a></li>
 					<li><a href="#" id="sort2">최신순</a></li>
