@@ -9,6 +9,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+request.setCharacterEncoding("utf-8");
+String searchTxt = request.getParameter("search");
+
 Header header = new Header();
 String css = header.getCss();
 String js = header.getJs();
@@ -20,12 +23,13 @@ String menu = nav.getMenu();
 request.setCharacterEncoding("utf-8");
 
 Search nsapi = new Search();
-String json = nsapi.search("둘리", "INTELLECTUALS");
+String json = nsapi.search(searchTxt, "INTELLECTUALS");
 JSONObject jo = new JSONObject(json);
 String total = jo.get("total").toString();
 JSONArray jsonList = (JSONArray)jo.get("items");
 Iterator it = jsonList.iterator();
 ArrayList<JSONObject> list = new ArrayList();
+
 while(it.hasNext())
 	list.add((JSONObject)it.next());
 %>
@@ -43,9 +47,10 @@ while(it.hasNext())
 	<div id="wrap">
 		<header>
 			<div class="base_wrap">
-				<h2 id="logo"><a href="/">Doogle</a></h2>
+				<h1 id="logo"><a href="/">Doogle</a></h1>
 				<p class="search_wrap">
-					<input type="text" id="search" placeholder="검색" />
+					<input type="text" id="search" placeholder="검색" value="<%=searchTxt%>" />
+					<button class="btn btn-success" id="btn_search">검색</button>
 				</p>
 			</div>
 		</header>

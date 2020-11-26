@@ -7,8 +7,8 @@ header .base_wrap { height: 80px; }
 nav .base_wrap { height: 200px; }
 main .base_wrap { height: 550px; }
 footer .base_wrap { height: 80px; }
-#logo { position: absolute;top: 17px;left: 20px; }
-#logo a { color: #fff;display: block; }
+#logo { position: absolute;top: 5px;left: 20px;z-index: 10; }
+#logo a { color: #fff;display: block;padding: 5px; }
 #menu { position: absolute;top: 30px;right: 50px; }
 #menu li { float: left;padding: 15px; }
 #menu li a { color: #fff; }

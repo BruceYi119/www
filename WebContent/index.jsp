@@ -24,9 +24,10 @@ String menu = nav.getMenu();
 	<div id="wrap">
 		<header>
 			<div class="base_wrap">
-				<h2 id="logo"><a href="/">Doogle</a></h2>
+				<h1 id=logo><a href="/"><span>Doogle</span></a></h1>
 				<p class="search_wrap">
 					<input type="text" id="search" placeholder="검색" />
+					<button class="btn btn-success" id="btn_search">검색</button>
 				</p>
 			</div>
 		</header>
