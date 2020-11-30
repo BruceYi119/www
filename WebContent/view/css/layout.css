@@ -1,11 +1,35 @@
-header { width: 100%;height: 80px;float: left;background-color: #20232a; }
-nav { width: 100%;height: 200px;float: left;background-color: #282c34; }
-main { width: 100%;min-height: 550px;float: left; }
-footer { width: 100%;height: 80px;clear: both;;background-color: #20232a; }
+:root {
+	--main-color: #20232a;
+	--main-nav-color: #282c34;
+	--heesoo-color: #fade11;
+	--heesoo-nav-color: #fade11;
+	--jiwon-color: #ffcc66;
+	--jiwon-nav-color: #ffd480;
+	--henry-color: #99CED3;
+	--henry-nav-color: #4D6D9A;
+	--minkyu-color: #B2EBF4;
+	--minkyu-nav-color: #D4F4FA;
+	--wooram-color: #cc99ff;
+	--wooram-nav-color: #ccccff;
+	--yongsoon-color: #ffff00;
+	--yongsoon-nav-color: #ffcc00;
+
+	--a-color: #0033ac;
+	--a-visited-color: #99209b;
+
+	--dark-mode-color: #1e1f21;
+	--dark-mode-button-color: #53575c;
+}
+
+header { width: 100%;height: 80px;float: left;background-color: var(--main-color); }
+nav { width: 100%;height: 200px;float: left;background-color: var(--main-nav-color); }
+main { width: 100%;min-height: 600px;float: left; }
+footer { width: 100%;height: 80px;clear: both;;background-color: var(--main-color); }
 .base_wrap { position:relative;max-width: 1500px;margin: 0 auto; }
 header .base_wrap { height: 80px; }
 nav .base_wrap { height: 200px; }
 main .base_wrap { min-height: 550px; }
+main.dark_mode { color: #fff; }
 footer .base_wrap { height: 80px; }
 
 #logo { position: absolute;top: 5px;left: 20px;z-index: 10; }
@@ -16,9 +40,11 @@ footer .base_wrap { height: 80px; }
 #menu li a { color: #fff; }
 #copyright { position: absolute;bottom: 20px;right: 20px;color: #fff;margin-bottom: 0; }
 
+.dark_mode { background-color: var(--dark-mode-color);color: #fff; }
 .hide { display: none !important; }
 
-header p.search_wrap { position: absolute;top: 20px;left: 0;width: 100%;text-align: center; }
+header div.search_wrap { position: absolute;top: 20px;left: 0;width: 100%;text-align: center; }
+header div.search_wrap div.search_event_wrap { display: inline-block; }
 #search { width: 300px;background-color: #20232a;padding: 10px 20px;border: none;border-radius: 5px;color: #fff; }
 #search:focus { background-color: #373940; }
 #search.enable { background-color: #373940; }
@@ -28,19 +54,23 @@ header p.search_wrap { position: absolute;top: 20px;left: 0;width: 100%;text-ali
 #search:-ms-input-placeholder { color: #fff; }
 /* Microsoft Edge */
 #search::-ms-input-placeholder { color: #fff; }
+#darkMode > button { position: fixed;bottom: 50px;right: 50px;width: 120px;height:50px;border-radius: 25px;background-color: #fff;border: none; }
+#darkMode > button:hover { background-color: #53575c; }
+#darkMode > button.dark_mode { background-color: var(--dark-mode-button-color);color: #fff; }
+#darkMode > button.dark_mode:hover { background-color: #404040; }
 
 /* #fade11, #ff974b, #6565f0, #95236b, #f065c2, #f54f01 */
-header.heesoo, footer.heesoo { background-color: #fade11; }
-nav.heesoo { background-color: #fade11; }
-header.jiwon, footer.jiwon { background-color: #ffcc66; }
-nav.jiwon { background-color: #ffd480; }
-header.henry, footer.henry { background-color: #99CED3; }
-nav.henry { background-color: #4D6D9A; }
-header.minkyu, footer.minkyu { background-color: #B2EBF4; }
-nav.minkyu { background-color: #D4F4FA; }
-header.wooram, footer.wooram { background-color: #cc99ff; }
-nav.wooram { background-color: #ccccff; }
-header.yongsoon, footer.yongsoon { background-color: #ffff00; }
-nav.yongsoon { background-color: #ffcc00; }
+header.heesoo, footer.heesoo { background-color: var(--heesoo-color); }
+nav.heesoo { background-color: var(--heesoo-nav-color); }
+header.jiwon, footer.jiwon { background-color: var(--jiwon-color); }
+nav.jiwon { background-color: var(--jiwon-nav-color); }
+header.henry, footer.henry { background-color: var(--henry-color); }
+nav.henry { background-color: var(--henry-nav-color); }
+header.minkyu, footer.minkyu { background-color: var(--minkyu-color); }
+nav.minkyu { background-color: var(--minkyu-nav-color); }
+header.wooram, footer.wooram { background-color: var(--wooram-color); }
+nav.wooram { background-color: var(--wooram-nav-color); }
+header.yongsoon, footer.yongsoon { background-color: var(--yongsoon-color); }
+nav.yongsoon { width: 150px;height: 50px;background-color: var(--yongsoon-nav-color);border-radius: 25px; }
 
 /* .png { background-image: url('/view/img/icons.png') ;background-repeat: no-repeat;background-size: 440px 410px;background-position: -16px -375px; } */

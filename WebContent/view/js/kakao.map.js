@@ -1,4 +1,5 @@
-"use strict";
+'use strict';
+
 window.onload = () => {
 	//지도를 담을 영역의 DOM 레퍼런스
 	const container = document.querySelector('#map');

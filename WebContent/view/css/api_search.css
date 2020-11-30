@@ -1,3 +1,5 @@
 main div.base_wrap h5 { margin-top: 50px;border-bottom: 2px solid #c9cbcc;padding-bottom: 10px; }
 main div.base_wrap ul.sort li { float: left;padding: 5px 10px 5px 0; }
 main div.base_wrap ul.list { width: 100%;float: left;margin-bottom: 50px; }
+main div.base_wrap ul.list li dt > a { color: var(--a-color); } 
+main div.base_wrap ul.list li dt > a:visited { color: var(--a-visited-color); } 

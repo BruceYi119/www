@@ -39,7 +39,7 @@ public class Search {
 //	public static void main(String[] args) {
 //		Search s = new Search();
 //
-//		System.out.println(s.search("둘리", "IMAGE"));
+//		System.out.println(s.search("방구썩", "ERRATA"));
 //	}
 	
 	public String search(String searchTxt, String api) {
