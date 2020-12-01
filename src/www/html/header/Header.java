@@ -8,7 +8,7 @@ public class Header {
 	private String baseJsUrl = "/view/js/";
 	private String[] coreCss = { "bootstrap-4.5.3/css/bootstrap.min.css" };
 	private String[] css = { "global.css", "layout.css" };
-	private String[] coreJs = { "jquery-3.5.1/jquery-3.5.1.min.js", "bootstrap-4.5.3/js/bootstrap.bundle.js" };
+	private String[] coreJs = { "jquery-3.5.1/jquery-3.5.1.min.js", "bootstrap-4.5.3/js/bootstrap.bundle.js", "axios-0.21.0/dist/axios.min.js" };
 	private String[] js = { "global.js" };
 	private String title = "Doogle!";
 	private String headerUrl = "/view/layout/header.jsp";
