@@ -41,7 +41,7 @@ public class Search {
 //
 //		System.out.println(s.search("방구썩", "ERRATA"));
 //	}
-	
+
 	public String search(String searchTxt, String api) {
 		String text = null;
 		try {

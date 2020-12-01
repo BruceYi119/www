@@ -11,6 +11,7 @@ public class Header {
 	private String[] coreJs = { "jquery-3.5.1/jquery-3.5.1.min.js", "bootstrap-4.5.3/js/bootstrap.bundle.js" };
 	private String[] js = { "global.js" };
 	private String title = "Doogle!";
+	private String headerUrl = "/view/layout/header.jsp";
 
 	public String getCss() {
 		sb.setLength(0);
@@ -36,6 +37,10 @@ public class Header {
 	
 	public String getTitle() {
 		return title;
+	}
+
+	public String getHeaderUrl() {
+		return headerUrl;
 	}
 
 }
