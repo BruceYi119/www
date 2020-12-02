@@ -12,15 +12,22 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import www.key.Key;
+import www.key.Key.Keys;
+
 public class Search {
 
 	private Map<String, String> apiUrl = new HashMap<>();
 	public enum api { INTELLECTUALS; }
-	private String clientId = "tUVE31gRkWWthXP_N4za";	//애플리케이션 클라이언트 아이디값
-	private String clientSecret = "ojSoGAcHkZ";			//애플리케이션 클라이언트 시크릿값
+	private String clientId;				//애플리케이션 클라이언트 아이디값
+	private String clientSecret;			//애플리케이션 클라이언트 시크릿값
 	private String baseUrl = "https://openapi.naver.com/v1/search/";
 
 	{
+		Key key = new Key();
+		clientId = key.getKeys().get(Key.Keys.NAVER_SEARCH_ID);
+		clientSecret = key.getKeys().get(Key.Keys.NAVER_SEARCH_SECRET);
+
 		apiUrl.put("NEWS", "news.json");
 		apiUrl.put("BLOG", "blog");
 		apiUrl.put("BOOK", "book.json");
