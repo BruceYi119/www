@@ -8,6 +8,9 @@ import java.net.URL;
 import org.json.JSONObject;
 import org.json.XML;
 
+import www.key.Key;
+import www.key.Key.Keys;
+
 public class Data {
 	private JSONObject json;
 
@@ -41,13 +44,16 @@ public class Data {
 	}
 
 //	public static void main(String[] args) {
+//		Key key = new Key();
 //		Data data = new Data();
 //		StringBuffer sb = new StringBuffer();
+//		String serviceKey = key.getKeys().get(Keys.DATA_COVID19_SERVICEKEY);
 //
 //		sb.setLength(0);
 //		sb.append("http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?");
-//		sb.append("serviceKey=y9OZ5IknnDqJ%2Fh8JC4EFpO%2FFpodQlQCfg87Wgy8hTeVGuW%2FGzeE8NlD8j3zXDwKiyqz2cstMO17oGqUEE8hL3w%3D%3D&");
-//		sb.append("pageNo=1&");
+//		sb.append("serviceKey=");
+//		sb.append(serviceKey);
+//		sb.append("&pageNo=1&");
 //		sb.append("numOfRows=10&");
 //		sb.append("startCreateDt=20200310&");
 //		sb.append("endCreateDt=20200315&");
