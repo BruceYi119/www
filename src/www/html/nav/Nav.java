@@ -4,8 +4,8 @@ public class Nav {
 
 	private StringBuffer sb = new StringBuffer();
 	private String baseUrl = "/view/";
-	private String[] urlName = { "강민규", "김희수", "박용순", "정지원", "진우람", "핸리" };
-	private String[] url = { "minkyu/minkyu.jsp", "heesoo/heesoo.jsp", "yongsoon/yongsoon.jsp", "jiwon/jiwon.jsp", "wooram/wooram.jsp", "henry/henry.jsp" };
+	private String[] urlName = { "카카오맵", "강민규", "김희수", "박용순", "정지원", "진우람", "핸리" };
+	private String[] url = { "api/kakao/map.jsp", "minkyu/minkyu.jsp", "heesoo/heesoo.jsp", "yongsoon/yongsoon.jsp", "jiwon/jiwon.jsp", "wooram/wooram.jsp", "henry/henry.jsp" };
 
 	public String getMenu() {
 		sb.setLength(0);

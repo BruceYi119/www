@@ -1,6 +1,11 @@
 :root {
 	--main-color: #20232a;
 	--main-nav-color: #282c34;
+
+	--kakao-map-color: #fee101;
+	--kakao-map-nav-color: #ffff58;
+	--kakao-nav-menu-text-color: #000;
+	
 	--heesoo-color: #fade11;
 	--heesoo-nav-color: #fade11;
 	--jiwon-color: #ffcc66;
@@ -38,6 +43,7 @@ footer .base_wrap { height: 80px; }
 #menu { position: absolute;top: 30px;right: 50px; }
 #menu li { float: left;padding: 15px; }
 #menu li a { color: #fff; }
+#menu.kakaoMap li a { color: var(--kakao-nav-menu-text-color); }
 #copyright { position: absolute;bottom: 20px;right: 20px;color: #fff;margin-bottom: 0; }
 
 .dark_mode { background-color: var(--dark-mode-color);color: #fff; }
@@ -49,17 +55,22 @@ header div.search_wrap div.search_event_wrap { display: inline-block; }
 #search:focus { background-color: #373940; }
 #search.enable { background-color: #373940; }
 /* Chrome, Firefox, Opera, Safari 10.1+ */
-#search::placeholder { color: #fff;opacity: 1; /* Firefox */ }
+/* Firefox */
+#search::placeholder { color: #fff;opacity: 1; }
 /* Internet Explorer 10-11 */
 #search:-ms-input-placeholder { color: #fff; }
 /* Microsoft Edge */
 #search::-ms-input-placeholder { color: #fff; }
 #darkMode > button { position: fixed;bottom: 50px;right: 50px;width: 120px;height:50px;border-radius: 25px;background-color: #fff;border: none; }
 #darkMode > button:hover { background-color: #53575c; }
+#darkMode > button:focus { outline: none; }
 #darkMode > button.dark_mode { background-color: var(--dark-mode-button-color);color: #fff; }
 #darkMode > button.dark_mode:hover { background-color: #404040; }
 
 /* #fade11, #ff974b, #6565f0, #95236b, #f065c2, #f54f01 */
+header.kakaoMap, footer.kakaoMap { background-color: var(--kakao-map-color); }
+nav.kakaoMap { background-color: var(--kakao-map-nav-color); }
+
 header.heesoo, footer.heesoo { background-color: var(--heesoo-color); }
 nav.heesoo { background-color: var(--heesoo-nav-color); }
 header.jiwon, footer.jiwon { background-color: var(--jiwon-color); }
@@ -72,5 +83,3 @@ header.wooram, footer.wooram { background-color: var(--wooram-color); }
 nav.wooram { background-color: var(--wooram-nav-color); }
 header.yongsoon, footer.yongsoon { background-color: var(--yongsoon-color); }
 nav.yongsoon { width: 150px;height: 50px;background-color: var(--yongsoon-nav-color);border-radius: 25px; }
-
-/* .png { background-image: url('/view/img/icons.png') ;background-repeat: no-repeat;background-size: 440px 410px;background-position: -16px -375px; } */

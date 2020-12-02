@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Out"%>
 <%@page import="www.key.Key.Keys"%>
 <%@page import="www.key.Key"%>
 <%@page import="org.json.JSONObject"%>
@@ -18,5 +19,5 @@ sb.append("startCreateDt=20200310&");
 sb.append("endCreateDt=20200315&");
 
 JSONObject json = data.getXmlData(sb.toString());
+out.print(sb.toString());
 %>
-<%=json%>

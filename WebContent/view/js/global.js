@@ -28,6 +28,16 @@ const naverSearch = () => {
 	location.href = `http://localhost/view/api/naver/search.jsp?search=${searchVal}&searchType=${searchType}&searchTitle=${searchTitle}`;
 };
 
+const setColor = () => {
+	if (document.querySelector('#color_class')) {
+		const color = document.querySelector('#color_class').value;
+		
+		document.querySelector('header').classList.add(color);
+		document.querySelector('nav').classList.add(color);
+		document.querySelector('footer').classList.add(color);
+	}
+};
+
 window.onload = () => {
 	window.addEventListener('click', () => {
 		if (document.activeElement !== document.querySelector('.search_event_wrap') && document.activeElement !== document.querySelector('#searchType') && document.activeElement !== document.querySelector('#search') && document.activeElement !== document.querySelector('#btn_search'))
@@ -70,4 +80,6 @@ window.onload = () => {
 			o.removeAttribute('flag')
 		}
 	});
+
+	setColor();
 };
