@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import www.key.Key;
-import www.key.Key.Keys;
 
 public class Search {
 
@@ -25,8 +24,8 @@ public class Search {
 
 	{
 		Key key = new Key();
-		clientId = key.getKeys().get(Key.Keys.NAVER_SEARCH_ID);
-		clientSecret = key.getKeys().get(Key.Keys.NAVER_SEARCH_SECRET);
+		clientId = key.getKeys().get(Key.Kyes.NAVER_SEARCH_ID);
+		clientSecret = key.getKeys().get(Key.Kyes.NAVER_SEARCH_SECRET);
 
 		apiUrl.put("NEWS", "news.json");
 		apiUrl.put("BLOG", "blog");

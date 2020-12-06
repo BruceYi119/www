@@ -8,9 +8,6 @@ import java.net.URL;
 import org.json.JSONObject;
 import org.json.XML;
 
-import www.key.Key;
-import www.key.Key.Keys;
-
 public class Data {
 	private JSONObject json;
 
