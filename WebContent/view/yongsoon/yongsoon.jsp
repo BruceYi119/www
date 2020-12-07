@@ -37,7 +37,7 @@ String footerUrl = footer.getFooterUrl();
 		</nav>
 		<main>
 			<div class="base_wrap">
-				<h2>메인페이지</h2>
+				<h2>용순 페이지</h2>
 				<table class="table">
 					<tr><td>컨텐츠1</td></tr>
 					<tr><td>컨텐츠2</td></tr>
