@@ -28,7 +28,7 @@
 
 header { width: 100%;height: 80px;float: left;background-color: var(--main-color); }
 nav { width: 100%;height: 200px;float: left;background-color: var(--main-nav-color); }
-main { width: 100%;min-height: 600px;float: left; }
+main { width: 100%;min-height: 1000px;float: left; }
 footer { width: 100%;height: 80px;clear: both;;background-color: var(--main-color); }
 .base_wrap { position:relative;max-width: 1500px;margin: 0 auto; }
 header .base_wrap { height: 80px; }
@@ -82,4 +82,4 @@ nav.minkyu { background-color: var(--minkyu-nav-color); }
 header.wooram, footer.wooram { background-color: var(--wooram-color); }
 nav.wooram { background-color: var(--wooram-nav-color); }
 header.yongsoon, footer.yongsoon { background-color: var(--yongsoon-color); }
-nav.yongsoon { width: 150px;height: 50px;background-color: var(--yongsoon-nav-color);border-radius: 25px; }
+nav.yongsoon { background-color: var(--yongsoon-nav-color); }
