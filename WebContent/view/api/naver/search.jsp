@@ -73,11 +73,18 @@ if (searchType.equals("ERRATA")) {
 		<main>
 			<div class="base_wrap">
 				<h5><%=searchType.equals("ERRATA") ? "" : "전체"%> <%=searchTitle%><%=total%></h5>
-				<ul class="sort">
-					<li><a href="#" id="sort1">정확도</a></li>
-					<li><a href="#" id="sort2">최신순</a></li>
-					<li><a href="#" id="sort3">추천순</a></li>
-				</ul>
+				<c:set var="searchType" value="<%=searchType%>" />
+				<c:choose>
+				    <c:when test="${searchType eq 'IMAGE'}">
+				    </c:when>
+				    <c:otherwise>
+						<ul class="sort">
+							<li><a href="#" id="sort1">정확도</a></li>
+							<li><a href="#" id="sort2">최신순</a></li>
+							<li><a href="#" id="sort3">추천순</a></li>
+						</ul>
+				    </c:otherwise>
+				</c:choose>
 				<ul class="list">
 					<c:set var="searchType" value="<%=searchType%>" />
 					<c:choose>
@@ -96,7 +103,7 @@ if (searchType.equals("ERRATA")) {
 					    <c:when test="${searchType eq 'IMAGE'}">
 					    	<c:forEach items="<%=list%>" var="data">
 								<li class="image">
-									<a href="${data.get('link')}" sizeheight="${data.get('sizeheight')}" sizewidth="${data.get('sizewidth')}" link="${data.get('link')}"><img src="${data.get('thumbnail')}" /></a>
+									<a href="${data.get('link')}" link="${data.get('link')}"><img src="${data.get('thumbnail')}" /></a>
 								</li>
 							</c:forEach>
 					    </c:when>

@@ -1,5 +1,21 @@
 'use strict';
 
+const resizeWindow = (f) => {
+	const flag = f || false;
+	const imgView = document.querySelector('#imageView');
+
+	if (imgView.classList.value === 'view' || flag) {
+		const height = window.innerHeight;
+
+		if (height < 600) {
+			imgView.style.top = '0';
+		} else {
+			const cssHeight = (height - 600) / 2;
+			imgView.style.top = `${cssHeight}px`;
+		}
+	}
+};
+
 const setSearch = () => {
 	const select = document.querySelector('#searchType');
 	const search = document.querySelector('#search');
@@ -21,19 +37,22 @@ const setSearch = () => {
 		const obj = this;
 		const imgViewObj = document.querySelector('#imageView');
 		const link = obj.getAttribute('link');
-		const width = obj.getAttribute('sizeheight');
-		const height = obj.getAttribute('sizewidth');
 		const html = `<img src="${link}" /><span>X</span><div>test</div>`;
 
 		imgViewObj.classList.remove('hide');
+		imgViewObj.classList.add('view');
 		imgViewObj.innerHTML = html;
-	});
-
-	$('#imageView').on('click', 'span',function() {
-		const wrap = document.querySelector('#imageView');
-
-		wrap.classList.add('hide');
 	});
 };
 
+$('#imageView').on('click', 'span',function() {
+	const wrap = document.querySelector('#imageView');
+	
+	wrap.classList.remove('view');
+	wrap.classList.add('hide')
+});
+
+$(window).resize(resizeWindow);
+
 setSearch();
+resizeWindow(true);

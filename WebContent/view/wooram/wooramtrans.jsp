@@ -131,7 +131,7 @@ body {
 
 							if (inp.length == 0)
 								return false;
-
+								
 							else {
 								$
 										.ajax(
@@ -163,9 +163,9 @@ body {
 														slang = $("#language1")
 																.val(slan);
 													else {
-														slan = "kr";
+														slan = "en";
 														slang = $("#language1")
-																.val(slan);
+																.val("en");
 													}
 													if (tlang == "kr"
 															|| tlang == "en") {
