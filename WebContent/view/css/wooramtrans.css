@@ -1,0 +1,13 @@
+body { margin: 0; }
+
+.base_wrap #container { width: 100%;height: 800px;padding: 10px;/*background:blue;*/ }
+.base_wrap #all { width: 890px;height: 800px;margin: auto;position: relative; }
+.base_wrap #one { width: 400px;height: 600px;/*background:red;*/float: left; }
+.base_wrap textarea { width: 382px;height: 305px;resize: none;margin: 8px 6px;border: 2px solid black; }
+.base_wrap #one #one1 {	width: 400px;text-align: center; }
+.base_wrap #ct { float: left;margin: 5px;padding-top: 140px;/*background:green;*/width: 80px; }
+.base_wrap #btn1, #btn2 { border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;margin-left: 5px;margin-bottom: 10px; }
+.base_wrap #two { width: 400px;height: 600px;/*background:orange;*/float: left; }
+.base_wrap #two #two1 { width: 400px;text-align: center; }
+.base_wrap #outp { width: 382px;height: 305px;margin: 8px;background: white;border: 2px solid black; }
+.base_wrap .clearBoth { clear: both; }
