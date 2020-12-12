@@ -8,3 +8,4 @@
 <div id="darkMode">
 	<button type="button">다크 모드</button>
 </div>
+<div id="imageView" class="hide"></div>

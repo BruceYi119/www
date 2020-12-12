@@ -1,5 +1,18 @@
+:root {
+	--image-background-color: #fafbfc;
+	--image-border-color: #ededed;
+	--image-thum-height: 150px;
+}
+
+#imageView { position: fixed;top: 500px;left: 0;width: 100%;height: 600px;text-align: center;background-color: #000000;line-height: 600px;overflow: hidden; }
+#imageView img { max-height: 500px;vertical-align: middle; }
+#imageView span { position: absolute;top: 10px; right: 10px;color: #fff;font-size: 35px;font-weight: bold;cursor: pointer;line-height: 35px; }
+
 main div.base_wrap h5 { margin-top: 50px;border-bottom: 2px solid #c9cbcc;padding-bottom: 10px; }
 main div.base_wrap ul.sort li { float: left;padding: 5px 10px 5px 0; }
 main div.base_wrap ul.list { width: 100%;float: left;margin-bottom: 50px; }
 main div.base_wrap ul.list li dt > a { color: var(--a-color); } 
 main div.base_wrap ul.list li dt > a:visited { color: var(--a-visited-color); } 
+
+main div.base_wrap ul.list li.image { width: auto;float: left; } 
+main div.base_wrap ul.list li.image > a > img { height: var(--image-thum-height);margin: 4px;border: 1px solid var(--image-border-color); }

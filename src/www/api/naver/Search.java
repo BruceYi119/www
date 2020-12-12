@@ -21,6 +21,7 @@ public class Search {
 	private String clientId;				//애플리케이션 클라이언트 아이디값
 	private String clientSecret;			//애플리케이션 클라이언트 시크릿값
 	private String baseUrl = "https://openapi.naver.com/v1/search/";
+	private int display = 100;
 
 	{
 		Key key = new Key();
@@ -45,7 +46,7 @@ public class Search {
 //	public static void main(String[] args) {
 //		Search s = new Search();
 //
-//		System.out.println(s.search("방구썩", "ERRATA"));
+//		System.out.println(s.search("둘리", "IMAGE"));
 //	}
 
 	public String search(String searchTxt, String api) {
@@ -56,8 +57,8 @@ public class Search {
 			throw new RuntimeException("검색어 인코딩 실패",e);
 		}
 
-		String apiURL = baseUrl + apiUrl.get(api) + "?query=" + text;    // json 결과
-		//String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
+		String apiURL = baseUrl + apiUrl.get(api) + "?query=" + text + "&display=" + display;	// json 결과
+		//String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text;			// xml 결과
 
 		Map<String, String> requestHeaders = new HashMap<>();
 		requestHeaders.put("X-Naver-Client-Id", clientId);
@@ -69,6 +70,7 @@ public class Search {
 
 	private static String get(String apiUrl, Map<String, String> requestHeaders){
 		HttpURLConnection con = connect(apiUrl);
+
 		try {
 			con.setRequestMethod("GET");
 			for(Map.Entry<String, String> header :requestHeaders.entrySet()) {
@@ -76,9 +78,9 @@ public class Search {
 			}
 			
 			int responseCode = con.getResponseCode();
-			if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+			if (responseCode == HttpURLConnection.HTTP_OK) {	// 정상 호출
 				return readBody(con.getInputStream());
-			} else { // 에러 발생
+			} else {											// 에러 발생
 				return readBody(con.getErrorStream());
 			}
 		} catch (IOException e) {

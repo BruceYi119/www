@@ -55,7 +55,7 @@ if (searchType.equals("ERRATA")) {
 <%=css%>
 <link rel="stylesheet" href="/view/css/api_search.css">
 <%=js%>
-<script defer src="/view/js/search.js"></script>
+<script defer src="/view/js/api_search.js"></script>
 </head>
 <body>
 	<form>
@@ -94,7 +94,11 @@ if (searchType.equals("ERRATA")) {
 							<span>입력값 : <%=searchTxt%> / 맞춤법 : <%=errata%></span>
 					    </c:when>
 					    <c:when test="${searchType eq 'IMAGE'}">
-							이미지
+					    	<c:forEach items="<%=list%>" var="data">
+								<li class="image">
+									<a href="${data.get('link')}" sizeheight="${data.get('sizeheight')}" sizewidth="${data.get('sizewidth')}" link="${data.get('link')}"><img src="${data.get('thumbnail')}" /></a>
+								</li>
+							</c:forEach>
 					    </c:when>
 					    <c:when test="${searchType eq 'SHOP'}">
 							쇼핑
