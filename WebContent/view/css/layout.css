@@ -61,7 +61,7 @@ header div.search_wrap div.search_event_wrap { display: inline-block; }
 #search:-ms-input-placeholder { color: #fff; }
 /* Microsoft Edge */
 #search::-ms-input-placeholder { color: #fff; }
-#darkMode > button { position: fixed;bottom: 50px;right: 50px;width: 120px;height:50px;border-radius: 25px;background-color: #fff;border: none; }
+#darkMode > button { position: fixed;bottom: 50px;right: 50px;width: 120px;height:50px;border-radius: 25px;background-color: #fff;border: none;background-color: #efefef; }
 #darkMode > button:hover { background-color: #53575c; }
 #darkMode > button:focus { outline: none; }
 #darkMode > button.dark_mode { background-color: var(--dark-mode-button-color);color: #fff; }
