@@ -26,7 +26,7 @@ String footerUrl = footer.getFooterUrl();
 <link rel="icon" href="/view/img/favicon.ico" type="image/x-icon" />
 <title><%=title%></title>
 <%=css%>
-<link rel="stylesheet" href="/view/css/api_map.css">
+<link rel="stylesheet" href="/view/css/kakao_map.css">
 <%=js%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6149ea934d2b9a86f22e4c11df7797b0&libraries=services"></script>
 <script defer type="text/javascript" src="/view/js/kakao_map.js"></script>

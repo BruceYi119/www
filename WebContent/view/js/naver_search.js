@@ -43,6 +43,15 @@ const setSearch = () => {
 		imgViewObj.classList.add('view');
 		imgViewObj.innerHTML = html;
 	});
+
+	document.querySelector('#more').addEventListener('click', (e) => {
+		e.preventDefault();
+
+		const page = parseInt(document.querySelector('input[name=page]').value) + 1;
+		const searchTxt = document.querySelector('input[name=searchTxt]').value;
+		const searchType = document.querySelector('input[name=searchType]').value;
+		const display = document.querySelector('input[name=display]').value;
+	});
 };
 
 $('#imageView').on('click', 'span',function() {

@@ -49,6 +49,10 @@ public class Search {
 //		System.out.println(s.search("둘리", "IMAGE"));
 //	}
 
+	public int getDisplay() {
+		return display;
+	}
+
 	public String search(String searchTxt, String api) {
 		String text = null;
 		try {

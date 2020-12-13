@@ -1,19 +1,23 @@
+<%@page import="www.html.header.Header"%>
+<%@page import="www.html.nav.Nav"%>
+<%@page import="www.html.footer.Footer"%>
 <%@page import="www.api.naver.Search"%>
 <%@page import="org.json.JSONArray"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="www.html.header.Header"%>
-<%@page import="www.html.nav.Nav"%>
-<%@page import="www.html.footer.Footer"%>
 <%@page import="java.util.Iterator"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+Search nsapi = new Search();
+ArrayList<JSONObject> list = new ArrayList();
+
 request.setCharacterEncoding("utf-8");
-String searchTxt = request.getParameter("search");
-String searchType = request.getParameter("searchType");
-String searchTitle = request.getParameter("searchTitle");
+String searchTxt = request.getParameter("search") != null ? request.getParameter("search") : "둘리";
+String searchType = request.getParameter("searchType") != null ? request.getParameter("search") : "NEWS";
+String searchTitle = request.getParameter("searchTitle") != null ? request.getParameter("search") : "뉴스";
+String display = request.getParameter("display") != null ? request.getParameter("display") : nsapi.getDisplay() + "";
 
 Header header = new Header();
 String css = header.getCss();
@@ -27,23 +31,20 @@ String menu = nav.getMenu();
 Footer footer = new Footer();
 String footerUrl = footer.getFooterUrl();
 
-Search nsapi = new Search();
 String json = nsapi.search(searchTxt, searchType);
 
 JSONObject jo = new JSONObject(json);
-ArrayList<JSONObject> list = new ArrayList();
-String total = !searchType.equals("ERRATA")? "(" + jo.get("total").toString() + ")" : "";
+String total = !searchType.equals("ERRATA") ? "(" + jo.get("total").toString() + ")" : "";
 String errata = "";
 
 if (searchType.equals("ERRATA")) {
 	errata = jo.get("errata").toString();
 } else {
-	JSONArray jsonList = (JSONArray)jo.get("items");	
+	JSONArray jsonList = (JSONArray)jo.get("items");
 	Iterator it = jsonList.iterator();
 
 	while(it.hasNext())
 		list.add((JSONObject)it.next());
-
 }
 %>
 <!DOCTYPE html>
@@ -55,15 +56,16 @@ if (searchType.equals("ERRATA")) {
 <link rel="icon" href="/view/img/favicon.ico" type="image/x-icon" />
 <title><%=title%></title>
 <%=css%>
-<link rel="stylesheet" href="/view/css/api_search.css">
+<link rel="stylesheet" href="/view/css/naver_search.css">
 <%=js%>
-<script defer src="/view/js/api_search.js"></script>
+<script defer src="/view/js/naver_search.js"></script>
 </head>
 <body>
 	<form>
-		<input type="hidden" name="page" value="1" />
+		<input type="hidden" name="page" value="<%=page%>" />
 		<input type="hidden" name="searchTxt" value="<%=searchTxt%>" />
 		<input type="hidden" name="searchType" value="<%=searchType%>" />
+		<input type="hidden" name="display" value="<%=display%>" />
 	</form>
 	<div id="wrap">
 		<jsp:include page="<%=headerUrl%>" flush="true"/>
@@ -124,6 +126,7 @@ if (searchType.equals("ERRATA")) {
 					    </c:otherwise>
 					</c:choose>
 				</ul>
+				<div class="moreWrap"><a href="#" id="more">더보기</a></div>
 			</div>
 		</main>
 		<jsp:include page="<%=footerUrl%>" flush="true"/>
