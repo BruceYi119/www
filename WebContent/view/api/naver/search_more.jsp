@@ -12,8 +12,8 @@ ArrayList<JSONObject> list = new ArrayList();
 
 request.setCharacterEncoding("utf-8");
 String searchTxt = request.getParameter("search") != null ? request.getParameter("search") : "둘리";
-String searchType = request.getParameter("searchType") != null ? request.getParameter("search") : "NEWS";
-String searchTitle = request.getParameter("searchTitle") != null ? request.getParameter("search") : "뉴스";
+String searchType = request.getParameter("searchType") != null ? request.getParameter("searchType") : "NEWS";
+String searchTitle = request.getParameter("searchTitle") != null ? request.getParameter("searchTitle") : "뉴스";
 String display = request.getParameter("display") != null ? request.getParameter("display") : nsapi.getDisplay() + "";
 String json = nsapi.search(searchTxt, searchType);
 
