@@ -55,6 +55,7 @@ public class Search {
 
 	public String search(String searchTxt, String api) {
 		String text = null;
+
 		try {
 			text = URLEncoder.encode(searchTxt, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -69,6 +70,25 @@ public class Search {
 		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 		String responseBody = get(apiURL,requestHeaders);
 
+		return responseBody;		
+	}
+
+	public String search(String searchTxt, String api, int page) {
+		int start = page != 1 ? page * display - display + 1 : page;
+		String text = null;
+
+		try {
+			text = URLEncoder.encode(searchTxt, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException("검색어 인코딩 실패",e);
+		}
+
+		String apiURL = baseUrl + apiUrl.get(api) + "?query=" + text + "&display=" + display + "&start=" + start;
+		Map<String, String> requestHeaders = new HashMap<>();
+		requestHeaders.put("X-Naver-Client-Id", clientId);
+		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
+		String responseBody = get(apiURL,requestHeaders);
+		
 		return responseBody;		
 	}
 

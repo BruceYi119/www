@@ -14,6 +14,7 @@ Search nsapi = new Search();
 ArrayList<JSONObject> list = new ArrayList();
 
 request.setCharacterEncoding("utf-8");
+String pagev = request.getParameter("page") != null ? request.getParameter("page") : "1";
 String searchTxt = request.getParameter("search") != null ? request.getParameter("search") : "둘리";
 String searchType = request.getParameter("searchType") != null ? request.getParameter("searchType") : "NEWS";
 String searchTitle = request.getParameter("searchTitle") != null ? request.getParameter("searchTitle") : "뉴스";
@@ -62,7 +63,7 @@ if (searchType.equals("ERRATA")) {
 </head>
 <body>
 	<form>
-		<input type="hidden" name="page" value="<%=page%>" />
+		<input type="hidden" name="page" value="<%=pagev%>" />
 		<input type="hidden" name="searchTxt" value="<%=searchTxt%>" />
 		<input type="hidden" name="searchType" value="<%=searchType%>" />
 		<input type="hidden" name="display" value="<%=display%>" />

@@ -31,13 +31,13 @@ const setSearch = () => {
 			select.selectedIndex = i;
 	}
 
-	$('li.image a').on('click', function(e) {
+	$('ul.list').on('click','li.image > a', function(e) {
 		e.preventDefault();
 
 		const obj = this;
 		const imgViewObj = document.querySelector('#imageView');
 		const link = obj.getAttribute('link');
-		const html = `<img src="${link}" /><span>X</span><div>test</div>`;
+		const html = `<img src="${link}" /><span>X</span>`;
 
 		imgViewObj.classList.remove('hide');
 		imgViewObj.classList.add('view');
@@ -47,10 +47,26 @@ const setSearch = () => {
 	document.querySelector('#more').addEventListener('click', (e) => {
 		e.preventDefault();
 
-		const page = parseInt(document.querySelector('input[name=page]').value) + 1;
+		const pageObj = document.querySelector('input[name=page]');
+		const ul = document.querySelector('ul.list');
+		const page = parseInt(pageObj.value) + 1;
 		const searchTxt = document.querySelector('input[name=searchTxt]').value;
 		const searchType = document.querySelector('input[name=searchType]').value;
 		const display = document.querySelector('input[name=display]').value;
+		const params = {
+			params: {
+				page: page,
+				searchTxt: searchTxt,
+				searchType: searchType,
+				display: display
+			}
+		};
+		const ajax = axios.get('/view/api/naver/search_more.jsp', params);
+
+		ajax.then((res) => {
+			pageObj.value = page;
+			$(res.data.html).appendTo($(ul));
+		}).catch(err => console.log(err));
 	});
 };
 

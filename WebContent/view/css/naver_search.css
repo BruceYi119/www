@@ -18,3 +18,4 @@ main div.base_wrap ul.list li.image { width: auto;float: left; }
 main div.base_wrap ul.list li.image > a > img { height: var(--image-thum-height);margin: 4px;border: 1px solid var(--image-border-color); }
 
 main div.base_wrap > div.moreWrap { width: 100%;height: 39px;border: 1px solid #dedede;line-height: 39px;float: left;margin-bottom: 50px;text-align: center; }
+main div.base_wrap > div.moreWrap >a { width: 100%;height: 39px;display: inline-block; }
