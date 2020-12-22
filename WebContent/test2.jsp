@@ -1,14 +1,22 @@
+<%@page import="java.math.BigInteger"%>
+<%@page import="java.security.MessageDigest"%>
 <%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-// request.setCharacterEncoding("utf-8");
-// String aa = request.getParameter("aa");
-// out.print(aa);
+String pw = "enffl";
+String returnString = null;
 
-session.setAttribute("id", "dooly");
-out.print("<p>" + session.getAttribute("id") + "</p>");
-session.invalidate();
-if (session.getAttribute("id") == null)
-	out.print("<p>invalidate</p>");
+try{
+	MessageDigest md = MessageDigest.getInstance("SHA-512");
+	md.reset();
+	md.update(pw.getBytes("utf-8"));
+	returnString = String.format("%0128x", new BigInteger(1, md.digest()));
+} catch(Exception e) {
+	e.printStackTrace();
+}
+
+out.println(returnString);
+out.println(returnString.getBytes());
+// 한글
 %>

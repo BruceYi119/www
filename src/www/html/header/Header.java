@@ -2,7 +2,7 @@ package www.html.header;
 
 public class Header {
 
-	private StringBuffer sb = new StringBuffer();
+	private StringBuilder sb = new StringBuilder();
 	private String coreBaseUrl = "/core/";
 	private String baseCssUrl = "/view/css/";
 	private String baseJsUrl = "/view/js/";
