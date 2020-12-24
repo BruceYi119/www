@@ -97,7 +97,19 @@ if (searchType.equals("ERRATA")) {
 							책
 					    </c:when>
 					    <c:when test="${searchType eq 'MOVIE'}">
-							영화
+					    	<c:forEach items="<%=list%>" var="data">
+							<li class="movie">
+								<p><a href="${data.get('link')}" target="_blank"><img src="${data.get('image')}" /></a></p>
+								<dl>
+									<dt><a href="${data.get('link')}" target="_blank"><strong>${data.get('title')}</strong> (${data.get('subtitle')})</a></dt>
+									<dd class="point">
+										<span class="star"><em class="view_star" style="width:${data.get('userRating')}"></em></span><em class="num">${data.get('userRating')}</em>
+									</dd>
+									<dd class="etc">${data.get('pubDate')}</dd>
+									<dd class="etc">감독 : ${data.get('director')} 출연 : ${data.get('actor')}</dd>
+								</dl>
+							</li>
+							</c:forEach>
 					    </c:when>
 					    <c:when test="${searchType eq 'LOCAL'}">
 							지역
@@ -107,9 +119,9 @@ if (searchType.equals("ERRATA")) {
 					    </c:when>
 					    <c:when test="${searchType eq 'IMAGE'}">
 					    	<c:forEach items="<%=list%>" var="data">
-								<li class="image">
-									<a href="${data.get('link')}" link="${data.get('link')}"><img src="${data.get('thumbnail')}" /></a>
-								</li>
+							<li class="image">
+								<a href="${data.get('link')}" link="${data.get('link')}"><img src="${data.get('thumbnail')}" /></a>
+							</li>
 							</c:forEach>
 					    </c:when>
 					    <c:when test="${searchType eq 'SHOP'}">
@@ -119,7 +131,7 @@ if (searchType.equals("ERRATA")) {
 							<c:forEach items="<%=list%>" var="data">
 							<li>
 								<dl>
-									<dt><a href="${data.get('link')}">${data.get("title")}</a></dt>
+									<dt><a href="${data.get('link')}" target="_blank">${data.get("title")}</a></dt>
 									<dd>${data.get("description")}</dd>
 								</dl>
 							</li>

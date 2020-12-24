@@ -34,7 +34,7 @@ public class Header {
 
 		return sb.toString();
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}

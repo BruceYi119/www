@@ -54,7 +54,7 @@ switch(searchType) {
 		for (JSONObject o : list) {
 			sb.append("<li>");
 			sb.append("<dl>");
-			sb.append("<dt><a href='" + o.get("link") + "'>" + o.get("title") + "</a></dt>");
+			sb.append("<dt><a href='" + o.get("link") + "' target='_blank'>" + o.get("title") + "</a></dt>");
 			sb.append("<dd>" + o.get("description") + "</dd>");
 			sb.append("</dl>");
 			sb.append("</li>");
