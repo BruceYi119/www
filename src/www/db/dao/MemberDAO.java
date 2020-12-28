@@ -15,11 +15,12 @@ public class MemberDAO implements Idao {
 	private ArrayList<MemberDTO> list = null;
 
 	public MemberDAO() {
-		db = Db.getInstance();
+		db = new Db();
+//		db = Db.getInstance();
 	}
 
 	@Override
-	public void select(String sql, String... args) {
+	public void select(String sql, String ...args) {
 		try {
 			this.dto = new MemberDTO();
 
@@ -35,7 +36,7 @@ public class MemberDAO implements Idao {
 	}
 
 	@Override
-	public void selectAll(String sql, String... args) {
+	public void selectAll(String sql, String ...args) {
 		try {
 			db.pstmt = db.con.prepareStatement(sql);
 			setPstmt(args);
@@ -49,7 +50,7 @@ public class MemberDAO implements Idao {
 	}
 
 	@Override
-	public int insert(String sql, String... args) {
+	public int insert(String sql, String ...args) {
 		int i = 0;
 
 		try {
@@ -67,7 +68,7 @@ public class MemberDAO implements Idao {
 	}
 
 	@Override
-	public int update(String sql, String... args) {
+	public int update(String sql, String ...args) {
 		int i = 0;
 		
 		try {
@@ -85,7 +86,7 @@ public class MemberDAO implements Idao {
 	}
 
 	@Override
-	public int delete(String sql, String... args) {
+	public int delete(String sql, String ...args) {
 		int i = 0;
 		
 		try {
@@ -103,7 +104,7 @@ public class MemberDAO implements Idao {
 	}
 
 	@Override
-	public void setPstmt(String... args) {
+	public void setPstmt(String ...args) {
 		if (args.length > 0) {
 			int i = 1;
 
@@ -169,8 +170,8 @@ public class MemberDAO implements Idao {
 		}
 	}
 
-	public static void main(String[] args) {
-		MemberDAO dao = new MemberDAO();
+//	public static void main(String[] args) {
+//		MemberDAO dao = new MemberDAO();
 		// insert
 //		Security s = null;
 //
@@ -220,6 +221,6 @@ public class MemberDAO implements Idao {
 //		System.out.println(r);
 		
 		// insert, update, delete시 int 를 반환하는데 실행된 결과수를 반환해주니 사용하실분은 int에 담아서 사용하시면 됩니다
-	}
+//	}
 
 }

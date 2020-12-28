@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class Db {
 
-	private static Db instance;
+//	private static Db instance;
 	private String jdbc = "oracle.jdbc.driver.OracleDriver";
 	private String db = "jdbc:oracle:thin:@localhost:1521:xe";
 	private String id = "oneteam";
@@ -19,7 +19,7 @@ public class Db {
 	public PreparedStatement pstmt = null;
 	public ResultSet rs = null;
 
-	private Db() {
+	public Db() {
 		try {
 			Class.forName(jdbc);
 			con = DriverManager.getConnection(db, id, pw);
@@ -27,15 +27,26 @@ public class Db {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}		
 	}
 
-	public static synchronized Db getInstance() {
-		if (instance == null)
-				instance = new Db();
+//	private Db() {
+//		try {
+//			Class.forName(jdbc);
+//			con = DriverManager.getConnection(db, id, pw);
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
-		return instance;
-	}
+//	public static synchronized Db getInstance() {
+//		if (instance == null)
+//				instance = new Db();
+//
+//		return instance;
+//	}
 
 	@Override
 	public void finalize() {
