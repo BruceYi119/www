@@ -1,5 +1,6 @@
 package www.db.dao;
 
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,13 +16,14 @@ public class MemberDAO implements Idao {
 	private ArrayList<MemberDTO> list = null;
 
 	public MemberDAO() {
-		db = new Db();
-//		db = Db.getInstance();
+		db = Db.getInstance();
 	}
 
 	@Override
 	public void select(String sql, String ...args) {
 		try {
+			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
+			
 			this.dto = new MemberDTO();
 
 			db.pstmt = db.con.prepareStatement(sql);
@@ -38,6 +40,7 @@ public class MemberDAO implements Idao {
 	@Override
 	public void selectAll(String sql, String ...args) {
 		try {
+			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
 			db.pstmt = db.con.prepareStatement(sql);
 			setPstmt(args);
 			db.rs = db.pstmt.executeQuery();
@@ -54,6 +57,7 @@ public class MemberDAO implements Idao {
 		int i = 0;
 
 		try {
+			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
 			db.pstmt = db.con.prepareStatement(sql);
 			setPstmt(args);
 			i = db.pstmt.executeUpdate();
@@ -72,6 +76,7 @@ public class MemberDAO implements Idao {
 		int i = 0;
 		
 		try {
+			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
 			db.pstmt = db.con.prepareStatement(sql);
 			setPstmt(args);
 			i = db.pstmt.executeUpdate();
@@ -90,6 +95,7 @@ public class MemberDAO implements Idao {
 		int i = 0;
 		
 		try {
+			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
 			db.pstmt = db.con.prepareStatement(sql);
 			setPstmt(args);
 			i = db.pstmt.executeUpdate();
@@ -168,6 +174,14 @@ public class MemberDAO implements Idao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public MemberDTO getDto() {
+		return dto;
+	}
+
+	public ArrayList<MemberDTO> getList() {
+		return list;
 	}
 
 //	public static void main(String[] args) {
