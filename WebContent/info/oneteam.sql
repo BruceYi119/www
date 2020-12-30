@@ -16,11 +16,12 @@ create table member(
 	id varchar2(50) constraint member_id_n not null,												-- 아이디
 	pw char(128) constraint member_pw_n not null,													-- 비밀번호(sha512)
 	name varchar2(30) constraint member_name_n not null,											-- 이름
-	phone varchar2(20) constraint member_phone_n not null,										-- 연락처
-	zipcode varchar2(10) constraint member_zipcode_n not null,									-- 우편번호
+	phone varchar2(20) constraint member_phone_n not null,											-- 연락처
+	birth varchar2(20) constraint member_birth_n not null,											-- 생년월일
+	zipcode varchar2(10) constraint member_zipcode_n not null,										-- 우편번호
 	addr varchar2(50) constraint member_addr_n not null,											-- 주소
 	addr_detail varchar2(150) constraint member_addr_detail_n not null,							-- 상세주소
-	email varchar2(30) constraint member_email_n not null,										-- 이메일
+	email varchar2(30) constraint member_email_n not null,											-- 이메일
 	del_yn char(1) default 'y',																	-- 탈퇴여부
 	writedate date default sysdate,																-- 가입일
 	constraint member_del_yn_c check (del_yn in ('y','n'))
@@ -52,7 +53,7 @@ create table stockboard(
 	title varchar2(30),											-- 제목
 	content varchar2(1000),										-- 내용
 	fname varchar2(100),										-- 사진이름
-	writeday date default sysdate,												-- 작성일
+	writeday date default sysdate,								-- 작성일
 	readnum number,												-- 조회수
 	good number,												-- 공감
 	bad number,													-- 비공감
@@ -69,7 +70,7 @@ create table stockboarddat(
 	sbdno number,													--키값
 	name char(10),													--이름			
 	content varchar2(600),											--내용		
-	writeday date default sysdate,													--작성일			
+	writeday date default sysdate,									--작성일			
 	sbno number,													--stockboard 키값
 	CONSTRAINT stockboarddat_sbdno_p PRIMARY KEY (sbdno)
 );
@@ -81,7 +82,7 @@ create sequence s_companycode start with 1;
 create table companycode(
 	cno number not null,											-- 키값
 	company varchar2(150),											-- 기업명
-	code vatchar2(100),													-- 기업코드
+	code vatchar2(100),												-- 기업코드
 	CONSTRAINT companycode_cno_p PRIMARY KEY (cno)
 );
 
@@ -139,7 +140,7 @@ create table recipe_board(
 	file varchar2(500),												-- 음식사진
 	readnum number,													-- 조회수
 	liked number,													-- 좋아요수
-	writeday date default sysdate,													-- 작성일
+	writeday date default sysdate,									-- 작성일
 	constraint recipe_board_rbno_p primary key(rbno)
 );
 
@@ -151,8 +152,8 @@ create table rcomment(
 	rcno number,													-- 키값
 	name varchar2(20),												-- 작성자			
 	content varchar2(100),											-- 내용	
-	writeday date default sysdate,													-- 작성일			
-	rbno number,														-- recipe_board 키값			
+	writeday date default sysdate,									-- 작성일			
+	rbno number,													-- recipe_board 키값			
 	constraint rcomment_rcno_p primary key(rcno),
 	constraint rcomment_rno_f foreign key(rbno) references recipe_board(rbno)
 );
@@ -216,7 +217,7 @@ create table studentinfo(
 	birthdate date,																-- 생일
 	studentidno char(10),														-- 학번
 	addr varchar2(100),															-- 주소
-	hphone varchar2(20),															-- 집전화번호
+	hphone varchar2(20),														-- 집전화번호
 	cphone varchar2(20),														-- 핸드폰번호
 	email varchar2(30),															-- 이메일
 	bankname varchar2(20),														-- 은행명
@@ -237,6 +238,6 @@ create table reservation(
    date date,																			-- 네이버 예약 창 생각하시면 될거같습니다
    time varchar2(50),																	-- 네이버 예약창 생각하시면 될거같습니다. 시간과 분(10분단위)로 select해서 받을 예정
    eat char(1) default 's',															-- 매장/포장 여부 s = 매장, p = 포장
-   bigo varchar2(1000),																-- 예약을 하면서 하고 픈 말 적기( 부모님 생신.. or 생일 잔치 or 신년회)
+   bigo varchar2(1000),																	-- 예약을 하면서 하고 픈 말 적기( 부모님 생신.. or 생일 잔치 or 신년회)
    constraint reservation_eat_c check (eat in ('s','p'))
 );

@@ -69,7 +69,7 @@ if (searchType.equals("ERRATA")) {
 		<input type="hidden" name="display" value="<%=display%>" />
 	</form>
 	<div id="wrap">
-		<jsp:include page="<%=headerUrl%>" flush="true"/>
+		<jsp:include page="<%=headerUrl%>" flush="false"/>
 		<nav>
 			<div class="base_wrap">
 				<%=menu%>
@@ -142,7 +142,7 @@ if (searchType.equals("ERRATA")) {
 				<div class="moreWrap"><a href="#" id="more">더보기</a></div>
 			</div>
 		</main>
-		<jsp:include page="<%=footerUrl%>" flush="true"/>
+		<jsp:include page="<%=footerUrl%>" flush="false"/>
 	</div>
 </body>
 </html>

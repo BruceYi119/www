@@ -4,6 +4,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+request.setCharacterEncoding("utf-8");
+String loginErr = request.getParameter("login") != null && request.getParameter("login").equals("false") ? "아이디 또는 비밀번호를 확인하세요" : "";
+
 Header header = new Header();
 String css = header.getCss();
 String js = header.getJs();
@@ -25,13 +28,11 @@ String footerUrl = footer.getFooterUrl();
 <link rel="icon" href="/view/img/favicon.ico" type="image/x-icon" />
 <title><%=title%></title>
 <%=css%>
-<link rel="stylesheet" href="/view/css/kakao_map.css">
+<link rel="stylesheet" href="/view/css/member.css">
 <%=js%>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6149ea934d2b9a86f22e4c11df7797b0&libraries=services"></script>
-<script defer type="text/javascript" src="/view/js/kakao_map.js"></script>
+<script defer type="text/javascript" src="/view/js/login.js"></script>
 </head>
 <body>
-	<input type="hidden" id="color_class" value="kakaoMap" />
 	<div id="wrap">
 		<jsp:include page="<%=headerUrl%>" flush="false"/>
 		<nav>
@@ -41,7 +42,17 @@ String footerUrl = footer.getFooterUrl();
 		</nav>
 		<main>
 			<div class="base_wrap">
-				<div id="map"></div>
+				<div class="title"><h1><a href="/"><%=title%></a></h1></div>
+				<form action="/view/member/login_ok.jsp">
+					<fieldset>
+						<legend>로그인</legend>
+						<div class="field"><input type="text" name="id" class="login" maxlength="12" /></div>
+						<div class="field" id="errId"></div>
+						<div class="field"><input type="password" name="pw" class="login" maxlength="12" /></div>
+						<div class="field" id="errMsg"><%=loginErr%></div>
+						<div class="field"><input type="submit" value="로그인" title="로그인" alt="로그인" class="login" /></div>
+					</fieldset>
+				</form>
 			</div>
 		</main>
 		<jsp:include page="<%=footerUrl%>" flush="false"/>

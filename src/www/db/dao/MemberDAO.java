@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import www.db.Db;
 import www.db.Idao;
 import www.db.dto.MemberDTO;
-import www.security.Security;
 
 public class MemberDAO implements Idao {
 
@@ -23,9 +22,6 @@ public class MemberDAO implements Idao {
 	public void select(String sql, String ...args) {
 		try {
 			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
-			
-			this.dto = new MemberDTO();
-
 			db.pstmt = db.con.prepareStatement(sql);
 			setPstmt(args);
 			db.rs = db.pstmt.executeQuery();
@@ -128,10 +124,13 @@ public class MemberDAO implements Idao {
 
 	@Override
 	public void setDto() {
-		this.dto = new MemberDTO();
+		int i = 0;
 
 		try {
 			while (db.rs.next()) {
+				if (i == 0)
+					dto = new MemberDTO();
+
 				dto.setMno(db.rs.getString("mno"));
 				dto.setId(db.rs.getString("id"));
 				dto.setPw(db.rs.getString("pw"));
@@ -143,6 +142,8 @@ public class MemberDAO implements Idao {
 				dto.setEmail(db.rs.getString("email"));
 				dto.setDel_yn(db.rs.getString("del_yn"));
 				dto.setWritedate(db.rs.getString("writedate"));
+
+				i++;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -199,7 +200,8 @@ public class MemberDAO implements Idao {
 //		String addr_detail = "상세주소";
 //		String email = "asdf@google.com";
 //
-//		s = new Security(pw);
+//		s = new Security();
+//		s.getSha512(pw);
 //		pw = s.getSha512();
 //
 //		int r = dao.insert(sql, id, pw, name, phone, zipcode, addr, addr_detail, email);

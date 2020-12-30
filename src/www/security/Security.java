@@ -7,11 +7,7 @@ public class Security {
 
 	private String sha512;
 
-	public Security(String str) {
-		getSha512(str);
-	}
-
-	private void getSha512(String str) {
+	public void getSha512(String str) {
 		try{
 			MessageDigest md = MessageDigest.getInstance("SHA-512");
 			md.reset();
@@ -25,5 +21,11 @@ public class Security {
 	public String getSha512() {
 		return sha512;
 	}
+
+//	public static void main(String[] args) {
+//		Security s = new Security("메롱");
+//
+//		System.out.println(s.getSha512());
+//	}
 
 }

@@ -30,7 +30,7 @@ String footerUrl = footer.getFooterUrl();
 </head>
 <body>
 	<div id="wrap">
-		<jsp:include page="<%=headerUrl%>" flush="true"/>
+		<jsp:include page="<%=headerUrl%>" flush="false"/>
 		<nav>
 			<div class="base_wrap">
 				<%=menu%>
@@ -46,7 +46,7 @@ String footerUrl = footer.getFooterUrl();
 				</table>
 			</div>
 		</main>
-		<jsp:include page="<%=footerUrl%>" flush="true"/>
+		<jsp:include page="<%=footerUrl%>" flush="false"/>
 	</div>
 </body>
 </html>

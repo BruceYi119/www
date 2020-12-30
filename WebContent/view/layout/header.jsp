@@ -3,7 +3,7 @@
 <header>
 	<div class="base_wrap">
 		<h1 id=logo><a href="/"><span>Doogle</span></a></h1>
-		<jsp:include page="/view/layout/member.jsp" flush="true"/>
+		<jsp:include page="/view/layout/member.jsp" flush="false"/>
 		<div class="search_wrap">
 			<div class="search_event_wrap">
 				<input type="text" id="search" placeholder="검색" value="" />
