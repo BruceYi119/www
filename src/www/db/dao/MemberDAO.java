@@ -131,6 +131,7 @@ public class MemberDAO implements Idao {
 				if (i == 0)
 					dto = new MemberDTO();
 
+				dto.setRownum(db.rs.getString("rownum"));
 				dto.setMno(db.rs.getString("mno"));
 				dto.setId(db.rs.getString("id"));
 				dto.setPw(db.rs.getString("pw"));
@@ -158,6 +159,7 @@ public class MemberDAO implements Idao {
 			while(db.rs.next()) {
 				MemberDTO dto = new MemberDTO();
 
+				dto.setRownum(db.rs.getString("rownum"));
 				dto.setMno(db.rs.getString("mno"));
 				dto.setId(db.rs.getString("id"));
 				dto.setPw(db.rs.getString("pw"));
@@ -187,56 +189,11 @@ public class MemberDAO implements Idao {
 
 //	public static void main(String[] args) {
 //		MemberDAO dao = new MemberDAO();
-		// insert
-//		Security s = null;
-//
-//		String sql = "insert into member(mno,id,pw,name,phone,zipcode,addr,addr_detail,email) values(s_member.nextval,?,?,?,?,?,?,?,?)";
-//		String id = "haha";
-//		String pw = "qkqh1234";
-//		String name = "바보삼둥이";
-//		String phone = "010-0000-0000";
-//		String zipcode = "010034";
-//		String addr = "주소";
-//		String addr_detail = "상세주소";
-//		String email = "asdf@google.com";
-//
-//		s = new Security();
-//		s.getSha512(pw);
-//		pw = s.getSha512();
-//
-//		int r = dao.insert(sql, id, pw, name, phone, zipcode, addr, addr_detail, email);
-//		System.out.println(r);
-
-		// select
-//		String sql = "select * from member where mno = ?";
-//		String mno = "19";
-//
-//		dao.select(sql, mno);
-//		System.out.println(dao.dto.toString());
-
-		// selectAll
-//		String sql = "select * from member order by id asc";
+//		MemberDTO dto = new MemberDTO();
+//		String sql = "select rownum, t.* from member t";
 //
 //		dao.selectAll(sql);
-//		System.out.println(dao.list.toString());
-
-		// update
-//		String sql = "update member set name = ?, addr = ? where mno = ?";
-//		String name = "수정된이름";
-//		String addr = "수정된주소";
-//		String mno = "20";
-//
-//		int r = dao.update(sql, name, addr, mno);
-//		System.out.println(r);
-
-		// delete
-//		String sql = "delete from member where mno = ?";
-//		String mno = "19";
-//
-//		int r = dao.delete(sql, mno);
-//		System.out.println(r);
-		
-		// insert, update, delete시 int 를 반환하는데 실행된 결과수를 반환해주니 사용하실분은 int에 담아서 사용하시면 됩니다
+//		System.out.println(dto.toString(true));
 //	}
 
 }

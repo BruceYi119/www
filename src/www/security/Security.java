@@ -23,8 +23,9 @@ public class Security {
 	}
 
 //	public static void main(String[] args) {
-//		Security s = new Security("메롱");
+//		Security s = new Security();
 //
+//		s.getSha512("1234");
 //		System.out.println(s.getSha512());
 //	}
 

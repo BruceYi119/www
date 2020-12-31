@@ -19,8 +19,8 @@ create table member(
 	phone varchar2(20) constraint member_phone_n not null,											-- 연락처
 	birth varchar2(20) constraint member_birth_n not null,											-- 생년월일
 	zipcode varchar2(10) constraint member_zipcode_n not null,										-- 우편번호
-	addr varchar2(50) constraint member_addr_n not null,											-- 주소
-	addr_detail varchar2(150) constraint member_addr_detail_n not null,							-- 상세주소
+	addr varchar2(300) constraint member_addr_n not null,											-- 주소
+	addr_detail varchar2(300) constraint member_addr_detail_n not null,							-- 상세주소
 	email varchar2(30) constraint member_email_n not null,											-- 이메일
 	del_yn char(1) default 'y',																	-- 탈퇴여부
 	writedate date default sysdate,																-- 가입일

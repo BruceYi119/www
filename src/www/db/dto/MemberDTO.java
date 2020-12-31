@@ -2,6 +2,7 @@ package www.db.dto;
 
 public class MemberDTO {
 
+	private String rownum = null;
 	private String mno = null;
 	private String id = null;
 	private String pw = null;
@@ -101,12 +102,24 @@ public class MemberDTO {
 	public void setWritedate(String writedate) {
 		this.writedate = writedate;
 	}
-	
+
+	public String getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(String rownum) {
+		this.rownum = rownum;
+	}
+
 	@Override
 	public String toString() {
-		return "MemberDTO [mno=" + mno + ", id=" + id + ", pw=" + pw + ", name=" + name + ", phone=" + phone
-				+ ", zipcode=" + zipcode + ", addr=" + addr + ", addr_detail=" + addr_detail + ", email=" + email
-				+ ", del_yn=" + del_yn + ", writedate=" + writedate + "]";
+		return "MemberDTO [rownum=" + rownum + ", mno=" + mno + ", id=" + id + ", pw=" + pw + ", name=" + name
+				+ ", phone=" + phone + ", zipcode=" + zipcode + ", addr=" + addr + ", addr_detail=" + addr_detail
+				+ ", email=" + email + ", del_yn=" + del_yn + ", writedate=" + writedate + "]";
+	}
+
+	public String toString(boolean t) {
+		return "rownum, mno, id, pw, name, phone, zipcode, addr, addr_detail, email, del_yn, writedate";
 	}
 
 }

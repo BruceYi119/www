@@ -13,7 +13,7 @@ public class Member {
 
 		Security s = new Security();
 		MemberDAO dao = new MemberDAO();
-		String sql = "select * from member where id = ? and pw = ?";
+		String sql = "select rownum, t.* from member t where id = ? and pw = ?";
 		MemberDTO dto = null;
 
 		s.getSha512(pw);

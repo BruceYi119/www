@@ -14,7 +14,7 @@ if (login)
 <c:if test="${login}">
 <ul id="member">
 	<li><a href="#">${name}</a> 님 환영합니다!</li>
-	<li><a href="#">회원정보</a></li>
+	<li><a href="/view/member/member_info.jsp">회원정보</a></li>
 	<li><a href="/view/member/logout.jsp">로그아웃</a></li>
 </ul>
 </c:if>
