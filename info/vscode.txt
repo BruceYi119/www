@@ -1,0 +1,30 @@
+- vscode_extentions -
+html to css
+meterial theme
+material icon theme
+prettier - code formatter
+-(save, prettier)
+bracket pair colorizer
+indent rainbow
+auto rename tag
+
+kite
+
+- 단축키 -
+Ctrl + Shift + P,F1			커맨드 팔래트
+Ctrl + B				토글 사이드바
+Ctrl + p				퀵오픈
+Ctrl + ,				user setttings
+Ctrl + `				토글 터미널
+Ctrl + K + S			keyboard shortcuts
+Ctrl + home/Ctrl + end		문서 맨위/아래 이동
+Ctrl + C				라인 복사
+Ctrl + X				라인 잘라내기
+Alt + 위/Alt + 아래			라인 이동
+Alt + Shift + 위/Alt + Shift + 아래	라인복사
+Ctrl + Enter			다음라인 이동
+Ctrl + D				단어 선택 수정
+Ctrl + U				이전 커서 이동
+Alt + Click			멀티선택
+Shift + Alt + Drag Mouse		멀티선택
+블록지정 + Shift + Alt + I		멀티선택
