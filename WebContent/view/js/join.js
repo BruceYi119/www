@@ -1,18 +1,5 @@
 'use strict';
 
-//const inputTxt = [
-//	'input[name=id]',
-//	'input[name=pw]',
-//	'input[name=pw2]',
-//	'input[name=name]',
-//	'input[name=phone]',
-//	'input[name=birth]',
-//	'input[name=zipcode]',
-//	'input[name=addr]',
-//	'input[name=addr_detail]',
-//	'input[name=email]'
-//];
-
 let errMsgs = null;
 let id_check = false;
 
@@ -30,11 +17,65 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	zipcode.value = zipNo;
 };
 
+const isId = (value) => {
+	const reg = /^[a-z]+[a-z0-9]{3,12}$/g;
+
+	return reg.test(value);
+};
+
+const isDuplicateId = (value) => {
+	const id = document.querySelector('input[name=id]');
+	const params = {
+			params: {
+				id: id.value,
+			}
+	};
+	const ajax = axios.get('/view/member/id_check.jsp', params);
+
+	ajax.then((res) => {
+		if (res.data.check === true) {
+			id_check = true;
+			id.focus();
+			errMsgs[0].innerHTML = '사용중인 아이디 입니다';
+		} else {
+			id_check = false;
+		}
+	}).catch(err => console.log(err));
+};
+
+const isName = (value) => {
+	const reg = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/g;
+
+	return reg.test(value);
+};
+
+const isEmail = (value) => {
+	const reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+	return reg.test(value);	
+};
+
+const isCelluar = (value) => {
+	const reg = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/g;
+
+	return reg.test(value);
+};
+
+const isPassword = (value) => {
+	const reg = /^.*(?=^.{4,12}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/g;
+
+	return reg.test(value);
+};
+
+const isBirth = (value) => { 
+	const reg = /^(19|20){1}\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/g;
+
+	return reg.test(value);
+};
+
 const setJoinBtn = () => {
 	errMsgs = document.querySelectorAll('.errMsg');
-	const inputs = document.querySelectorAll('input.input');
-	const jusoInputs = document.querySelectorAll('input[name=addr], input[name=addr_detail], input[name=zipcode]');
-	
+
 	document.querySelector('input[type=submit]').addEventListener('click', (e) => {
 		e.preventDefault();
 
@@ -50,50 +91,41 @@ const setJoinBtn = () => {
 		const addr_detail = document.querySelector('input[name=addr_detail]');
 		const email = document.querySelector('input[name=email]');
 
-		if (id.value === '' || id.value.length < 4 || id.value.length > 12) {
-			errMsgs[0].innerHTML = '아이디는 4자이상 12자 이하로 입력하세요';
+
+		if (!isId(id.value)) {
+			errMsgs[0].innerHTML = '아이디는 알파벳으로 시작 4자이상 12자 이하로 입력하세요';
 			id.focus();
 			return false;
 		}
 
-		if (id_check) {			
-			errMsgs[0].innerHTML = '사용중인 아이디 입니다';
-			id.focus();
-			return false;
-		}
+		isDuplicateId();
 
-		if (pw.value === '' || pw.value.length < 4 || id.value.length > 12) {
-			errMsgs[1].innerHTML = '비밀번호는 4자이상 12자 이하로 입력하세요';
+		if (!isPassword(pw.value)) {
+			errMsgs[1].innerHTML = '비밀번호는 숫자/특문/영문 포함 4자이상 12자이하';
 			pw.focus();
 			return false;
 		}
 
-		if (pw2.value === '' || pw2.value.length < 4 || pw2.value.length > 12) {
-			errMsgs[2].innerHTML = '비밀번호는 4자이상 12자 이하로 입력하세요';
-			pw2.focus();
-			return false;
-		}
-
-		if (pw.value !== pw2.value) {
+		if (!isPassword(pw2.value) || pw.value !== pw2.value) {
 			errMsgs[2].innerHTML = '비밀번호와 비밀번호 확인이 일치하지 않습니다';
 			pw2.focus();
 			return false;
 		}
 
-		if (name.value === '') {
-			errMsgs[3].innerHTML = '이름을 입력하세요';
+		if (!isName(name.value)) {
+			errMsgs[3].innerHTML = '이름은 한글2~4자 영문2~10자 혼용X';
 			name.focus();
 			return false;
 		}
 
-		if (phone.value === '') {
-			errMsgs[4].innerHTML = '연락처를 입력하세요';
+		if (!isCelluar(phone.value)) {
+			errMsgs[4].innerHTML = '연락처 형식에 맞지 않습니다';
 			phone.focus();
 			return false;
 		}
 
-		if (birth.value === '') {
-			errMsgs[5].innerHTML = '생일을 입력하세요';
+		if (!isBirth(birth.value)) {
+			errMsgs[5].innerHTML = '생일형식에 맞지 않습니다 ex)2021-01-01';
 			birth.focus();
 			return false;
 		}
@@ -109,60 +141,31 @@ const setJoinBtn = () => {
 		}
 
 		if (addr_detail.value === '') {
-			birth[8].innerHTML = '주소를 검색하여 입력하세요';
+			errMsgs[8].innerHTML = '주소를 검색하여 입력하세요';
 			return false;
 		}
 
-		if (email.value === '') {
-			errMsgs[9].innerHTML = '주소를 검색하여 입력하세요';
+		if (!isEmail(email.value)) {
+			errMsgs[9].innerHTML = '이메일 형식에 맞지 않습니다';
 			email.focus();
 			return false;
 		}
 
+		zipcode.disabled = false;
+		addr.disabled = false;
+		addr_detail.disabled = false;
+
 		form.submit();
 	});
 
-	for (let i = 0;i < jusoInputs.length;i++) {
-		jusoInputs[i].addEventListener('click', () => {
-			jusoPopup();
-		});
-	}
+	document.querySelector('#searAddrBtn').addEventListener('click', () => {
+		jusoPopup();
+	});
 
-	for (let i = 0;i < inputs.length;i++) {
-		inputs[i].addEventListener('focusout', function() {
-			const obj = this;
-			
-			if (obj.value === '') {
-				if (!(i === 6 || i === 7 || i === 8))
-					obj.focus();
+	document.querySelector('input[name=id]').addEventListener('focusout', function() {
+		isDuplicateId();
+	});
 
-				errMsgs[i].innerHTML = '필수 정보 입니다';
-			} else {
-				if (i === 0) {
-					const params = {
-						params: {
-							id: obj.value,
-						}
-					};
-					const ajax = axios.get('/view/member/id_check.jsp', params);
-
-					ajax.then((res) => {
-						if (res.data.check === true) {
-							id_check = true;
-							obj.focus();
-							errMsgs[i].innerHTML = '사용중인 아이디 입니다';
-						} else {
-							id_check = false;
-						}
-					}).catch(err => console.log(err));
-				}
-			}
-		});		
-	}
-
-//	document.querySelector(inputs.join()).addEventListener('focusout', function() {
-//		const obj = this;
-//	});
 };
 
 setJoinBtn();

@@ -62,16 +62,16 @@ String footerUrl = footer.getFooterUrl();
 						<div class="field"><input type="text" name="phone" placeholder="연락처" class="input" /></div>
 						<div class="field errMsg"></div>
 						<h3><label for="birth">생년월일</label></h3>
-						<div class="field"><input type="text" name="birth" placeholder="생년월일" class="input" /></div>
+						<div class="field"><input type="text" name="birth" placeholder="생년월일 2021-01-01" class="input" /></div>
 						<div class="field errMsg"></div>
-						<h3><label for="zipcode">우편번호</label></h3>
-						<div class="field"><input type="text" name="zipcode" placeholder="우편번호" class="input" /></div>
+						<h3><label for="zipcode">우편번호</label> <button type="button" class="btn btn-info" id="searAddrBtn">주소검색</button></h3>
+						<div class="field"><input type="text" name="zipcode" placeholder="우편번호" class="input" disabled="disabled" /></div>
 						<div class="field errMsg"></div>
 						<h3><label for="addr">주소</label></h3>
-						<div class="field"><input type="text" name="addr" placeholder="주소" class="input" /></div>
+						<div class="field"><input type="text" name="addr" placeholder="주소" class="input" disabled="disabled" /></div>
 						<div class="field errMsg"></div>
 						<h3><label for="addr_detail">상세주소</label></h3>
-						<div class="field"><input type="text" name="addr_detail" placeholder="상세주소" class="input" /></div>
+						<div class="field"><input type="text" name="addr_detail" placeholder="상세주소" class="input" disabled="disabled" /></div>
 						<div class="field errMsg"></div>
 						<h3><label for="email">이메일</label></h3>
 						<div class="field"><input type="text" name="email" placeholder="이메일" class="input" /></div>
