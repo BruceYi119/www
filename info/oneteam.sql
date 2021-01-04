@@ -99,7 +99,7 @@ create table main_custom(
 	ram1 varchar2(50),													-- 램1
 	ram2 varchar2(50),													-- 램2
 	hdd varchar2(50),													-- 하드
-	ssd vatchar(50),													-- ssd
+	ssd varchar(50),													-- ssd
 	price varchar2(200),												-- 총 가격
 	constraint main_custom_mcno_p primary key(mcno)
 );

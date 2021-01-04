@@ -56,8 +56,15 @@ header.kakaoMap #member > li > a { color: var(--kakao-nav-menu-text-color) !impo
 header div.search_wrap { position: absolute;top: 20px;left: 0;width: 100%;text-align: center; }
 header div.search_wrap div.search_event_wrap { display: inline-block; }
 #search { width: 300px;background-color: #20232a;padding: 10px 20px;border: none;border-radius: 5px;color: #fff; }
-#search:focus { background-color: #373940; }
-#search.enable { background-color: #373940; }
+header.kakaoMap #search { background-color: var(--kakao-map-color) !important; }
+header.heesoo #search { background-color: var(--heesoo-color) !important; }
+header.jiwon #search { background-color: var(--jiwon-color) !important; }
+header.henry #search { background-color: var(--henry-color) !important; }
+header.minkyu #search { background-color: var(--minkyu-color) !important; }
+header.wooram #search { background-color: var(--wooram-color) !important; }
+header.yongsoon #search { background-color: var(--yongsoon-color) !important; }
+#search:focus, #search.enable { background-color: #373940; }
+header.kakaoMap #search:focus, header.kakaoMap #search.enable, header.heesoo #search:focus, header.heesoo #search.enable, header.jiwon #search:focus, header.jiwon #search.enable, header.henry #search:focus, header.henry #search.enable, header.minkyu #search:focus, header.minkyu #search.enable, header.wooram #search:focus, header.wooram #search.enable, header.yongsoon #search:focus, header.yongsoon #search.enable { background-color: #373940 !important; }
 /* Chrome, Firefox, Opera, Safari 10.1+ */
 /* Firefox */
 #search::placeholder { color: #fff;opacity: 1; }

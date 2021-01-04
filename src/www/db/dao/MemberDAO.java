@@ -137,6 +137,7 @@ public class MemberDAO implements Idao {
 				dto.setPw(db.rs.getString("pw"));
 				dto.setName(db.rs.getString("name"));
 				dto.setPhone(db.rs.getString("phone"));
+				dto.setBirth(db.rs.getString("birth"));
 				dto.setZipcode(db.rs.getString("zipcode"));
 				dto.setAddr(db.rs.getString("addr"));
 				dto.setAddr_detail(db.rs.getString("addr_detail"));
@@ -165,6 +166,7 @@ public class MemberDAO implements Idao {
 				dto.setPw(db.rs.getString("pw"));
 				dto.setName(db.rs.getString("name"));
 				dto.setPhone(db.rs.getString("phone"));
+				dto.setBirth(db.rs.getString("birth"));
 				dto.setZipcode(db.rs.getString("zipcode"));
 				dto.setAddr(db.rs.getString("addr"));
 				dto.setAddr_detail(db.rs.getString("addr_detail"));

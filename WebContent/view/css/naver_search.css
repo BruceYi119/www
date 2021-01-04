@@ -1,6 +1,7 @@
 :root {
 	--image-background-color: #fafbfc;
 	--image-border-color: #ededed;
+	--image-thum-width: 179px;
 	--image-thum-height: 150px;
 }
 
@@ -15,7 +16,7 @@ main div.base_wrap ul.list li dt > a { color: var(--a-color); }
 main div.base_wrap ul.list li dt > a:visited { color: var(--a-visited-color); } 
 
 main div.base_wrap ul.list li.image { width: auto;float: left; } 
-main div.base_wrap ul.list li.image > a > img { height: var(--image-thum-height);margin: 4px;border: 1px solid var(--image-border-color); }
+main div.base_wrap ul.list li.image > a > img { width: var(--image-thum-width);height: var(--image-thum-height);margin: 4px;border: 1px solid var(--image-border-color); }
 
 main div.base_wrap ul.list li.movie { width: auto;float: left;margin-bottom: 21px; } 
 main div.base_wrap ul.list li.movie > p { display: block;float: left;width: 110px;height: 157px;margin-right: 13px;background: #9f9f9f;vertical-align: middle; } 

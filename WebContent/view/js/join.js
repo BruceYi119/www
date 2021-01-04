@@ -4,7 +4,12 @@ let errMsgs = null;
 let id_check = false;
 
 const jusoPopup = () => {
-	const pop = window.open("/view/member/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	const popupWidth = 570;
+	const popupHeight = 420;
+    const left = Math.ceil((window.screen.width - popupWidth) / 2);
+    const top = Math.ceil((window.screen.height - popupHeight) / 2);
+
+	const pop = window.open('/view/member/jusoPopup.jsp','pop',`width=${popupWidth},height=${popupHeight}, scrollbars=yes, resizable=yes, left=${left}, top=${top}`); 
 };
 
 function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo) {
@@ -26,9 +31,9 @@ const isId = (value) => {
 const isDuplicateId = (value) => {
 	const id = document.querySelector('input[name=id]');
 	const params = {
-			params: {
-				id: id.value,
-			}
+		params: {
+			id: id.value,
+		}
 	};
 	const ajax = axios.get('/view/member/id_check.jsp', params);
 

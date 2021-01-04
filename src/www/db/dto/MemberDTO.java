@@ -8,6 +8,7 @@ public class MemberDTO {
 	private String pw = null;
 	private String name = null;
 	private String phone = null;
+	private String birth = null;
 	private String zipcode = null;
 	private String addr = null;
 	private String addr_detail = null;
@@ -57,6 +58,14 @@ public class MemberDTO {
 
 	public String getZipcode() {
 		return zipcode;
+	}
+
+	public String getBirth() {
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 
 	public void setZipcode(String zipcode) {

@@ -1,3 +1,4 @@
+<%@page import="www.key.Key"%>
 <%@page import="www.html.header.Header"%>
 <%@page import="www.html.nav.Nav"%>
 <%@page import="www.html.footer.Footer"%>
@@ -15,6 +16,9 @@ String menu = nav.getMenu();
 
 Footer footer = new Footer();
 String footerUrl = footer.getFooterUrl();
+
+Key k = new Key();
+String appkey = k.getKeys().get(Key.Kyes.KAKAO_MAP_APPKEY);
 %>
 <!DOCTYPE html>
 <html>
@@ -27,7 +31,7 @@ String footerUrl = footer.getFooterUrl();
 <%=css%>
 <link rel="stylesheet" href="/view/css/kakao_map.css">
 <%=js%>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6149ea934d2b9a86f22e4c11df7797b0&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%=appkey%>&libraries=services"></script>
 <script defer type="text/javascript" src="/view/js/kakao_map.js"></script>
 </head>
 <body>

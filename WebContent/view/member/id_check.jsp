@@ -9,6 +9,7 @@ MemberDAO dao = new MemberDAO();
 String sql = "select rownum, t.* from member t where id = ?";
 
 dao.select(sql, id);
+
 if (dao.getDto() != null) {
 	out.print("{ \"check\": true }");
 } else {

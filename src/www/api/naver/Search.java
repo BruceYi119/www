@@ -43,11 +43,11 @@ public class Search {
 		apiUrl.put("DOC", "doc.json");
 	}
 
-//	public static void main(String[] args) {
-//		Search s = new Search();
-//
-//		System.out.println(s.search("아저씨", "MOVIE"));
-//	}
+	public static void main(String[] args) {
+		Search s = new Search();
+
+		System.out.println(s.search("파이썬", "BOOK"));
+	}
 
 	public int getDisplay() {
 		return display;

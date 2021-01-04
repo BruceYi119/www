@@ -24,3 +24,9 @@
 
 #wrap fieldset { text-align: left; }
 #wrap fieldset.join > div.field > input { width: 460px;height: 48px;padding: 10px; }
+
+#wrap table.memberInfo { width: 700px;margin: 200px auto 200px auto; }
+#wrap table.memberInfo th, #wrap table.memberInfo td { padding: 10px;border: 1px solid #000; }
+#wrap table.memberInfo th { width: 20%; }
+#wrap table.memberInfo th:first-child { text-align: center; }
+#wrap table.memberInfo td { width: 80%; }
