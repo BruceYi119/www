@@ -5,3 +5,5 @@
 build/
 WebContent/META-INF/
 src/www/key
+test.jsp
+test2.jsp

@@ -133,11 +133,11 @@ create table recipe_board(
 	name varchar2(20),												-- 작성자
 	pwd varchar2(20),												-- 비번
 	title varchar2(100),											-- 제목
-	rcategory varchar2(10),											-- 카테고리 반찬류,메인메뉴,...
+	rcategory varchar2(100),											-- 카테고리 반찬류,메인메뉴,...
 	rname varchar2(20),												-- 음식이름
 	ingredients varchar2(100),										-- 재료
 	content varchar2(4000),											-- 내용
-	file varchar2(500),												-- 음식사진
+	img varchar2(500),												-- 음식사진
 	readnum number,													-- 조회수
 	liked number,													-- 좋아요수
 	writeday date default sysdate,									-- 작성일
