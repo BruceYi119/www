@@ -1,6 +1,8 @@
 * { margin: 0;padding: 0; }
 li, dt, dd { list-style: none; }
 
+.hide { display: none !important; }
+
 .tal { text-align: left !important; }
 .tac { text-align: center !important; }
 .tar { text-align: right !important; }

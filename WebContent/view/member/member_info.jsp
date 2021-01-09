@@ -23,7 +23,7 @@ Member m = new Member();
 boolean login = m.isLogin(session);
 
 if (!login)
-	response.sendRedirect("/");
+	response.sendRedirect("/view/member/login.jsp");
 
 MemberDAO dao = new MemberDAO();
 String sql = "select rownum, t.* from member t where id = ?";
@@ -55,7 +55,7 @@ pageContext.setAttribute("dto", dao.getDto());
 		</nav>
 		<main>
 			<div class="base_wrap">
-				<form action="/view/member/update_member.jsp">
+				<form action="/view/member/update_member.jsp" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="mno" value="${dto.mno}" />
 					<input type="hidden" name="id" value="${dto.id}" />
 					<input type="hidden" name="name" value="${dto.name}" />
@@ -74,20 +74,33 @@ pageContext.setAttribute("dto", dao.getDto());
 					</tr>
 					<tr>
 						<th>이름</th>
-						<td>${dto.name}</td>
+						<td>
+							<span id="infoName">${dto.name}</span>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="text" id="updateName" class="hide" />
+							<button type="button" class="btn btn-success" id="infoUpdateBtn">회원정보수정</button>
+							<button type="button" class="btn btn-danger hide" id="infoUpdateCancelBtn">취소</button>
+						</td>
 					</tr>
 					<tr>
 						<th>연락처</th>
-						<td>${dto.phone}</td>
+						<td>
+							<span id="infoPhone">${dto.phone}</span>
+							<input type="text" id="updatePhone" class="hide" />
+						</td>
 					</tr>
 					<tr>
 						<th>생일</th>
-						<td>${dto.birth}</td>
+						<td>
+							<span id="infoBirth">${dto.birth}</span>
+							<input type="text" id="updateBirth" class="hide" />
+						</td>
 					</tr>
 					<tr>
 						<th>우편번호</th>
 						<td>
-							<span id="zipcode">${dto.zipcode}</span> 
+							<span id="zipcode">${dto.zipcode}</span>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-info" id="searAddrBtn">주소검색</button>
 							<button type="button" class="btn btn-success hide" id="addrUpdateBtn">수정</button>
 							<button type="button" class="btn btn-danger hide" id="addrUpdateCancel">취소</button>
@@ -106,7 +119,10 @@ pageContext.setAttribute("dto", dao.getDto());
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td>${dto.email}</td>
+						<td>
+							<span id="infoEmail">${dto.email}</span>
+							<input type="text" id="updateEmail" class="hide" />
+						</td>
 					</tr>
 					<tr>
 						<th>가입일</th>

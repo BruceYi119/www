@@ -91,7 +91,6 @@ if (searchType.equals("ERRATA")) {
 				    </c:otherwise>
 				</c:choose>
 				<ul class="list">
-					<c:set var="searchType" value="<%=searchType%>" />
 					<c:choose>
 					    <c:when test="${searchType eq 'BOOK'}">
 							책
