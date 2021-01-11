@@ -118,7 +118,7 @@ create table sub_custom(
 	ram2 varchar2(50),												-- 램2
 	hdd varchar2(50),												-- 하드
 	ssd varchar2(50),												-- ssd
-	mcno numver, 													-- main_custom 키값
+	mcno number, 													-- main_custom 키값
 	price varchar2(200),											-- 총 가격
 	constraint sub_custom_scno_p primary key(scno),
 	constraint sub_custom_mcno_f foreign key(mcno) references main_custom(mcno)
