@@ -12,6 +12,7 @@ int size = 1024*1024*10;
 String encoding = "utf-8";
 MultipartRequest multi =new MultipartRequest(request,path,size,encoding,new DefaultFileRenamePolicy());
 
+String rbno = request.getParameter("rbno");
 request.setCharacterEncoding("utf-8");
 String title = multi.getParameter("title") != null ? multi.getParameter("title") : "";
 String rcategory = multi.getParameter("rcategory") != null ? multi.getParameter("rcategory") : "";
@@ -23,9 +24,10 @@ String[] content = multi.getParameterValues("content");
 String[] ingredients = multi.getParameterValues("ingredients");
 
 Recipe_boardDAO dao = new Recipe_boardDAO();
-String sql = "insert into recipe_board(rbno,title,rcategory,img,rname,content,ingredients,writeday) values(s_recipe_board.nextval,?,?,?,?,?,?,sysdate)";
-int r = dao.insert(sql,title,rcategory,img,rname,String.join(",",content),String.join(",", ingredients));
+String sql = "update recipe_board set title=? ,rcategory=? ,img=? ,rname=? ,content=?, ingredients=? where rbno=?";
+int r = dao.update(sql,title,rcategory,img,rname,String.join(",",content),String.join(",", ingredients),rbno);
 //int r = dao.insert(sql,title,rcategory,String.join(",",img),rname,String.join(",",content),String.join(",", ingredients));
 
-response.sendRedirect("recipe_list.jsp");
+response.sendRedirect("recipe_content.jsp?rbno="+rbno);
+
 %>

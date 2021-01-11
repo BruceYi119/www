@@ -22,6 +22,14 @@ Recipe_boardDAO dao = new Recipe_boardDAO();
 String sql = "select rownum, t.* from recipe_board t order by writeday desc";
 dao.selectAll(sql);
 pageContext.setAttribute("list", dao.getList());
+
+int index;
+int pager;
+if(request.getParameter("pager")==null)
+	   pager=1;
+else
+	   pager=Integer.parseInt(request.getParameter("pager"));
+
 %>
 <!DOCTYPE html>
 <html>
@@ -34,10 +42,18 @@ pageContext.setAttribute("list", dao.getList());
 <%=css%>
 <%=js%>
 <style>
+th {
+text-align:center;
+}
 .contents {
 	margin:auto;
-	width:600px;
+	width:1000px;
+	border:1px solid black;
 }
+.base_wrap{
+border:1px solid red;
+}
+
 </style>
 </head>
 <body>
@@ -52,33 +68,33 @@ pageContext.setAttribute("list", dao.getList());
 		<main>
 			<div class="base_wrap">
 				<div class="contents">
-				<h2>RecipeList</h2>
-				<table width="600" align="center" border="1">
-					<tr>
-						<td colspan="7" align="right"> <a href="recipe_write.jsp"> 레시피 올리기 </a> </td>
-					</tr>
-					<tr>
-						<td>카테고리</td>
-						<td>메뉴</td>
-						<td>이미지</td>
-						<td>제목</td>
-						<td>이름</td>
-						<td>조회</td>
-						<td>좋아요</td>
-					</tr>
-					<c:forEach items="${list}" var="dto">
-					<tr>
-						<td>${dto.rcategory}</td>
-						<td>${dto.rname}</td>
-						<td></td>				<!-- 넣어야함 -->
-						<td><a href="content.jsp?id=${dto.rbno}">${dto.title}</a></td>
-						<td>${dto.name}</td>
-						<td>${dto.readnum}</td>
-						<td>${dto.liked}</td>
-					</tr>
-					</c:forEach>
-				</table>
-			</div>
+					<h2>RecipeList</h2>
+					<table width="1000" align="center" border="1">
+						<tr>
+							<td colspan="7" align="right"> <a href="recipe_write.jsp"> 레시피 올리기 </a> </td>
+						</tr>
+						<tr>
+							<th>카테고리</th>
+							<th>메뉴</th>
+							<th>이미지</th>
+							<th>제목</th>
+							<th>이름</th>
+							<th>조회</th>
+							<th>좋아요</th>
+						</tr>
+						<c:forEach items="${list}" var="dto">
+						<tr>
+							<td>${dto.rcategory}</td>
+							<td>${dto.rname}</td>
+							<td></td>				<!-- 넣어야함 -->
+							<td><a href="readnum.jsp?rbno=${dto.rbno}">${dto.title}</a></td>
+							<td>${dto.name}</td>
+							<td>${dto.readnum}</td>
+							<td>${dto.liked}</td>
+						</tr>
+						</c:forEach>
+					</table>
+				</div>
 			</div>
 		</main>
 		<jsp:include page="<%=footerUrl%>" flush="true"/>

@@ -4,6 +4,7 @@ public class RcommentDTO {
 	
 	private String rownum = null;
 	private String rcno = null;
+	private String name = null;
 	private String content = null;
 	private String writeday = null;
 	private String rno = null;
@@ -19,6 +20,12 @@ public class RcommentDTO {
 	}
 	public void setRcno(String rcno) {
 		this.rcno = rcno;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getContent() {
 		return content;
@@ -41,12 +48,13 @@ public class RcommentDTO {
 	
 	@Override
 	public String toString() {
-		return "RcommentDTO [rownum=" + rownum + ", rcno=" + rcno + ", content=" + content + ", writeday=" + writeday
+		return "RcommentDTO [rownum=" + rownum + ", rcno=" + rcno + ", name=" + name +", content=" + content + ", writeday=" + writeday
 				+ ", rno=" + rno + "]";
 	}
 	
 	public String toString(boolean t) {
-		return "rownum, rcno, content, writeday, rno";
+		return "rownum, rcno, name, content, writeday, rno";
 	}
+
 
 }

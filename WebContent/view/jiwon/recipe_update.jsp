@@ -19,7 +19,13 @@ Footer footer = new Footer();
 String footerUrl = footer.getFooterUrl();
 
 Recipe_boardDAO dao = new Recipe_boardDAO();
+
+String rbno = request.getParameter("rbno");
+String sql = "select rownum, t.* from recipe_board t where rbno=?";
+dao.select(sql,rbno);
+pageContext.setAttribute("dto",dao.getDto());
 pageContext.setAttribute("rcategorys", dao.rcategorys);
+
 %>
 
 <!DOCTYPE html>
@@ -39,13 +45,18 @@ pageContext.setAttribute("rcategorys", dao.rcategorys);
 <script>
  </script>
  <style>
-.contents{
-	width:800px;
- 	margin:auto;
- }
- #recipeWrite {
- 	width:800px;
- 	height:500px;
+ .base_wrap{
+border:1px solid red;
+}
+.contents {
+	margin:auto;
+	width:1000px;
+	border:1px solid black;
+}
+#recipe {
+width:1000px;
+height:500px;
+border:1px solid yellow;
  }
  </style>
 </head>
@@ -67,37 +78,53 @@ pageContext.setAttribute("rcategorys", dao.rcategorys);
 					<tr><td>컨텐츠3</td></tr>
 				</table>
 			<div class="contents">
-				<h2>RecipeWrite</h2>
-				<form method="post" action="recipe_write_ok.jsp" enctype="multipart/form-data">
+				<h2>RecipeUpdate</h2>
+				<form method="post" action="recipe_update_ok.jsp" enctype="multipart/form-data">
+				<input type="hidden" name="rbno" value="${dto.rbno }">
 				<!-- <form method="post" action="recipe_write_ok.jsp"> -->
-					<table id="recipeWrite" width="800" align="center">
+					<table id="recipe" align="center">
 						<tr>
 							<td> 제목 </td>
-							<td><input type="text" name="title" size="60"></td>
+							<td><input type="text" name="title" size="60" value="${dto.title }"></td>
 						</tr>
 						<tr>
 							<td> 카테고리 </td>
 							<td>
 								<select name="rcategory">
 									<option>--선택--</option>
-									<c:forEach items="${rcategorys}" var="rcategory">
-										<option value="${rcategory}">${rcategory}</option>
-									</c:forEach>
+								<c:forEach items="${rcategorys}" var="rcategory">
+									<c:if test="${dto.rcategory }.equals(${rcategory})">
+									<option value="${rcategory}" selected> ${rcategory} </option>
+									</c:if>
+									<c:if test="!${dto.rcategory }.equals(${rcategory})">
+									<option value="${rcategory}"> ${rcategory} </option>
+									</c:if>
+								</c:forEach>
 								</select>
 							</td>
 						</tr>
 						<tr>
 							<td> 완성사진 </td>
-							<td><input type="file" name="img" class="inputImg[1]"></td>
+							<td><input type="file" name="img" class="img"></td>
 						</tr>
 						<tr>
 							<td> 메뉴 </td>
-							<td><input type="text" name="rname" size="60"></td>
+							<td><input type="text" name="rname" size="60" value="${dto.rname }"></td>
 						</tr>
+						
 						<tr>
 							<td> 재료 </td>
 							<td id="ingredients">
-								<input type="text" name="ingredients" class="ingredients" placeholder="예) 돼지고기 300g" /> <input type="button" class="delIngre" value="X" /><p>
+							<%
+								String ingredients = dao.getDto().getIngredients();
+								String[] ingre = ingredients.split(",");
+								for(int i=0;i<ingre.length;i++)
+								{
+							%>
+								<input type="text" name="ingredients" class="ingredients" placeholder="예) 돼지고기 300g" value="<%=ingre[i] %>"/> <input type="button" class="delIngre" value="X" />
+							<%
+								}
+							%>
 							</td>
 						</tr>
 						<tr>
@@ -105,16 +132,25 @@ pageContext.setAttribute("rcategorys", dao.rcategorys);
 						</tr>
 						<tr>
 							<td>순서</td>
+							<%
+								String contents = dao.getDto().getContent();
+								String[] content = contents.split(",");
+								for(int i=0;i<content.length;i++)
+								{
+							%>
 							<td id="content">
-								<textarea cols="50" rows="4" name="content"  class="content"></textarea>
-								<input type="file" name="img" class="inputImg[2]" multiple /><input type="button" class="delContent" value="X" />
+								<textarea cols="50" rows="4" name="content"  class="content"><%=content[i] %></textarea>
+								<input type="file" name="img" class="img"><input type="button" class="delContent" value="X" />
 							</td>
+							<%
+								}
+							%>
 						</tr>
 						<tr>
 							<td colspan="2" align="center"><input type="button" onclick="addContent()" value="순서추가"></td>
 						</tr>
 						<tr>
-							<td colspan="2" align="center"><input type="submit" value="레시피 저장"></td>
+							<td align="center"><input type="submit" value="레시피 수정"></td>
 						</tr>
 					</table>
 				</form>

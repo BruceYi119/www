@@ -133,6 +133,7 @@ public class RcommentDAO implements Idao {
 
 				dto.setRownum(db.rs.getString("rownum"));
 				dto.setRcno(db.rs.getString("rcno"));
+				dto.setName(db.rs.getString("name"));
 				dto.setContent(db.rs.getString("content"));
 				dto.setWriteday(db.rs.getString("writeday"));
 				dto.setRno(db.rs.getString("rno"));
@@ -154,6 +155,7 @@ public class RcommentDAO implements Idao {
 
 				dto.setRownum(db.rs.getString("rownum"));
 				dto.setRcno(db.rs.getString("rcno"));
+				dto.setName(db.rs.getString("name"));
 				dto.setContent(db.rs.getString("content"));
 				dto.setWriteday(db.rs.getString("writeday"));
 				dto.setRno(db.rs.getString("rno"));

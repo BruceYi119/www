@@ -127,13 +127,13 @@ create table sub_custom(
 -- 레시피게시판 테이블 (정지원)
 drop table recipe_board;
 drop sequence s_recipe_board;
-create sequence recipe_board;
+create sequence s_recipe_board;
 create table recipe_board(
 	rbno number,													-- 키값
 	name varchar2(20),												-- 작성자
 	pwd varchar2(20),												-- 비번
 	title varchar2(100),											-- 제목
-	rcategory varchar2(100),											-- 카테고리 반찬류,메인메뉴,...
+	rcategory varchar2(100),										-- 카테고리 반찬류,메인메뉴,...
 	rname varchar2(20),												-- 음식이름
 	ingredients varchar2(100),										-- 재료
 	content varchar2(4000),											-- 내용
