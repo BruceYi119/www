@@ -30,3 +30,5 @@
 #wrap table.memberInfo th { width: 20%; }
 #wrap table.memberInfo th:first-child { text-align: center; }
 #wrap table.memberInfo td { width: 80%; }
+
+#wrap main.dark_mode table.memberInfo th, #wrap main.dark_mode table.memberInfo td { border: 1px solid #fff; }

@@ -7,6 +7,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+Member m = new Member();
+boolean login = m.isLogin(session);
+
+if (!login)
+	response.sendRedirect("/view/member/login.jsp");
+
 Header header = new Header();
 String css = header.getCss();
 String js = header.getJs();
@@ -18,12 +24,6 @@ String menu = nav.getMenu();
 
 Footer footer = new Footer();
 String footerUrl = footer.getFooterUrl();
-
-Member m = new Member();
-boolean login = m.isLogin(session);
-
-if (!login)
-	response.sendRedirect("/view/member/login.jsp");
 
 MemberDAO dao = new MemberDAO();
 String sql = "select rownum, t.* from member t where id = ?";
@@ -76,6 +76,7 @@ pageContext.setAttribute("dto", dao.getDto());
 						<th>이름</th>
 						<td>
 							<span id="infoName">${dto.name}</span>
+							<span class="errMsg"></span>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="text" id="updateName" class="hide" />
 							<button type="button" class="btn btn-success" id="infoUpdateBtn">회원정보수정</button>
@@ -86,6 +87,7 @@ pageContext.setAttribute("dto", dao.getDto());
 						<th>연락처</th>
 						<td>
 							<span id="infoPhone">${dto.phone}</span>
+							<span class="errMsg"></span>
 							<input type="text" id="updatePhone" class="hide" />
 						</td>
 					</tr>
@@ -93,6 +95,7 @@ pageContext.setAttribute("dto", dao.getDto());
 						<th>생일</th>
 						<td>
 							<span id="infoBirth">${dto.birth}</span>
+							<span class="errMsg"></span>
 							<input type="text" id="updateBirth" class="hide" />
 						</td>
 					</tr>
@@ -121,6 +124,7 @@ pageContext.setAttribute("dto", dao.getDto());
 						<th>이메일</th>
 						<td>
 							<span id="infoEmail">${dto.email}</span>
+							<span class="errMsg"></span>
 							<input type="text" id="updateEmail" class="hide" />
 						</td>
 					</tr>

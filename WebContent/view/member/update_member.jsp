@@ -36,12 +36,11 @@ sql = "select rownum, t.* from member t where id = ?";
 dao.select(sql, id);
 
 if (r == 1)
-	sb.append("{ \"update\": true, ");
+	sb.append("{ \"update\": true, \"info\": { ");
 else
-	out.print("{ \"update\": false, ");	
+	sb.append("{ \"update\": false, \"info\": { ");	
 
-sb.append("\"info\": { ");
-sb.append(" \"name\": \"");
+sb.append("\"name\": \"");
 sb.append(dao.getDto().getName());
 sb.append("\", \"phone\": \"");
 sb.append(dao.getDto().getPhone());
@@ -49,13 +48,14 @@ sb.append("\", \"birth\": \"");
 sb.append(dao.getDto().getBirth());
 sb.append("\", \"zipcode\": \"");
 sb.append(dao.getDto().getZipcode());
-sb.append("\", \"addr\":");
+sb.append("\", \"addr\": \"");
 sb.append(dao.getDto().getAddr());
 sb.append("\", \"addr_detail\": \"");
 sb.append(dao.getDto().getAddr_detail());
 sb.append("\", \"email\": \"");
 sb.append(dao.getDto().getEmail());
-sb.append("\" } }");
+sb.append("\"");
+sb.append(" } }");
 
 out.print(sb.toString());
 %>

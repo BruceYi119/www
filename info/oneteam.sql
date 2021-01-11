@@ -32,13 +32,13 @@ drop table stock;
 drop sequence s_stock_;
 create sequence s_stock start with 1;
 create table stock(
-	sno number,										-- 키값
-	title varchar2(50),								-- 기업명	
-	siga number,									-- 현재가
-	gijun varchar2(20),								-- 기준일자	
-	beadang number(10,2),							-- 배당금액			
-	suik number(10,2),								-- 배당수익률		
-	beadang1 number(10,2),							-- 배당성향
+	sno number,									-- 키값
+	title varchar2(50),							-- 기업명	
+	siga number,								-- 현재가
+	gijun varchar2(20),							-- 기준일자	
+	beadang number(10,2),						-- 배당금액			
+	suik number(10,2),							-- 배당수익률		
+	beadang1 number(10,2),						-- 배당성향
 	CONSTRAINT stock_sno_p PRIMARY KEY (sno)
 );
 
@@ -47,18 +47,18 @@ drop table stockboard;
 drop sequence s_stockboard;
 create sequence s_stockboard start with 1;
 create table stockboard(
-	sbno number,												-- 키값
-	name varchar2(10),											-- 이름
-	pwd varchar2(100),											-- 비밀번호
-	title varchar2(30),											-- 제목
-	content varchar2(1000),										-- 내용
-	fname varchar2(100),										-- 사진이름
-	writeday date default sysdate,								-- 작성일
-	readnum number,												-- 조회수
-	good number,												-- 공감
-	bad number,													-- 비공감
-	sung varchar2(10),											-- 성별
-	kind varchar2(100),											-- 카테고리
+	sbno number,										-- 키값
+	name varchar2(50),									-- 이름
+	pwd varchar2(100),									-- 비밀번호
+	title varchar2(30),									-- 제목
+	content varchar2(1000),								-- 내용
+	fname varchar2(100),								-- 사진이름
+	writeday date default sysdate,						-- 작성일
+	readnum number,										-- 조회수
+	good number,										-- 공감
+	bad number,											-- 비공감
+	sung varchar2(10),									-- 성별
+	kind varchar2(100),									-- 카테고리
 	CONSTRAINT stockboard_sbno_p PRIMARY KEY (sbno)
 );
 
@@ -67,11 +67,11 @@ drop table stockboarddat;
 drop sequence s_stockboarddat;
 create sequence s_stockboarddat start with 1;
 create table stockboarddat(
-	sbdno number,													--키값
-	name char(10),													--이름			
-	content varchar2(600),											--내용		
-	writeday date default sysdate,									--작성일			
-	sbno number,													--stockboard 키값
+	sbdno number,											--키값
+	name varchar2(100),										--이름			
+	content varchar2(600),									--내용		
+	writeday date default sysdate,							--작성일			
+	sbno number,											--stockboard 키값
 	CONSTRAINT stockboarddat_sbdno_p PRIMARY KEY (sbdno)
 );
 
@@ -80,9 +80,9 @@ drop table companycode;
 drop sequence s_companycode;
 create sequence s_companycode start with 1;
 create table companycode(
-	cno number not null,											-- 키값
-	company varchar2(150),											-- 기업명
-	code vatchar2(100),												-- 기업코드
+	cno number not null,									-- 키값
+	company varchar2(150),									-- 기업명
+	code varchar2(100),										-- 기업코드
 	CONSTRAINT companycode_cno_p PRIMARY KEY (cno)
 );
 

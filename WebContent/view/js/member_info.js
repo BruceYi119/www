@@ -1,27 +1,57 @@
 'use strict';
 
-function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo) {
-	const spanZipcode = document.querySelector('#zipcode');
-	const spanAddr = document.querySelector('#addr');
-	const spanAddr_detail = document.querySelector('#addr_detail');
-	const addrUpdateBtn = document.querySelector('#addrUpdateBtn');
-	const addrUpdateCancel = document.querySelector('#addrUpdateCancel');
+const validation = (type = 'info') => {
+	if (type === 'addr') {
+		const spanZipcode = document.querySelector('#zipcode');
+		const spanAddr = document.querySelector('#addr');
+		const spanAddr_detail = document.querySelector('#addr_detail');
+		const errMsg = document.querySelectorAll('.errMsg');
 
-	spanZipcode.innerHTML = roadAddrPart1;
-	spanAddr.innerHTML = addrDetail;
-	spanAddr_detail.innerHTML = zipNo;
+//		if (!isName(updateName.value)) {
+//			errMsg[0].innerHTML = memberErrTxt.name;
+//			updateName.focus();
+//			return false;
+//		}
+	} else if (type === 'pw') {
+		
+	} else {
+		const updateName = document.querySelector('#updateName');
+		const updatePhone = document.querySelector('#updatePhone');
+		const updateBirth = document.querySelector('#updateBirth');
+		const updateEmail = document.querySelector('#updateEmail');
+		const errMsg = document.querySelectorAll('.errMsg');
 
-	addrUpdateBtn.classList.remove('hide');
-	addrUpdateCancel.classList.remove('hide');
+		if (!isName(updateName.value)) {
+			errMsg[0].innerHTML = memberErrTxt.name;
+			updateName.focus();
+			return false;
+		}
+		if (!isCelluar(updatePhone.value)) {
+			errMsg[1].innerHTML = memberErrTxt.phone;
+			updatePhone.focus();
+			return false;
+		}
+		if (!isBirth(updateBirth.value)) {
+			errMsg[2].innerHTML = memberErrTxt.birth;
+			updateBirth.focus();
+			return false;
+		}
+		if (!isEmail(updateEmail.value)) {
+			errMsg[4].innerHTML = memberErrTxt.email;
+			updateEmail.focus();
+			return false;
+		}
+	}
+
+	return true;
 };
 
-const jusoPopup = () => {
-	const popupWidth = 570;
-	const popupHeight = 420;
-    const left = Math.ceil((window.screen.width - popupWidth) / 2);
-    const top = Math.ceil((window.screen.height - popupHeight) / 2);
+const resetErrMsg = () => {
+	const errMsg = document.querySelectorAll('.errMsg');
 
-	const pop = window.open('/view/member/jusoPopup.jsp','pop',`width=${popupWidth},height=${popupHeight}, scrollbars=yes, resizable=yes, left=${left}, top=${top}`); 
+	errMsg.forEach((v) => {
+		v.innerHTML = '';
+	});
 };
 
 const sendAjax = (form = document.querySelector('form')) => {
@@ -75,6 +105,8 @@ const updateInfoCancel = () => {
 	updateBirth.classList.add('hide');
 	updateEmail.classList.add('hide');
 	infoUpdateCancelBtn.classList.add('hide');
+
+	resetErrMsg();
 };
 
 const setFormData = (info) => {
@@ -83,10 +115,10 @@ const setFormData = (info) => {
 	const infoBirth = document.querySelector('#infoBirth');
 	const infoEmail = document.querySelector('#infoEmail');
 
-	infoName.value = info.name; 
-	infoPhone.value = info.phone; 
-	infoBirth.value = info.birth; 
-	infoEmail.value = info.email; 
+	infoName.innerHTML = info.name;
+	infoPhone.innerHTML = info.phone;
+	infoBirth.innerHTML = info.birth;
+	infoEmail.innerHTML = info.email;
 };
 
 const setMemberInfo = () => {
@@ -113,12 +145,10 @@ const setMemberInfo = () => {
 		addrUpdateBtn.classList.add('hide');
 		addrUpdateCancel.classList.add('hide');
 
-		if (zipcode.value === '') {
-			errMsg.innerHTML = '상세주소를 입력하세요';
+		if (!validation('addr'))
 			return false;
-		}
 
-		const r = sendAjax();
+		const r = sendAjax(form);
 
 		r.then((res) => {
 			if (res.data.update === true) {
@@ -136,7 +166,7 @@ const setMemberInfo = () => {
 		const infoUpdateCancelBtn = document.querySelector('#infoUpdateCancelBtn');
 		const name = document.querySelector('input[name=name]');
 		const phone = document.querySelector('input[name=phone]');
-		const birth = document.querySelector('input[name=email]');
+		const birth = document.querySelector('input[name=birth]');
 		const email = document.querySelector('input[name=email]');
 		const updateName = document.querySelector('#updateName');
 		const updatePhone = document.querySelector('#updatePhone');
@@ -146,8 +176,11 @@ const setMemberInfo = () => {
 		if (infoUpdateBtn.getAttribute("click") && infoUpdateBtn.getAttribute("click") === 'true') {
 			name.value = updateName.value;
 			phone.value = updatePhone.value;
-			email.value = updateBirth.value;
+			birth.value = updateBirth.value;
 			email.value = updateEmail.value;
+
+			if (!validation())
+				return false;
 
 			const r = sendAjax();
 
@@ -155,6 +188,7 @@ const setMemberInfo = () => {
 				if (res.data.update === true) {
 					updateInfoCancel();
 					setFormData(res.data.info);
+					resetErrMsg();
 					alert('회원정보가 수정되었습니다');
 				} else {
 					alert('회원정보 수정에 실패하였습니다');

@@ -4,7 +4,7 @@ public class Nav {
 
 	private StringBuilder sb = new StringBuilder();
 	private String baseUrl = "/view/";
-	private String[] urlName = { "카카오맵", "번역기","강민규", "김희수", "박용순", "정지원", "진우람", "핸리" };
+	private String[] urlName = { "카카오맵", "번역기", "금융(투자정보)", "김희수", "박용순", "정지원", "진우람", "핸리" };
 	private String[] url = { "api/kakao/map.jsp", "wooram/wooramtrans.jsp", "minkyu/minkyu.jsp", "heesoo/heesoo.jsp", "yongsoon/yongsoon.jsp", "jiwon/jiwon.jsp", "wooram/wooram.jsp", "henry/henry.jsp" };
 
 	public String getMenu() {
