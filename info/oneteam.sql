@@ -163,19 +163,19 @@ drop table cafe;
 drop sequence s_cafe;
 CREATE SEQUENCE s_cafe START WITH 1 INCREMENT BY 1 MAXVALUE 10000 CYCLE NOCACHE;
 create table cafe(
-	cno number not null,							-- 키값
-	name varchar2(20),								-- 작성자
-	pwd varchar2(20),								-- 비번
-	title varchar2(100),							-- 제목
-	writype varchar2(20),							-- 글종류
-	animal varchar2(20),							-- 동물종류
-	content varchar2(1000),							-- 내용
-	fname varchar2(100),							-- 사진
-	readnum number default 0,						-- 조회수
-	liked number default 0,							-- 추천
-	fimsi varchar2(100),							-- 첨부파일 임시저장소 업데이트시 활용
-	writeday date default sysdate,					-- 작성일
-	CONSTRAINT cafe_cno_p PRIMARY KEY (cno)
+   cno number not null,								-- 키값
+   name varchar2(20),								-- 작성자
+   pwd varchar2(20),								-- 비번
+   title varchar2(100),								-- 제목
+   writype varchar2(30),							-- 글종류 (30) 으로 크기 수정!!!!
+   animal varchar2(20),								-- 동물종류
+   content varchar2(1000),							-- 내용
+   fname varchar2(100),								-- 사진
+   readnum number default 0,						-- 조회수
+   liked number default 0,							-- 추천
+   fimsi varchar2(100),								-- 첨부파일 임시저장소 업데이트시 활용
+   writeday date default sysdate,					-- 작성일
+   CONSTRAINT cafe_cno_p PRIMARY KEY (cno)
 );
 
 -- 애완동물카페 댓글 테이블 (진우람)
@@ -183,14 +183,13 @@ drop table cdat;
 drop sequence s_cdat;
 CREATE SEQUENCE s_cdat START WITH 1 INCREMENT BY 1 MAXVALUE 10000 CYCLE NOCACHE;
 create table cdat(
-	cdno number not null,																		-- 키값
-	dname varchar2(20),																			-- 댓글 닉네임
-	dcontent varchar2(100),																		-- 댓글내용
-	dpwd varchar2(20),																			-- 댓글비번
-	cno number,																					-- cafe 키값
-	writeday date default sysdate,																-- 작성일
-	CONSTRAINT cdat_cdno_p PRIMARY KEY (cdno),
-	constraint cdat_cno_f foreign key(cno) references cafe(cno)
+   cdno number not null,							-- 키값
+   dname varchar2(20),								-- 댓글 닉네임
+   dcontent varchar2(100),							-- 댓글내용
+   dpwd varchar2(20),								-- 댓글비번
+   cno number,										-- 원글id
+   writeday date default sysdate,					-- 작성일
+   CONSTRAINT cdat_cdno_p PRIMARY KEY (cdno)
 );
 
 -- 학생성적 테이블 (헨리)
