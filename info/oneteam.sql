@@ -229,14 +229,16 @@ drop table reservation;
 drop sequence s_reservation;
 create sequence s_reservation;
 create table reservation(
-   rno number constraint reservation_rno_p primary key,								-- 키값
-   name varchar2(50),																	-- 예약자 성함
-   adult_cnt number,																	-- 예약인원(성인)
-   child_cnt number,																	-- 예약인원(아이)
-   phone varchar2(50),																	-- 예약자 핸드폰 번호.  핸드폰 번호를 이용하여 작성글을 수정 및 삭제 가능
-   date date,																			-- 네이버 예약 창 생각하시면 될거같습니다
-   time varchar2(50),																	-- 네이버 예약창 생각하시면 될거같습니다. 시간과 분(10분단위)로 select해서 받을 예정
-   eat char(1) default 's',															-- 매장/포장 여부 s = 매장, p = 포장
-   bigo varchar2(1000),																	-- 예약을 하면서 하고 픈 말 적기( 부모님 생신.. or 생일 잔치 or 신년회)
-   constraint reservation_eat_c check (eat in ('s','p'))
+	rno number constraint reservation_rno_p primary key,					-- 키값
+	rdate date,	
+	rtime varchar2(20),
+	rname varchar2(20),
+	rphone varchar2(20),
+	radult_cnt number,
+	rchild_cnt number default 0,
+	reat char(1) default 's',
+	rbigo varchar(1000),
+	rchk varchar2(20),
+	rwritedate date,
+	constraint reservation_eat_c check (reat in ('s','p'))
 );
