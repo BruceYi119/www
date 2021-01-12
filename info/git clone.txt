@@ -12,7 +12,7 @@
 각파일들 열어서 Key.java import부분 잘라내기했다가 다시붙여넣고 저장하면 오류사라짐 모든에러파일 반복
 11. 이클립스에서 www프로젝트 마우스오른쪽 버튼으로 Build Path메뉴에서 add external jars를 선택하여
 자신의 톱캣 설치위치에 tomcat9/lib 안에 servlet-api.jar 파일 등록
-12. sever에서 /www/ 루트경로를 /로변경
+12. server에서 /www/ 루트경로를 /로변경
 
 - 선택 사항 -
 기존에 수행하지 않았다면 수행
