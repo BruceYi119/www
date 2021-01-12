@@ -1,0 +1,27 @@
+- 프로젝트 소스가 꼬였을때 새로 다운받는 방법 -
+1. cmder 종료
+2. 이클립스에서 www프로젝트삭제 삭제시 파일도 삭제하겠다는 체크박스 체크
+3. cmder에서 워크스페이스로이동
+4. 워크스페이스 경로에서 git clone https://github.com/BruceYi119/www 하고 로그인
+5. dir로 워크스페이스/www 생성되었는지 확인
+6. 이클립스에서 웹다이나믹 프로젝트로 www생성
+7. 단톡방 Key.java.txt 를 다운받아서 .txt를 지우고 Key.java로 변경
+8. scr/에 패키지생성 www.key
+9. 생성한 www.key 패키지에 Key.java복사
+10 src/안의 자바 파일들이나 view/안에 jsp파일들이 에러가뜨면 Key.java를 새로 넣어서 에러나는거라
+각파일들 열어서 Key.java import부분 잘라내기했다가 다시붙여넣고 저장하면 오류사라짐 모든에러파일 반복
+11. 이클립스에서 www프로젝트 마우스오른쪽 버튼으로 Build Path메뉴에서 add external jars를 선택하여
+자신의 톱캣 설치위치에 tomcat9/lib 안에 servlet-api.jar 파일 등록
+12. sever에서 /www/ 루트경로를 /로변경
+
+- 선택 사항 -
+기존에 수행하지 않았다면 수행
+* 다른팀원들거도 모두 동작하게 하는 방법
+cmd -> sqlplus oneteam/enffl 접속후
+1. ex) @D:\프로젝트경로\info\oneteam.sql
+위 스크립트 실행
+2. ex) @D:\프로젝트경로\info\stock.sql
+위 스크립트 실행
+3. ex) @D:\프로젝트경로\info\companycode.sql
+위 스크립트 실행
+3가지 순서로 하시면 모든 페이지 동작할거에요
