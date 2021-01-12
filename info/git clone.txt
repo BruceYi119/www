@@ -25,3 +25,11 @@ cmd -> sqlplus oneteam/enffl 접속후
 3. ex) @D:\프로젝트경로\info\companycode.sql
 위 스크립트 실행
 3가지 순서로 하시면 모든 페이지 동작할거에요
+
+- git remote alias 설정 -
+git pull을 편하게 하기위해
+1. git remote -v (로 알리아스 확인 기본 origin)
+2. git remote remove origin (기본 알리아스 삭제)
+3. git remote add www https://github.com/BruceYi119/www (www 알리아스로 remote추가)
+4. git remote -v (로 추가된 알리아스 확인)
+이제 git pull www로 업데이트 하면 됩니다
