@@ -49,23 +49,38 @@ const setColor = () => {
 	}
 };
 
-const jusoPopup = () => {
+const jusoPopup = (func = null) => {
 	const popupWidth = 570;
 	const popupHeight = 420;
     const left = Math.ceil((window.screen.width - popupWidth) / 2);
     const top = Math.ceil((window.screen.height - popupHeight) / 2);
 
-	const pop = window.open('/view/member/jusoPopup.jsp','pop',`width=${popupWidth},height=${popupHeight}, scrollbars=yes, resizable=yes, left=${left}, top=${top}`); 
+    if (func === 'showUpdateAddrBtns')
+    	window.open(`/view/member/jusoPopup.jsp?func=${func}`,'pop',`width=${popupWidth},height=${popupHeight}, scrollbars=yes, resizable=yes, left=${left}, top=${top}`); 
+    else
+    	window.open('/view/member/jusoPopup.jsp','pop',`width=${popupWidth},height=${popupHeight}, scrollbars=yes, resizable=yes, left=${left}, top=${top}`); 
 };
 
-function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo) {
-	const zipcode = document.querySelector('input[name=zipcode]');
-	const addr = document.querySelector('input[name=addr]');
-	const addr_detail = document.querySelector('input[name=addr_detail]');
+function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo,func = null) {
+	if (func !== null && func === 'showUpdateAddrBtns') {
+		const spanZipcode = document.querySelector('#zipcode');
+		const spanAddr = document.querySelector('#addr');
+		const spanAddr_detail = document.querySelector('#addr_detail');
 
-	addr.value = roadAddrPart1;
-	addr_detail.value = addrDetail;
-	zipcode.value = zipNo;
+		spanAddr_detail.innerHTML = addrDetail;
+		spanZipcode.innerHTML = zipNo;
+		spanAddr.innerHTML = roadAddrPart1;
+
+		showUpdateAddrBtns();		
+	} else {
+		const zipcode = document.querySelector('input[name=zipcode]');
+		const addr = document.querySelector('input[name=addr]');
+		const addr_detail = document.querySelector('input[name=addr_detail]');
+
+		addr.value = roadAddrPart1;
+		addr_detail.value = addrDetail;
+		zipcode.value = zipNo;		
+	}
 };
 
 const isId = (value) => {

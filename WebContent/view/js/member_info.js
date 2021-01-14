@@ -7,11 +7,10 @@ const validation = (type = 'info') => {
 		const spanAddr_detail = document.querySelector('#addr_detail');
 		const errMsg = document.querySelectorAll('.errMsg');
 
-//		if (!isName(updateName.value)) {
-//			errMsg[0].innerHTML = memberErrTxt.name;
-//			updateName.focus();
-//			return false;
-//		}
+		if (spanAddr_detail.innerHTML === '') {
+			errMsg[3].innerHTML = memberErrTxt.addr;
+			return false;
+		}
 	} else if (type === 'pw') {
 		
 	} else {
@@ -74,15 +73,12 @@ const updateAddrCancel = () => {
 	const spanZipcode = document.querySelector('#zipcode');
 	const spanAddr = document.querySelector('#addr');
 	const spanAddr_detail = document.querySelector('#addr_detail');
-	const addrUpdateBtn = document.querySelector('#addrUpdateBtn');
-	const addrUpdateCancel = document.querySelector('#addrUpdateCancel');
 
 	spanZipcode.innerHTML = zipcode.value;
 	spanAddr.innerHTML = addr.value;
 	spanAddr_detail.innerHTML = addr_detail.value;
 
-	addrUpdateBtn.classList.add('hide');
-	addrUpdateCancel.classList.add('hide');
+	hideUpdateAddrBtns();
 };
 
 const updateInfoCancel = () => {
@@ -121,9 +117,25 @@ const setFormData = (info) => {
 	infoEmail.innerHTML = info.email;
 };
 
+const hideUpdateAddrBtns = () => {
+	const addrUpdateBtn = document.querySelector('#addrUpdateBtn');
+	const addrUpdateCancel = document.querySelector('#addrUpdateCancel');
+
+	addrUpdateBtn.classList.add('hide');
+	addrUpdateCancel.classList.add('hide');
+};
+
+const showUpdateAddrBtns = () => {
+	const addrUpdateBtn = document.querySelector('#addrUpdateBtn');
+	const addrUpdateCancel = document.querySelector('#addrUpdateCancel');
+	
+	addrUpdateBtn.classList.remove('hide');
+	addrUpdateCancel.classList.remove('hide');
+};
+
 const setMemberInfo = () => {
 	document.querySelector('#searAddrBtn').addEventListener('click', () => {
-		jusoPopup();
+		jusoPopup('showUpdateAddrBtns');
 	});
 
 	document.querySelector('#addrUpdateBtn').addEventListener('click', (e) => {
@@ -136,14 +148,10 @@ const setMemberInfo = () => {
 		const spanZipcode = document.querySelector('#zipcode');
 		const spanAddr = document.querySelector('#addr');
 		const spanAddr_detail = document.querySelector('#addr_detail');
-		const errMsg = document.querySelector('.errMsg');
 
-		zipcode.value = spanAddr_detail.innerHTML;
-		addr.value = spanZipcode.innerHTML;
-		addr_detail.value = spanAddr.innerHTML;
-
-		addrUpdateBtn.classList.add('hide');
-		addrUpdateCancel.classList.add('hide');
+		zipcode.value = spanZipcode.innerHTML;
+		addr.value = spanAddr.innerHTML;
+		addr_detail.value = spanAddr_detail.innerHTML;
 
 		if (!validation('addr'))
 			return false;
