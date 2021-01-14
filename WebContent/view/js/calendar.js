@@ -82,10 +82,31 @@ const drawCalendar = (date = new Date()) => {
 	tbody.html(html);
 };
 
+const setDate = (oper = 1) => {
+	const year = $('#year');
+	const month = $('#month');
+	const now = new Date();
+	const date = new Date(parseInt(year.val()), parseInt(month.val()) - 1, 1);
+	const nextDate = now.getMonth() === date.getMonth() ? new Date(date.getFullYear(), date.getMonth() + oper, now.getDate()) : new Date(date.getFullYear(), date.getMonth() + oper, 1);
+
+	year.find(`option[value=${nextDate.getFullYear()}]`).prop('selected', true);
+	month.find(`option[value=${nextDate.getMonth() + 1}]`).prop('selected', true);
+
+	drawCalendar(nextDate);
+};
+
 $(function() {
 
 	setSelect();
 	drawCalendar();
+
+	$('#prev').bind('click', () => {
+		setDate(-1);
+	});
+
+	$('#next').bind('click', () => {
+		setDate();
+	});
 
 	$('#year, #month').bind('change', () => {
 		const y = $('#year').val();
