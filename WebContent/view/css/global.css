@@ -1,4 +1,5 @@
 * { margin: 0;padding: 0; }
+table { border-collapse: collapse; }
 li, dt, dd { list-style: none; }
 
 .hide { display: none !important; }

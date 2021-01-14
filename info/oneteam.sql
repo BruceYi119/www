@@ -25,7 +25,7 @@ create table member(
 	mtype char(1) default 'n',																		-- 관리자 여부 'a' = 관리자, 'n' = '일반회원'
 	del_yn char(1) default 'y',																	-- 탈퇴여부
 	writedate date default sysdate,																-- 가입일
-	constraint member_mtype_c check (mtype in ('a','n'))	
+	constraint member_mtype_c check (mtype in ('a','n')),
 	constraint member_del_yn_c check (del_yn in ('y','n'))
 );
 
