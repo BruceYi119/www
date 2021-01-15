@@ -14,7 +14,16 @@ public class MemberDTO {
 	private String addr_detail = null;
 	private String email = null;
 	private String del_yn = null;
+	private String mtype = null;	
 	private String writedate = null;
+
+	public String getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(String rownum) {
+		this.rownum = rownum;
+	}
 
 	public String getMno() {
 		return mno;
@@ -56,16 +65,16 @@ public class MemberDTO {
 		this.phone = phone;
 	}
 
-	public String getZipcode() {
-		return zipcode;
-	}
-
 	public String getBirth() {
 		return birth;
 	}
 
 	public void setBirth(String birth) {
 		this.birth = birth;
+	}
+
+	public String getZipcode() {
+		return zipcode;
 	}
 
 	public void setZipcode(String zipcode) {
@@ -104,6 +113,14 @@ public class MemberDTO {
 		this.del_yn = del_yn;
 	}
 
+	public String getMtype() {
+		return mtype;
+	}
+
+	public void setMtype(String mtype) {
+		this.mtype = mtype;
+	}
+
 	public String getWritedate() {
 		return writedate;
 	}
@@ -112,23 +129,16 @@ public class MemberDTO {
 		this.writedate = writedate;
 	}
 
-	public String getRownum() {
-		return rownum;
-	}
-
-	public void setRownum(String rownum) {
-		this.rownum = rownum;
-	}
-
 	@Override
 	public String toString() {
 		return "MemberDTO [rownum=" + rownum + ", mno=" + mno + ", id=" + id + ", pw=" + pw + ", name=" + name
-				+ ", phone=" + phone + ", zipcode=" + zipcode + ", addr=" + addr + ", addr_detail=" + addr_detail
-				+ ", email=" + email + ", del_yn=" + del_yn + ", writedate=" + writedate + "]";
+				+ ", phone=" + phone + ", birth=" + birth + ", zipcode=" + zipcode + ", addr=" + addr + ", addr_detail="
+				+ addr_detail + ", email=" + email + ", del_yn=" + del_yn + ", mtype=" + mtype + ", writedate="
+				+ writedate + "]";
 	}
 
-	public String toString(boolean t) {
-		return "rownum, mno, id, pw, name, phone, zipcode, addr, addr_detail, email, del_yn, writedate";
+	public String toString(Boolean t) {
+		return "rownum, mno, id, pw, name, phone, birth, zipcode, addr, addr_detail, email, del_yn, mtype, writedate";
 	}
 
 }

@@ -18,6 +18,26 @@ public class MemberDAO implements Idao {
 		db = Db.getInstance();
 	}
 
+	public int count(String sql, String ...args) {
+		int count = 0;
+
+		try {
+			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
+			db.pstmt = db.con.prepareStatement(sql);
+			setPstmt(args);
+			db.rs = db.pstmt.executeQuery();
+
+			while (db.rs.next())
+				count = db.rs.getInt("total");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.finalize();
+		}
+		
+		return count;
+	}
+
 	@Override
 	public void select(String sql, String ...args) {
 		try {
@@ -142,6 +162,7 @@ public class MemberDAO implements Idao {
 				dto.setAddr(db.rs.getString("addr"));
 				dto.setAddr_detail(db.rs.getString("addr_detail"));
 				dto.setEmail(db.rs.getString("email"));
+				dto.setMtype(db.rs.getString("mtype"));
 				dto.setDel_yn(db.rs.getString("del_yn"));
 				dto.setWritedate(db.rs.getString("writedate"));
 
@@ -171,6 +192,7 @@ public class MemberDAO implements Idao {
 				dto.setAddr(db.rs.getString("addr"));
 				dto.setAddr_detail(db.rs.getString("addr_detail"));
 				dto.setEmail(db.rs.getString("email"));
+				dto.setMtype(db.rs.getString("mtype"));
 				dto.setDel_yn(db.rs.getString("del_yn"));
 				dto.setWritedate(db.rs.getString("writedate"));
 

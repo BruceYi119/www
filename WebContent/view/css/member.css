@@ -8,6 +8,7 @@
 
 #wrap fieldset { width: 460px;padding: 50px 0;text-align: center;margin: 0 auto; }
 #wrap fieldset > legend { display: none; }
+#wrap fieldset input[type=checkbox] { vertical-align: middle; }
 
 #wrap div.field { margin-bottom: 10px; }
 #wrap div.field > input.login { width: 460px;height: 48px;padding: 10px; }

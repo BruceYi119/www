@@ -3,6 +3,7 @@
 <%
 session.removeAttribute("id");
 session.removeAttribute("name");
+session.removeAttribute("admin");
 
 response.sendRedirect("/");
 %>

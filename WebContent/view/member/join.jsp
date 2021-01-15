@@ -50,10 +50,10 @@ String footerUrl = footer.getFooterUrl();
 						<div class="field"><input type="text" name="id" maxlength="12" placeholder="아이디" class="input" /></div>
 						<div class="field errMsg"></div>
 						<h3><label for="pw">비밀번호</label></h3>
-						<div class="field"><input type="text" name="pw" maxlength="12" placeholder="비밀번호" class="input" /></div>
+						<div class="field"><input type="password" name="pw" maxlength="12" placeholder="비밀번호" class="input" /></div>
 						<div class="field errMsg"></div>
 						<h3><label for="pw2">비밀번호 확인</label></h3>
-						<div class="field"><input type="text" name="pw2" maxlength="12" placeholder="비밀번호확인" class="input" /></div>
+						<div class="field"><input type="password" name="pw2" maxlength="12" placeholder="비밀번호확인" class="input" /></div>
 						<div class="field errMsg"></div>
 						<h3><label for="name">이름</label></h3>
 						<div class="field"><input type="text" name="name" placeholder="이름" class="input" /></div>

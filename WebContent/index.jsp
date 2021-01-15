@@ -1,7 +1,6 @@
 <%@page import="www.html.header.Header"%>
 <%@page import="www.html.nav.Nav"%>
 <%@page import="www.html.footer.Footer"%>
-<%-- <%@ include file="/include/top.jsp" %> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%

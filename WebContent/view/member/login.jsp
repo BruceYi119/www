@@ -46,6 +46,7 @@ String footerUrl = footer.getFooterUrl();
 				<form action="/view/member/login_ok.jsp">
 					<fieldset>
 						<legend>로그인</legend>
+						<div class="field">관리자 로그인 <input type="checkbox" name="admin" /></div>
 						<div class="field"><input type="text" name="id" class="login" maxlength="12" /></div>
 						<div class="field" id="errId"></div>
 						<div class="field"><input type="password" name="pw" class="login" maxlength="12" /></div>
