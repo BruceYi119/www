@@ -63,12 +63,19 @@ String footerUrl = footer.getFooterUrl();
 					<div class="left">
 						<div class="covidWrrap">
 							<h4>Today 코로나 현황</h4>
-							<div class="lodingWrap">
+							<div id="covidLoding">
 								<div class="spinner-border text-muted"></div>
 							</div>
 						</div>
 					</div>
-					<div class="right"></div>
+					<div class="right">
+						<div class="weatherWrap">
+							<h4>현재 날씨(서울특별시)</h4>
+							<div id="weatherLoding">
+								<div class="spinner-border text-muted"></div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>
