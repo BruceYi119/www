@@ -74,8 +74,8 @@ header.kakaoMap #search:focus, header.kakaoMap #search.enable, header.heesoo #se
 #darkMode > button { position: fixed;bottom: 50px;right: 50px;width: 120px;height:50px;border-radius: 25px;background-color: #fff;border: none;background-color: #efefef; }
 #darkMode > button:hover { background-color: #53575c; }
 #darkMode > button:focus { outline: none; }
-#darkMode > button.dark_mode { background-color: var(--dark-mode-button-color);color: #fff; }
-#darkMode > button.dark_mode:hover { background-color: #404040; }
+#darkMode > button.dark_mode { background-color: #333638 !important;color: #fff; }
+#darkMode > button.dark_mode:hover { background-color: #404040 !important; }
 
 /* #fade11, #ff974b, #6565f0, #95236b, #f065c2, #f54f01 */
 header.kakaoMap, footer.kakaoMap { background-color: var(--kakao-map-color) !important; }
