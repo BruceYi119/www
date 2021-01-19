@@ -186,18 +186,17 @@ drop table cafe;
 drop sequence s_cafe;
 CREATE SEQUENCE s_cafe START WITH 1 INCREMENT BY 1 MAXVALUE 10000 CYCLE NOCACHE;
 create table cafe(
-   cno number not null,								-- 키값
-   name varchar2(20),								-- 작성자
-   pwd varchar2(20),								-- 비번
-   title varchar2(100),								-- 제목
-   writype varchar2(30),							-- 글종류 (30) 으로 크기 수정!!!!
-   animal varchar2(20),								-- 동물종류
-   content varchar2(1000),							-- 내용
-   fname varchar2(100),								-- 사진
-   readnum number default 0,						-- 조회수
-   liked number default 0,							-- 추천
-   fimsi varchar2(100),								-- 첨부파일 임시저장소 업데이트시 활용
-   writeday date default sysdate,					-- 작성일
+   cno number not null,                     -- 키값
+   name varchar2(20),                        -- 작성자
+   title varchar2(100),                     -- 제목
+   writype varchar2(30),                     -- 글종류 (30) 으로 크기 수정!!!!
+   animal varchar2(20),                     -- 동물종류
+   content varchar2(1000),                  -- 내용
+   fname varchar2(100),                     -- 사진
+   readnum number default 0,                  -- 조회수
+   liked number default 0,                  -- 추천
+   fimsi varchar2(100),                     -- 첨부파일 임시저장소 업데이트시 활용
+   writeday date default sysdate,            -- 작성일
    CONSTRAINT cafe_cno_p PRIMARY KEY (cno)
 );
 
@@ -206,13 +205,29 @@ drop table cdat;
 drop sequence s_cdat;
 CREATE SEQUENCE s_cdat START WITH 1 INCREMENT BY 1 MAXVALUE 10000 CYCLE NOCACHE;
 create table cdat(
-   cdno number not null,							-- 키값
-   dname varchar2(20),								-- 댓글 닉네임
-   dcontent varchar2(100),							-- 댓글내용
-   dpwd varchar2(20),								-- 댓글비번
-   cno number,										-- 원글id
-   writeday date default sysdate,					-- 작성일
+   cdno number not null,                     -- 키값
+   dname varchar2(20),                     -- 댓글 닉네임
+   dcontent varchar2(100),                  -- 댓글내용
+   cno number,                              -- 원글id
+   writeday date default sysdate,            -- 작성일
    CONSTRAINT cdat_cdno_p PRIMARY KEY (cdno)
+);
+
+-- 카페 닉네임 테이블
+drop table cmember;
+drop sequence s_cmember;
+CREATE SEQUENCE s_cmember START WITH 1 INCREMENT BY 1 MAXVALUE 10000 CYCLE NOCACHE;
+create table cmember(
+   cmno number constraint cmember_cmno_p PRIMARY KEY,                     -- 키값
+   nick varchar2(50) constraint cmember_nick_n not null,                      -- 카페닉네임
+   id varchar2(50) constraint cmember_id_n not null,                  	     -- 유저id
+   reason varchar2(50) constraint cmember_reason_n not null,			   -- 가입동기
+   pobu varchar2(300) constraint cmember_pobu_n not null,			   -- 가입포부
+   mtype char(1) default 'n',		-- 관리자 여부 'a' = 관리자, 'n' = '일반회원'
+   del_yn char(1) default 'n',		-- 탈퇴여부 'n' = 탈퇴x, 'y' = 탈퇴o
+   subday date default sysdate,            -- 가입일
+   constraint cmember_mtype_c check (mtype in ('a','n')),
+   constraint cmember_del_yn_c check (del_yn in ('y','n'))
 );
 
 -- 학생성적 테이블 (헨리)
