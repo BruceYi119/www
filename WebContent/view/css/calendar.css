@@ -5,3 +5,5 @@ thead td { padding: 5px 30px; }
 button, select { padding: 5px; }
 .sun { color: #fc4c4e; }
 .sel { background-color: #ffffd9; }
+
+main.dark_mode td.sel { color: #000; } 

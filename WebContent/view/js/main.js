@@ -96,7 +96,7 @@ const getWeather = () => {
 		const info = res.data;
 
 		for (let i = 0;i < 8;i++) {
-			let data = `<img src="//openweathermap.org/img/wn/${info.weather[0].icon}@2x.png" />`;
+			let data = `<img src="//openweathermap.org/img/wn/${info.weather[0].icon}@2x.png" /><span>${info.weather[0].description}</span>`;
 
 			if (i === 1)
 				data = `체감온도 : ${info.main.feels_like} °C`;

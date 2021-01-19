@@ -31,3 +31,8 @@ li, dt, dd { list-style: none; }
 .mb15 { margin-bottom: 15px !important; }
 .mb20 { margin-bottom: 20px !important; }
 .mb25 { margin-bottom: 25px !important; }
+
+.p5 { padding: 5px !important; }
+.p10 { padding: 10px !important; }
+.p15 { padding: 15px !important; }
+.p20 { padding: 20px !important; }
