@@ -140,6 +140,7 @@ public class CafeDAO implements Idao {
 				if (i == 0)	
 					dto = new CafeDTO();
 				
+				dto.setRownum(db.rs.getString("rownum"));
 				dto.setCno(db.rs.getString("cno"));
 				dto.setName(db.rs.getString("name"));
 				dto.setPwd(db.rs.getString("pwd"));

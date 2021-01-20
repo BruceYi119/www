@@ -213,7 +213,7 @@ create table cdat(
    CONSTRAINT cdat_cdno_p PRIMARY KEY (cdno)
 );
 
--- 카페 닉네임 테이블
+-- 카페 닉네임 테이블 (진우람)
 drop table cmember;
 drop sequence s_cmember;
 CREATE SEQUENCE s_cmember START WITH 1 INCREMENT BY 1 MAXVALUE 10000 CYCLE NOCACHE;

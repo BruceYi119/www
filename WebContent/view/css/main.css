@@ -5,8 +5,9 @@ div.flexWeap div.left, div.flexWeap div.right { width: 50%; }
 
 div.covidWrrap > h4, div.weatherWrap > h4 { text-align: center; }
 
-#covidLoding, #weatherLoding { height: 200px;line-height: 200px;text-align: center; }
+#covidLoding, #weatherLoding { height: 121px;line-height: 121px;text-align: center; }
 
+ul.covidInfo { margin: 0;height: 121px; }
 ul.covidInfo li { display: inline-block;width: 24.5%;padding: 10px 0;text-align: center; }
 ul.covidInfo li .info_title { display: block;margin-top: 1px;font-size: 1.3rem;line-height: 1.8rem;letter-spacing: -0.8px;font-weight: normal; }
 ul.covidInfo li .info_num { margin-top: 5px;font-size: 1.8rem;line-height: 2.2rem;font-weight: bold;letter-spacing: -0.4px; }
@@ -25,6 +26,7 @@ ul.covidInfo li.info_02 .info_variation.down::after { background-position: -30px
 ul.covidInfo li.info_03 .info_variation.down::after { background-position: -10px -7px; }
 ul.covidInfo li.info_04 .info_variation.down::after { background-position: -20px -7px; }
 
+ul.weatherInfo { margin: 0;height: 121px; }
 ul.weatherInfo > li { float: left;line-height: 50px;padding: 0 15px; }
 ul.weatherInfo > li > div.wind { display: inline-block; }
 ul.weatherInfo > li svg { height: 15px; }

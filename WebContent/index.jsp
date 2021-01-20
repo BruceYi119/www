@@ -46,7 +46,7 @@ StringBuilder sb = new StringBuilder();
 // sb.setLength(0);
 // sb.append("select ");
 // sb.append(cafeDto.toString(true));
-// sb.append(" from (select rownum seq, t.* from (select * from cafe order by writeday desc) t) tt where seq >= 1) where rownum <= 3");
+// sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from cafe order by writeday desc) t) tt where seq >= 1) where rownum <= 3");
 // cafeDao.selectAll(sb.toString());
 // pageContext.setAttribute("cafeList", cafeDao.getList());
 
@@ -201,15 +201,11 @@ StringBuilder sb = new StringBuilder();
 									<tr><th>애완동물카페</th></tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td>2</td>
-									</tr>
-									<tr>
-										<td>3</td>
-									</tr>
+<%-- 									<c:forEach items="${cafeList}" var="dto"> --%>
+<!-- 									<tr> -->
+<%-- 										<td>${dto.content}</td> --%>
+<!-- 									</tr>									 -->
+<%-- 									</c:forEach> --%>
 								</tbody>
 							</table>
 						</div>
