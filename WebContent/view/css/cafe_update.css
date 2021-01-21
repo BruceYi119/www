@@ -1,0 +1,36 @@
+body #in_con table {
+	width: 100%;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	border-collapse: collapse;
+}
+
+body #in_con td {
+	border-bottom: 1px solid #cccccc;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+body #in_con #btn {
+	width: 150px;
+	height: 40px;
+	border: 1px solid #f15657;
+	background: #f15657;
+	color: white;
+}
+
+#ck {
+	color: red;
+}
+
+body #in_con textarea {
+	width: 500px;
+	height: 200px;
+	resize: none;
+}
+
+body #in_con select {
+	width: 180px;
+}

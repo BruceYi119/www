@@ -1,0 +1,40 @@
+body #in_con table {
+	width: 100%;
+	border-top : 1px solid #cccccc;
+    border-bottom : 1px solid #cccccc;
+    border-collapse: collapse;
+}
+body #in_con table td {
+    border-bottom: 1px solid #cccccc;
+    padding-top: 5px;
+    padding-bottom: 5px;
+   	padding-left : 2px;
+	padding-right : 2px;
+}
+
+
+#del {
+	position: absolute;
+	visibility: hidden;
+	margin-top: -12px;
+	margin-left: 8px;
+}
+
+#dat_del, #dat_up {
+	position: absolute;
+	visibility: hidden;
+}
+
+#dchk, #chk {
+	color: red;
+}
+
+body #in_con a {
+	text-decoration: none;
+	color: black;
+}
+
+body #in_con a:hover {
+	color: blue;
+	text-decoration: underline;
+}

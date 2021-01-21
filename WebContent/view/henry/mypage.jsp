@@ -7,6 +7,7 @@
 <%@page import="www.db.dao.MystoryDAO" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+<%@page import="java.net.URLEncoder" %> 
 <%@page import="www.pagination.Pagination"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -88,10 +89,14 @@ pageContext.setAttribute("list", mydao.getList());
 		<main>
 			<div class="base_wrap">
 				<div class="mainWrap">
-					<%@ include file="sidebar.jsp" %>
+					<div class="sidebar">
+						<div class="sideMyStory"><a class="current" href="mypage.jsp">스토리<br/>Board</a></div>
+						<div class="sideMovie"><a href="henry.jsp">영화<br/>List</a></div>
+					</div>
 					<div class="main">
 						<c:set var="k" value="0"/>
 						<c:forEach var="mdto" items="${list}">
+						<c:set var="movietitle" value="${mdto.title}"/>
 						<h5 class="mToStoryRegDate">찜 목록 등록일 : ${mdto.writedate}</h5>
 						<ul class="movieList CmovieList">
 							<li class="cLi">
@@ -142,13 +147,14 @@ pageContext.setAttribute("list", mydao.getList());
 									</div>
 								</dl>
 							</li>
+							<%
+								String movietitle=pageContext.getAttribute("movietitle").toString();
+							%>
 							<div class="deleteMovieBtn">
-								<a href="deletemymovie.jsp?title=${mdto.title}&id=<%=id%>">삭제</a>
+								<a href="deletemymovie.jsp?title=<%=URLEncoder.encode(movietitle)%>&id=<%=id%>">삭제</a>
 							</div>
 						</ul>
-						<c:set var="movietitle" value="${mdto.title}"/>
 						<%
-								String movietitle=pageContext.getAttribute("movietitle").toString();
 								String sql = "select rownum, t.* from storyboard t where t.movietitle = ? and t.id = ?";
 								sdao.select(sql, movietitle, id);
 								pageContext.setAttribute("sdto", sdao.getDto());

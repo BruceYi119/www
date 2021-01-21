@@ -1,150 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../top.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" href="/view/img/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/view/img/favicon.ico" type="image/x-icon" />
+
+<title>갈비대첩</title>
+<link rel="stylesheet" href="/view/css/heesoo_layout.css">
+<link rel="stylesheet" href="/view/css/heesoo_location_layout.css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b0455cfb06f562e4f4a1ab2afadeddac"></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-<style>
-	main{
-        width:1200px;
-        height:1000px;
-        margin: 10px auto;
-        margin-bottom: 50px;
-    }
-    #come_title{
-    	font-size: 50px;
-    	
-    }
-    #map{
-    	width:1200px;
-    	height:600px;
-    }
-    #location_wrap{
-    	margin-top:10px;
-    }
-    dl{
-   	   text-align: left;
-		margin: 0;
-		padding: 30px 0;
-		font-size: 15px;
-		line-height: 22px;
-		border-bottom: 1px solid #ebebeb;
-    }
-    dt{
-    	text-align: left;
-		margin: 0;
-		padding: 0;
-		float: left;
-		width: 168px;
-		padding-left: 10px;
-		font-size: 20px;
-    }
-    dd{
-		text-align: left;
-		font-size: 20px;
-		line-height: 22px;
-		margin: 0;
-		overflow:visible;
-		padding: 0;
-		padding-right: 10px;	
-		margin-left: 60px;
-		padding-left:140px;
-    }
-    
-    main::after{
-    clear: both;}
-    .iconWrap{
-    	position: relative;
-    }
-    .svg-inline--fa{
-   		position:absolute;
-    	top:-20px;
-    }
-    .book{left:10px;}
-    .group{left:17px;}
-    .parking{left:10px;}
-    .male{left:33px;}
-    .female{left:40px;}
-    .baby{left:23px;}
-    #sub_detail_e{
-    	font-size:17px;
-    	color:gray;
-    }
-    .use{padding-top:20px;}
-   
-    
-    
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
-    .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
-    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
-    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
-    .info .close:hover {cursor: pointer;}
-    .info .body {position: relative;overflow: hidden;}
-    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
-    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
-    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
-    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-    .info .link {color: #5085BB;}
-</style>
-<main>
-	<div id="come_title">오시는 길</div>
-	<hr>
-	<div id="map"></div>
-	<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(37.40287125921357, 126.90659552695378), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-// 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(37.40287125921357, 126.90659552695378); 
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-    position: markerPosition
-   
-});
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
-var content = '<div class="wrap">' + 
-'    <div class="info">' + 
-'        <div class="title">' + 
-'            갈비대첩' + 
-'            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-'        </div>' + 
-'        <div class="body">' + 
-'            <div class="img">' +
-'                <img src="//t1.daumcdn.net/thumb/C84x76/?fname=http://t1.daumcdn.net/localfiy/93AB374342EA40319F8BA613D2ED9418" width="73" height="70">' +
-'           </div>' + 
-'            <div class="desc">' + 
-'                <div class="ellipsis">경기 안양시 만안구 박달로 485</div>' + 
-'                <div class="jibun ellipsis">(우) 13983(지번) 박달동 105-3</div>' + 
-'            </div>' + 
-'        </div>' + 
-'    </div>' +    
-'</div>';
-
-//마커 위에 커스텀오버레이를 표시합니다
-//마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-var overlay = new kakao.maps.CustomOverlay({
-content: content,
-map: map,
-position: marker.getPosition()       
-});
-
-//마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-kakao.maps.event.addListener(marker, 'click', function() {
-overlay.setMap(map);
-});
-
-//커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-function closeOverlay() {
-overlay.setMap(null);     
-}
-</script>
-<dl id="location_wrap">
+<script defer src="/core/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+<script defer src="/core/bootstrap-4.5.3/js/bootstrap.bundle.js"></script>
+<script defer src="/view/js/reservation_write_cal.js"></script>
+<script defer src="/view/js/heesoo_map.js"></script>
+</head>
+<body>
+	<jsp:include page="/view/heesoo/top.jsp" flush="false" />
+	<main>
+		<div id="come_title">오시는 길</div>
+		<hr>
+		<div id="map"></div>
+		<dl id="location_wrap">
 	<dt class="come_content">이용시간</dt>
 	<div class="gap"></div>
 	<dd class="come_detail">연중무휴 11:00~22:00<br/><span class="sub_detail_e"></span>방문 전 예약 바랍니다.</dd>
@@ -167,5 +47,9 @@ overlay.setMap(null);
 	</dd>
 </dl>
 </main>
-<%@include file="../bottom.jsp"%>
-
+	<jsp:include page="/view/heesoo/bottom.jsp" flush="false" />
+	<a href="../../../index.jsp"><div id="home">
+			홈페이지
+		</div></a>
+</body>
+</html>

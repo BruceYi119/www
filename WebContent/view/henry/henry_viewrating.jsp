@@ -116,13 +116,16 @@ pageContext.setAttribute("mylist", mylist);
 		
 			<div class="base_wrap">
 				<div class="mainWrap">
-					<%@ include file="sidebar.jsp" %>
+					<div class="sidebar">
+						<div class="sideMyStory"><a href="mypage.jsp">스토리<br/>Board</a></div>
+						<div class="sideMovie"><a class="current" href="henry.jsp">영화<br/>List</a></div>
+					</div>
 					<div class="main">
 						<h2>현재 상영영화 (관람평순)</h2>
 						<ul class="listHeader">
 							<li class="listHeaderTitle"><a href="henry.jsp">상영영화</a></li>
 							<li class="listHeaderTitle"><a href="henry_name.jsp">이름순</a></li>
-							<li class="listHeaderTitle"><a href="henry_viewrating.jsp">관람평순</a></li>
+							<li class="listHeaderTitle"><a class="current" href="henry_viewrating.jsp">관람평순</a></li>
 							<li class="listHeaderTitle"><a href="henry_salesrating.jsp">예매율순</a></li>
 							<li class="listHeaderTitle"><a href="henry_releasedate.jsp">개봉일순</a></li>
 						</ul>

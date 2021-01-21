@@ -13,8 +13,13 @@ public class ReservationDTO {
 	private int rchild_cnt;
 	private String reat = null;
 	private String rbigo = null;
-	private String rchk = null;
+	private int rchk;
 	private Date rwritedate = null;
+	public static final String[] TimeBtn= {"1130","1200","1230","1300","1330","1400","1430","1500","1530","1600","1630","1700","1730","1800","1830","1900","1930","2000"};
+
+	public static String[] getTimebtn() {
+		return TimeBtn;
+	}
 
 	public int getRno() {
 		return rno;
@@ -88,11 +93,11 @@ public class ReservationDTO {
 		this.rbigo = rbigo;
 	}
 
-	public String getRchk() {
+	public int getRchk() {
 		return rchk;
 	}
 
-	public void setRchk(String rchk) {
+	public void setRchk(int rchk) {
 		this.rchk = rchk;
 	}
 

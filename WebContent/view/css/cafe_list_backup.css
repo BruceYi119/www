@@ -1,0 +1,31 @@
+body #in_con table {
+	width: 100%;
+    border-bottom : 1px solid #cccccc;
+    border-collapse: collapse;
+}
+body #in_con td {
+    border-bottom: 1px solid #cccccc;
+    padding-top: 5px;
+    padding-bottom: 5px;
+   	padding-left : 2px;
+	padding-right : 2px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#csearch{
+	margin:10px;
+}
+
+
+#in_con .list_td:hover{
+	background-color: #eeeeee;
+	cursor: pointer;
+}

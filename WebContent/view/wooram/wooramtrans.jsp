@@ -21,8 +21,10 @@ String footerUrl = footer.getFooterUrl();
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="shortcut icon" href="/view/img/favicon.ico" type="image/x-icon" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" href="/view/img/favicon.ico"
+	type="image/x-icon" />
 <link rel="icon" href="/view/img/favicon.ico" type="image/x-icon" />
 <title><%=title%></title>
 <%=css%>
@@ -40,53 +42,53 @@ String footerUrl = footer.getFooterUrl();
 			</div>
 		</nav>
 		<main>
-			<div class="base_wrap">
-				<!-- 			여기 h2부터 table까지 입력하는 곳 -->
-				<h2 align="center">우람 번역기</h2>
-				<div id="container" method="get">
-					<div id="all">
-						<div id="one">
-							<div id="one1">
-								<span id="f11">원본언어</span> <select id="language1"
-									name="language1">
-									<option value="kr">한국어</option>
-									<option value="en" selected>영어</option>
-									<option value="cn">중국어</option>
-									<option value="jp">일본어</option>
-									<option value="fr">프랑스어</option>
-									<option value="de">독일어</option>
-									<option value="es">스페인어</option>
-								</select>
-							</div>
-							<div class="clearBoth"></div>
-							<textarea id="inp" name="inp" placeholder="번역할 내용을 입력하세요"></textarea>
+		<div class="base_wrap">
+			<!-- 			여기 h2부터 table까지 입력하는 곳 -->
+			<h2 align="center">두글 번역기(두글두글‍🌐💓🌍)</h2>
+			<div id="container" method="get">
+				<div id="all">
+					<div id="one">
+						<div id="one1">
+							<span id="f11">원본언어</span> <select id="language1"
+								name="language1">
+								<option value="kr">한국어</option>
+								<option value="en" selected>영어</option>
+								<option value="cn">중국어</option>
+								<option value="jp">일본어</option>
+								<option value="fr">프랑스어</option>
+								<option value="de">독일어</option>
+								<option value="es">스페인어</option>
+							</select>
+						</div>
+						<div class="clearBoth"></div>
+						<textarea id="inp" name="inp" placeholder="번역할 내용을 입력하세요"></textarea>
 
+					</div>
+					<div id="ct">
+						<div class="clearBoth"></div>
+						<input type="button" id="btn1" value="번역하기"> <input
+							type="button" id="btn2" value="새로고침">
+					</div>
+					<div id="two">
+						<div id="two1">
+							<span id="f22">번역언어</span> <select id="language2"
+								name="language2">
+								<option value="kr" selected>한국어</option>
+								<option value="en">영어</option>
+								<option value="cn">중국어</option>
+								<option value="jp">일본어</option>
+								<option value="fr">프랑스어</option>
+								<option value="de">독일어</option>
+								<option value="es">스페인어</option>
+							</select>
 						</div>
-						<div id="ct">
-							<div class="clearBoth"></div>
-							<input type="button" id="btn1" value="번역하기"> <input
-								type="button" id="btn2" value="새로고침">
-						</div>
-						<div id="two">
-							<div id="two1">
-								<span id="f22">번역언어</span> <select id="language2"
-									name="language2">
-									<option value="kr" selected>한국어</option>
-									<option value="en">영어</option>
-									<option value="cn">중국어</option>
-									<option value="jp">일본어</option>
-									<option value="fr">프랑스어</option>
-									<option value="de">독일어</option>
-									<option value="es">스페인어</option>
-								</select>
-							</div>
-							<div class="clearBoth"></div>
-							<div id="outp"></div>
-							<div class="clearBoth"></div>
-						</div>
+						<div class="clearBoth"></div>
+						<div id="outp"></div>
+						<div class="clearBoth"></div>
 					</div>
 				</div>
 			</div>
+		</div>
 		</main>
 		<jsp:include page="<%=footerUrl%>" flush="true" />
 	</div>

@@ -8,7 +8,6 @@ public class CdatDTO extends CafeDTO{
 	private String cdno = null;
 	private String dname = null;
 	private String dcontent = null;
-	private String dpwd = null;
 	private String cno= dto.getCno();
 	private String writeday = null;
 	
@@ -30,12 +29,6 @@ public class CdatDTO extends CafeDTO{
 	public void setDcontent(String dcontent) {
 		this.dcontent = dcontent;
 	}
-	public String getDpwd() {
-		return dpwd;
-	}
-	public void setDpwd(String dpwd) {
-		this.dpwd = dpwd;
-	}
 	public String getCno() {
 		return cno;
 	}
@@ -52,7 +45,7 @@ public class CdatDTO extends CafeDTO{
 	
 	@Override
 	public String toString() {
-		return "CdatDTO [cdno=" + cdno + ", dname=" + dname + ", dcontent=" + dcontent + ", dpwd=" + dpwd + ", cno="
+		return "CdatDTO [cdno=" + cdno + ", dname=" + dname + ", dcontent=" + dcontent + ", cno="
 				+ cno + ", writeday=" + writeday + "]";
 	}
 	

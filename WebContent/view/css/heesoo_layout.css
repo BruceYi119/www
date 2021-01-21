@@ -1,0 +1,84 @@
+/* top*/
+@font-face { font-family: 'Gugi'; src: url(../heesoo/font/Gugi-Regular.ttf) format('truetype'); }
+body {
+	margin: 0px;
+	position:relative;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.top_background {
+	background-color: brown;
+	border-bottom:3px solid black;
+}
+header {
+	margin: auto;
+	width: 1200px;
+	height: 160px;;
+	text-align: center;
+}
+#logo {
+	padding-top: 10px;
+	width: 1200px;
+	height: 100px;
+	margin: auto;
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+nav {
+	width: 1200px;
+	height: 100px;
+	
+}
+nav ul {
+	list-style-type: none;
+	margin: auto;
+	padding-top: 5px;
+}
+nav ul li {
+	padding: auto;
+	display: inline-block;
+	text-align: center;
+	margin-left: 60px;
+	margin-right: 60px;
+	font-size:30px;
+	font-family:Gugi;
+}
+
+/* bottom*/
+.background {
+	background: brown;
+	border-top:3px solid black;
+}
+
+footer {
+	width: 1200px;
+	height: 150px;
+	margin: auto;
+}
+.bottom {
+	/* position: relative; */
+	float: left;
+/* 	margin: 20px 20px; */
+	padding: 5px;
+}
+/* .bottom::after {
+	clear: both;
+} */
+
+/* #home{
+	position: fixed;
+	display:inline-block;
+    bottom: 50px;
+    right: 50px;
+    width: 120px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #fff;
+    border: none;
+    background-color: #efefef;
+}  */
+
+
+.ss { background-color: green; }

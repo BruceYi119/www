@@ -1,0 +1,171 @@
+body #container{
+	width:90%;
+	margin:auto;
+	position: relative;
+	margin-top: 10px;
+
+}
+
+body #navi{
+	float:left;
+	width: 17%;
+	height : 500px;
+	padding-top : 0px;
+	margin-right: 10px;
+	margin-top: 20px;
+	background: #FAD0C9;
+}
+body #in_con{
+	float: left;
+	width: 80%;
+}
+
+body #in_con:after { 
+	content: '';
+	dispaly: table;
+	clear: both ;
+}
+
+body nav #cafe_name{
+	height:45px;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 10px;
+}
+
+body #in_nav{
+	border-top:solid 2px; 
+	border-bottom: solid 2px;
+	height:28px;
+}
+
+body #in_nav #cafe_info_click{
+	float: left;
+	width : 50%;
+}
+body #in_nav #cafe_info_click:hover{
+	font-weight: bold;
+	background: #6E6E6D;
+	color: #FAD0C9;
+	cursor: pointer;
+}
+
+body #in_nav #my_info_click,#my_info_notclick{
+	float: left;
+	width : 50%;
+}
+body #in_nav #my_info_click:hover,#my_info_notclick:hover{
+	font-weight: bold;
+	background: #6E6E6D;
+	color: #FAD0C9;
+	cursor: pointer;
+}
+body #in_nav #cafe_info_click:after{
+	content: '';
+	dispaly: table;
+	clear: both ;
+}
+
+body #in_nav #my_info_notclick a:hover{
+	color: #FAD0C9;
+}
+
+body #cafe_info{
+	height : 300px;
+
+}
+body #cafe_info table{
+	width:100%;
+	align:center;
+	border-collapse: collapse;
+}
+body #cafe_info table td{
+	padding-left: 3px;
+}
+body #cafe_info table #img_td{
+	padding-top: 10px;
+	padding-left: 25px;
+	padding-bottom: 10px;	
+}
+body #cafe_info table #img_right{
+	padding-top: 5px;
+}
+
+body #cafe_info table #mem_rating, #img_right #manager{
+	border: solid 1px;
+	border-radius: 5px;
+	background: #6E6E6D;
+	color: #FAD0C9;
+	font-size: 13px;
+}
+
+body #cafe_info table #img_right #since{
+	font-size: 12px;	
+}
+
+body #cafe_info table p{
+	height:10px;
+}
+body #cafe_info table .writetype{
+	position : relative;
+	float: right;
+	padding-right : 10px;
+}
+body #cafe_info table .writetype:after{
+	content: '';
+	dispaly: table;
+	clear: both ;
+}
+body #cafe_info table .my_info{
+	position:absolute;
+	visibility:hidden;
+}
+
+
+body #my_btn table input[type=button]{
+	width:200px;
+	height:44px;
+	background:#616161;
+	color:white;
+	font-weight:900;
+	margin: 3px;
+}
+body #cafe_del{
+	text-align: left;
+	margin-top: 18px;
+	background: #eeeeee;
+	height: 80px;
+}
+
+body .choice_sql:hover{
+	background: #6E6E6D;
+	color: #FAD0C9;
+	cursor: pointer;
+}
+body #navi a {
+	text-decoration: none;
+	color: black;
+}
+
+body #navi a:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+body #in_con table th, input[type=submit],input[type=button],input[type=reset],button{
+	background: #6E6E6D;
+	color: white;
+	font-weight:900;
+	margin: 3px;
+	width : 100px;
+	heigth : 30px;
+}
+
+body #in_con table input[type=file],select{
+	background: #FAD0C9;
+	font-weight:900;
+}
+
+body #in_con table,input[type=text],textarea{
+	font-weight: 600;
+}

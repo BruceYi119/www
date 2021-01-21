@@ -8,7 +8,6 @@ public class CafeDTO {
 	private String rownum=null;
 	private String cno=null;
 	private String name=null;
-	private String pwd=null;
 	private String title=null;
 	private String writype=null;
 	private String animal=null;
@@ -37,12 +36,6 @@ public class CafeDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
 	}
 	public String getTitle() {
 		return title;
@@ -101,12 +94,12 @@ public class CafeDTO {
 	
 	@Override
 	public String toString() {
-		return "CafeDTO [rownum=" + rownum + ", cno=" + cno + ", name=" + name + ", pwd=" + pwd + ", title=" + title + ", writype=" + writype
+		return "CafeDTO [rownum=" + rownum + ", cno=" + cno + ", name=" + name + ", title=" + title + ", writype=" + writype
 				+ ", animal=" + animal + ", content=" + content + ", fname=" + fname + ", readnum=" + readnum
 				+ ", liked=" + liked + ", fimsi=" + fimsi + ", writeday=" + writeday + "]";
 	}
 
 	public String toString(boolean t) {
-		return "rownum, cno, name, pwd, title, writype, animal, content, fname, readnum, liked, fimsi, writeday";
+		return "rownum, cno, name, title, writype, animal, content, fname, readnum, liked, fimsi, writeday";
 	}
 }

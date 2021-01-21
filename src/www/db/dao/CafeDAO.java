@@ -20,7 +20,6 @@ public class CafeDAO implements Idao {
 	public ArrayList<CafeDTO> list = null;
 
 	public CafeDAO() {
-//		db = new Db();
 		db = Db.getInstance();
 	}
 
@@ -140,10 +139,8 @@ public class CafeDAO implements Idao {
 				if (i == 0)	
 					dto = new CafeDTO();
 				
-				dto.setRownum(db.rs.getString("rownum"));
 				dto.setCno(db.rs.getString("cno"));
 				dto.setName(db.rs.getString("name"));
-				dto.setPwd(db.rs.getString("pwd"));
 				dto.setTitle(db.rs.getString("title"));
 				dto.setWritype(db.rs.getString("writype"));
 				dto.setAnimal(db.rs.getString("animal"));
@@ -171,7 +168,6 @@ public class CafeDAO implements Idao {
 				dto.setRownum(db.rs.getString("rownum"));
 				dto.setCno(db.rs.getString("cno"));
 				dto.setName(db.rs.getString("name"));
-				dto.setPwd(db.rs.getString("pwd"));
 				dto.setTitle(db.rs.getString("title"));
 				dto.setWritype(db.rs.getString("writype"));
 				dto.setAnimal(db.rs.getString("animal"));
@@ -245,6 +241,28 @@ public class CafeDAO implements Idao {
 		try {
 			String sql = "select count(*) as cnt from cafe "+addsql+" '%"+sword+"%'";
 			sql=sql + addsql2 +" '%"+sword+"%'";
+			
+			
+			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
+			db.pstmt = db.con.prepareStatement(sql);
+			db.rs = db.pstmt.executeQuery();
+			if(db.rs.next()) {
+				cnt = db.rs.getInt("cnt");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.finalize();
+		}
+		return cnt;
+	}
+	
+	public int getListCount4(String addsql,String find) {
+		int cnt = 1;
+		
+		try {
+			String sql = "select count(*) as cnt from cafe "+addsql+"'"+find+"'";
+				
 			
 			
 			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());

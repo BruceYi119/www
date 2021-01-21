@@ -143,7 +143,6 @@ public class CdatDAO implements Idao {
 			while (db.rs.next()) {
 				dto.setCdno(db.rs.getString("cdno"));
 				dto.setDname(db.rs.getString("dname"));
-				dto.setDpwd(db.rs.getString("dpwd"));
 				dto.setDcontent(db.rs.getString("dcontent"));
 				dto.setCno(db.rs.getString("cno"));
 				dto.setWriteday(db.rs.getString("writeday"));
@@ -156,7 +155,7 @@ public class CdatDAO implements Idao {
 
 	@Override
 	public void setList() {
-		list = new ArrayList();
+		list = new ArrayList<CdatDTO>();
 
 		try {
 			while(db.rs.next()) {
@@ -164,7 +163,6 @@ public class CdatDAO implements Idao {
 
 				dto.setCdno(db.rs.getString("cdno"));
 				dto.setDname(db.rs.getString("dname"));
-				dto.setDpwd(db.rs.getString("dpwd"));
 				dto.setDcontent(db.rs.getString("dcontent"));
 				dto.setCno(db.rs.getString("cno"));
 				dto.setWriteday(db.rs.getString("writeday"));

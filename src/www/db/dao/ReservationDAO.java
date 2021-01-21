@@ -17,7 +17,27 @@ public class ReservationDAO implements Idao {
 	public ReservationDAO() {
 		db = Db.getInstance();
 	}
+	
+	public int count(String sql, String ...args) {
+		int count = 0;
 
+		try {
+			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
+			db.pstmt = db.con.prepareStatement(sql);
+			setPstmt(args);
+			db.rs = db.pstmt.executeQuery();
+
+			while (db.rs.next())
+				count = db.rs.getInt("total");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.finalize();
+		}
+		
+		return count;
+	}
+	
 	@Override
 	public void select(String sql, String ...args) {
 		try {
@@ -140,7 +160,7 @@ public class ReservationDAO implements Idao {
 				dto.setRchild_cnt(db.rs.getInt("rchild_cnt"));
 				dto.setReat(db.rs.getString("reat"));
 				dto.setRbigo(db.rs.getString("rbigo"));
-				dto.setRchk(db.rs.getString("rchk"));
+				dto.setRchk(db.rs.getInt("rchk"));
 				dto.setRwritedate(db.rs.getDate("rwritedate"));
 				i++;
 			}
@@ -166,7 +186,7 @@ public class ReservationDAO implements Idao {
 				dto.setRchild_cnt(db.rs.getInt("rchild_cnt"));
 				dto.setReat(db.rs.getString("reat"));
 				dto.setRbigo(db.rs.getString("rbigo"));
-				dto.setRchk(db.rs.getString("rchk"));
+				dto.setRchk(db.rs.getInt("rchk"));
 				dto.setRwritedate(db.rs.getDate("rwritedate"));
 
 				list.add(dto);

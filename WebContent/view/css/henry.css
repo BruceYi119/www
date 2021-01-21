@@ -8,6 +8,14 @@ li{
 	list-style: none;
 }
 
+.sidebar .current{
+	color: #99CED3;
+}
+
+.listHeader .current{
+	color: #99CED3;
+}
+
 /*========== 사이드바 ==========*/
 .mainWrap{
 	clear: both;

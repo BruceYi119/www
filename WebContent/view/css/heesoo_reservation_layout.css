@@ -1,0 +1,138 @@
+button,input[type=submit],.sCan,.rtimeBtn{
+  	cursor: pointer;
+}
+
+main {
+	position: relative;
+	width: 1200px;
+	height: 900px;
+	margin: auto;
+	/* border: 4px solid black; */
+	display:flex;
+	flex-direction:row;
+	
+}
+#submenu{
+	margin:auto;
+	margin-top:0px;
+	position: relative;
+}
+
+.item{
+	flex-grow:1;
+}
+#submenu hr{
+	margin:0px;
+}
+.subitem{
+	display:block;
+	margin:0px;
+	width:100%;
+	padding:60px 20px;;	
+	font-size:15px;
+	background:none;
+	border:none;
+}
+.subitem:hover{
+	background:#e4e4e4;
+}
+#title {
+	margin-left: 20px;
+}
+#title h2{
+	display:inline-block;
+}
+section {
+	position: relative;
+	width: 43%;
+	display: inline-block;
+	margin-left: 30px;
+	/* border: 4px solid black; */ 
+	/* box-shadow: 5px 5px 10px 1px lightgray; */
+}
+   	#home{
+	position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 110px;
+    height: 35px;
+    border-radius: 25px;
+    border: none;
+    background-color: gray;
+    text-align:center;
+    padding-top:10px;
+    opacity: 30%;
+}
+#cal {
+	width: 400px;
+	border: 1px solid black;
+	height: 700px;
+	text-align: center;
+	/* margin-left: 20px; */
+	position: relative;
+}
+.sun{color:#fc4c4e;}
+.sat{color:blue;}
+#cal td {
+/* 	padding: 0px; */
+	magin: 0px;
+}
+.rdateBtn {
+	height: 100%;
+	display: block;
+}
+aside {
+	display: inline-block;
+	width: 45%;
+	/* border: 4px solid black; */
+	margin-left: 30px;
+	position: relative;
+}
+#detail {
+	/* border: 1px solid black; */
+	width: 450px;
+	height: 700px;
+	margin-left: 10px;
+	/* position: relative; */
+}
+.title {
+	width: 65px;
+	padding-right: 5px;
+	border-bottom: 1px solid gray;
+}
+.input {
+	border-left: 1px solid gray;
+	padding-left: 10px;
+	width: 6px;
+	padding-right: 5px;
+	border-bottom: 1px solid gray;
+}
+input {
+	width: 80%;
+	height: 50%;
+}
+#t {
+	color: #e4e4e4;
+}
+.rtimeBtn {
+	display: none;
+	/*display:inline-block;*/
+	background: #edfbdc;
+	border: 1px solid #c8e1af;
+	margin: 5px;
+	padding: 7px;
+}
+
+.selColor {
+	background: green;
+}
+.noSelect {
+	color: #e4e4e4;
+}
+.noSelect_t {
+	color: black;
+	background: #e4e4e4;
+	boarder: gray;
+}
+
+

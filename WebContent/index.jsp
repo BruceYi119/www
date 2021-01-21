@@ -9,11 +9,12 @@
 <%@page import="www.html.header.Header"%>
 <%@page import="www.html.nav.Nav"%>
 <%@page import="www.html.footer.Footer"%>
-<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-Header header = new Header();
+	Header header = new Header();
 String css = header.getCss();
 String js = header.getJs();
 String title = header.getTitle();
@@ -38,14 +39,14 @@ StringBuilder sb = new StringBuilder();
 // pageContext.setAttribute("recipeList", recipeDao.getList());
 
 // 애완동물카패
-// CafeDAO cafeDao = new CafeDAO();
-// CafeDTO cafeDto = new CafeDTO();
-// sb.setLength(0);
-// sb.append("select ");
-// sb.append(cafeDto.toString(true));
-// sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from cafe order by writeday desc) t) tt where seq >= 1) where rownum <= 3");
-// cafeDao.selectAll(sb.toString());
-// pageContext.setAttribute("cafeList", cafeDao.getList());
+CafeDAO cafeDao = new CafeDAO();
+CafeDTO cafeDto = new CafeDTO();
+sb.setLength(0);
+sb.append("select ");
+sb.append(cafeDto.toString(true));
+sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from cafe order by writeday desc) t) tt where seq >= 1) where rownum <= 3");
+cafeDao.selectAll(sb.toString());
+pageContext.setAttribute("cafeList", cafeDao.getList());
 
 // 뚝딱조립PC
 Main_customDAO mainCustomDao = new Main_customDAO();
@@ -58,14 +59,14 @@ mainCustomDao.selectAll(sb.toString());
 pageContext.setAttribute("pcList", mainCustomDao.getList());
 
 // 갈비대첩 예약현황
-// ReservationDAO reservationDao = new ReservationDAO();
-// ReservationDTO reservatopmDto = new ReservationDTO();
-// sb.setLength(0);
-// sb.append("select ");
-// sb.append(reservatopmDto.toString(true));
-// sb.append(" from (select rownum seq, t.* from (select * from reservation order by rwritedate desc) t) tt where seq >= 1) where rownum <= 3");
-// reservationDao.selectAll(sb.toString());
-// pageContext.setAttribute("reservationList", reservationDao.getList());
+ReservationDAO reservationDao = new ReservationDAO();
+ReservationDTO reservatopmDto = new ReservationDTO();
+sb.setLength(0);
+sb.append("select ");
+sb.append(reservatopmDto.toString(true));
+sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from reservation order by rwritedate desc) t) tt where seq >= 1) where rownum <= 4");
+reservationDao.selectAll(sb.toString());
+pageContext.setAttribute("reservationList", reservationDao.getList());
 %>
 <!DOCTYPE html>
 <html>
@@ -207,11 +208,13 @@ pageContext.setAttribute("pcList", mainCustomDao.getList());
 									<tr><th>애완동물카페</th></tr>
 								</thead>
 								<tbody>
-<%-- 									<c:forEach items="${cafeList}" var="dto"> --%>
-<!-- 									<tr> -->
-<%-- 										<td>${dto.content}</td> --%>
-<!-- 									</tr>									 -->
-<%-- 									</c:forEach> --%>
+									<c:forEach items="${cafeList}" var="dto">
+									<tr>
+										<td>
+											<a href="/view/wooram/content.jsp?cno=${dto.cno}">${dto.content}</a>
+										</td>
+									</tr>									
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -241,15 +244,23 @@ pageContext.setAttribute("pcList", mainCustomDao.getList());
 									<tr><th>갈비대첩 예약현황</th></tr>
 								</thead>
 								<tbody>
+									<c:forEach items="${reservationList}" var="dto">
 									<tr>
-										<td>1</td>
+										<td>
+											<c:if test="${dto.rchk==0 }"><button type="button" class="btn btn-secondary btn-sm">예약 취소</button></c:if>
+											<c:if test="${dto.rchk==1 }"><button type="button" class="btn btn-success btn-sm">예약</button></c:if>
+											<c:if test="${dto.rchk==2 }"><button type="button" class="btn btn-warning btn-sm">예약 수정</button></c:if>
+											<c:set var="rdate" value="${dto.rdate} "/>
+											${fn:substring(rdate,0,10) }
+											<c:set var="rtime" value="${ dto.rtime} "/>
+											${fn:substring(rtime,0,2) } : ${fn:substring(rtime,2,4)}
+											 / 예약자 : ${dto.rname} / 
+											<c:if test="${dto.reat=='s'}">매장식사</c:if>
+											<c:if test="${dto.reat=='p'}">포장</c:if>
+											${dto.rbigo}
+										</td>
 									</tr>
-									<tr>
-										<td>2</td>
-									</tr>
-									<tr>
-										<td>3</td>
-									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>

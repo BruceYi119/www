@@ -4,6 +4,7 @@
 session.removeAttribute("id");
 session.removeAttribute("name");
 session.removeAttribute("admin");
+session.removeAttribute("nick");
 
 response.sendRedirect("/");
 %>

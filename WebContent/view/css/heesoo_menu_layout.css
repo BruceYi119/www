@@ -1,0 +1,57 @@
+main{
+	width:1900px;
+	margin:auto;
+	border:1px solid black;
+}
+#home{
+	position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 110px;
+    height: 35px;
+    border-radius: 25px;
+    border: none;
+    background-color: gray;
+    text-align:center;
+    padding-top:10px;
+    opacity: 30%;
+}
+.container{
+	display:flex;
+	justify-content: center;
+	flex-direction: row;
+}
+.rtitle{
+	writing-mode: vertical-lr;
+	text-align:center;
+	height:250px;
+	font-size:20px;
+	padding-top:5px;
+	border:1px solid black;
+	background:black;
+	color:yellow;
+}
+.rmenu{
+	writing-mode: vertical-lr;
+	width:100px;
+	height:250px;
+	border:1px solid black;
+	font-size:30px;
+	align:right;
+	cursor: pointer;
+	padding-top:5px;
+}
+#show{
+	width:1900px;
+	height:700px; 	
+	border:1px solid black;
+}
+#sbob{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/sbob.png);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	
+	color: white;
+}

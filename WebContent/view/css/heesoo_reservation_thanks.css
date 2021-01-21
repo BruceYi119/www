@@ -1,0 +1,22 @@
+button,input[type=submit],.sCan,.rtimeBtn{
+  	cursor: pointer;
+}
+main {
+	position: relative;
+	width: 1200px;
+	height: 700px;
+	margin: auto;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.item{
+	font-size: 40px;
+    margin-bottom: 121px;
+}
+#go_index{
+    width: 300px;
+    height: 100px;
+    font-size: 30px;
+}
