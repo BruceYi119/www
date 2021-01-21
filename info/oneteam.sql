@@ -230,36 +230,50 @@ create table cmember(
    constraint cmember_del_yn_c check (del_yn in ('y','n'))
 );
 
--- 학생성적 테이블 (헨리)
-drop table studentgrade;
-drop sequence s_studentgrade;
-create sequence studentgrade;
-create table studentgrade(
-	sgno number constraint studentgrade_sgno_p primary key,					-- 키값
-	name char(20),																-- 이름
-	attpoint number,															-- 출석점수
-	hwpoint number,																-- 과제점수
-	testpoint number,															-- 시험점수
-	ttlpoint number																-- 총점수
+--영화 List 페이지 영화 저장 테이블 (헨리)
+drop sequence movies_seq;
+drop table movies;
+create sequence movies_seq;
+create table movies(
+    mno number constraint movies_no_p primary key,
+    title varchar2(200),									-- 영화제목
+    viewrating varchar2(200),								-- 관람평점
+    salesrating varchar2(200),								-- 예매율
+    genre varchar2(200),									-- 장르
+    runtime varchar2(200),									-- 상영시간
+    releasedate varchar2(200),								-- 개봉일
+    filmdirector varchar2(200),								-- 감독
+    imgtitle varchar2(200)									-- 이미지 이름(src=사진 불러오기 위한 이름)
 );
 
--- 학생은행정보 테이블 (헨리)
-drop table studentinfo;
-drop sequence s_studentinfo;
-create sequence studentinfo;
-create table studentinfo(
-	sino number constraint studentinfo_sino_p primary key,					-- 키값
-	name char(20),																-- 이름
-	username varchar2(20),														-- 아이디
-	birthdate date,																-- 생일
-	studentidno char(10),														-- 학번
-	addr varchar2(100),															-- 주소
-	hphone varchar2(20),														-- 집전화번호
-	cphone varchar2(20),														-- 핸드폰번호
-	email varchar2(30),															-- 이메일
-	bankname varchar2(20),														-- 은행명
-	acctno varchar2(30),														-- 계좌번호
-	acctname varchar2(20)														-- 예금주
+--스토리 Board로 추가하면 추가된 나의 영화 테이블 (헨리)
+drop sequence mymovielist_seq;
+drop table mymovielist;
+create sequence mymovielist_seq;
+create table mymovielist(
+    mno number constraint mymovielist_no_p primary key,
+    title varchar2(200),							-- 영화제목
+    viewrating varchar2(200),						-- 관람평점
+    salesrating varchar2(200),						-- 예매율
+    genre varchar2(200),							-- 장르
+    runtime varchar2(200),							-- 상영시간
+    releasedate varchar2(200),						-- 개봉일
+    filmdirector varchar2(200),						-- 감독
+    imgtitle varchar2(200),							-- 이미지 이름(src=사진 불러오기 위한 이름)
+    writedate date default sysdate,				-- 스토리보드에 등록한 날짜
+    id varchar2(200)								-- 사용자 아이디(사용자가 추가한 목록만 보이기 위해서)
+);
+
+--스토리 Board에서 추가한 영화에 대한 스토리(후기 및 관람전 찜) 작성하면 내용 추가하는 테이블 (헨리)
+drop sequence storyboard_seq;
+drop table storyboard;
+create sequence storyboard_seq;
+create table storyboard(
+    sno number constraint storyboard_no_p primary key,
+    movietitle varchar2(200),											-- 영화제목
+    content varchar2(500),												-- 스토리 내용
+    writedate date default sysdate,									-- 스토리 등록 날짜
+    id varchar2(200)													-- 사용자 아이디(사용자가 작성한 내용만 출력)
 );
 
 -- 예약 테이블 (김희수)

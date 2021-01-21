@@ -27,9 +27,6 @@ String footerUrl = footer.getFooterUrl();
 
 StringBuilder sb = new StringBuilder();
 
-// 영화정보
-// sb.append("select rownum, t.* from cafe t order by writeday desc");
-
 // 레시피
 // Recipe_boardDAO recipeDao = new Recipe_boardDAO();
 // Recipe_boardDTO recipeDto = new Recipe_boardDTO();
@@ -156,17 +153,17 @@ StringBuilder sb = new StringBuilder();
 						<div class="movie p10">
 							<table class="table table-danger">
 								<thead class="thead-dark">
-									<tr><th>영화정보</th></tr>
+									<tr><th>영화</th></tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>1</td>
+										<td><a href="/view/henry/henry.jsp">현재상영 영화</a></td>
 									</tr>
 									<tr>
-										<td>2</td>
+										<td><a href="/view/henry/henry.jsp">현재상영 영화</a></td>
 									</tr>
 									<tr>
-										<td>3</td>
+										<td><a href="/view/henry/henry.jsp">현재상영 영화</a></td>
 									</tr>
 								</tbody>
 							</table>

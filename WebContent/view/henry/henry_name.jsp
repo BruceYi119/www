@@ -63,7 +63,7 @@ sb.setLength(0);
 // list조회 쿼리
 sb.append("select ");
 sb.append(mdto.toString(true));
-sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from movies order by mno) t) tt where seq >= ?) where rownum <= ?");
+sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from movies order by title) t) tt where seq >= ?) where rownum <= ?");
 
 // list조회
 mdao.selectAll(sb.toString(), Integer.toString(p.getStartList()), Integer.toString(p.getListSize()));
@@ -102,7 +102,7 @@ pageContext.setAttribute("mylist", mylist);
 <body>
 	<input type="hidden" id="color_class" value="henry" />
 	<div id="wrap">
-		<input type="hidden" name="url" value="/view/henry/henry.jsp" />
+		<input type="hidden" name="url" value="/view/henry/henry_name.jsp" />
 		<input type="hidden" name="page" value='<%=cpage%>' />
 		<input type="hidden" name="listCnt" value='<%=listCnt%>' />
 		<input type="hidden" name="info" value='<%=pageInfo%>' />
@@ -118,7 +118,7 @@ pageContext.setAttribute("mylist", mylist);
 				<div class="mainWrap">
 					<%@ include file="sidebar.jsp" %>
 					<div class="main">
-						<h2>현재 상영영화</h2>
+						<h2>현재 상영영화 (이름순)</h2>
 						<ul class="listHeader">
 							<li class="listHeaderTitle"><a href="henry.jsp">상영영화</a></li>
 							<li class="listHeaderTitle"><a href="henry_name.jsp">이름순</a></li>

@@ -27,7 +27,7 @@ String footerUrl = footer.getFooterUrl();
 
 MemberDAO dao = new MemberDAO();
 String sql = "select rownum, t.* from member t where id = ?";
-String id = session.getAttribute("id").toString();
+String id = session.getAttribute("id") != null ? session.getAttribute("id").toString() : "";
 dao.select(sql, id);
 
 pageContext.setAttribute("dto", dao.getDto());

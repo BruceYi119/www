@@ -1,0 +1,348 @@
+@charset "UTF-8";
+
+main{
+	background: #203450;
+}
+
+li{
+	list-style: none;
+}
+
+/*========== 사이드바 ==========*/
+.mainWrap{
+	clear: both;
+	width: 80%;
+	min-height: 1000px;
+	margin: 0 auto;
+	position:relative;
+}
+
+.mainWrap::after{
+	content:'';
+	display:block;
+	clear:both;
+}
+
+.sidebar{
+	position: fixed;
+	width: 150px;
+	height: 230px;
+	top: 32%;
+	left: 17%;
+	border: 5px solid rgba(225, 225, 225, 0.9);
+	border-radius: 25px;
+}
+
+.sideMyStory{
+	width: 70%;
+	height: 80px;
+	font-size: 20px;
+	font-weight: 600;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	border: 2px solid rgba(153, 206, 211, 0.5);
+	border-radius: 15px;
+	margin: 20px auto;
+}
+
+.sideMovie{
+	width: 70%;
+	height: 80px;
+	font-size: 20px;
+	font-weight: 600;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	border: 2px solid rgba(153, 206, 211, 0.5);
+	border-radius: 15px;
+	margin: 20px auto;
+}
+
+.sideMovie a{
+	text-decoration: none;
+	color: white;
+}
+
+.sideMovie a:hover{
+	text-decoration: none;
+	color: #99CED3;
+}
+
+.sideMyStory a{
+	text-decoration: none;
+	color: white;
+}
+
+.sideMyStory a:hover{
+	text-decoration: none;
+	color: #99CED3;
+}
+
+
+
+/*========== 영화뿌려주는 부분 ==========*/
+.main{
+	float: right;
+	width: 85%;
+	min-height: 1000px;
+	margin: 0 auto;
+	background: white;
+}
+
+.main h2{
+	padding: 40px 0 10px 70px;
+	font-weight: 600;
+}
+
+.main .listHeader{
+	clear: both;
+	height: 53px;
+    border-top: 2px solid #212121;
+    border-bottom: 1px solid #212121;
+    margin: 0 70px 30px 70px;
+}
+
+.main .listHeader::after{
+	content:'';
+	display:block;
+	clear:both;
+}
+
+.main .listHeader li{
+	float: left;
+	list-style: none;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.listHeader .listHeaderTitle{
+	background: #212121;
+	color: white;
+	padding: 10px 10px;
+	margin-right: 2px;
+}
+
+.listHeaderTitle a{
+	text-decoration: none;
+	color: white;
+}
+
+.listHeaderTitle a:hover{
+	text-decoration: none;
+	color: #99CED3;
+}
+
+.movieList{
+	clear: both;
+	margin: 0 70px 40px 70px;
+	border-bottom: 1px dotted black;
+	height: 200px;
+}
+
+.movieList::after{
+	content:'';
+	display:block;
+	clear:both;
+}
+
+.movieList .movieImage{
+	float: left;
+    width: 112px;
+    height: 160px;
+    margin-right: 19px;
+    border: 2px solid #212121;
+}
+
+.movieList .movieTitle{
+	font-size: 25px;
+	font-weight: 600;
+	margin-top: 4px;
+	margin-bottom: 25px;
+}
+
+.movieList .credit_summary{
+	float: left;
+	line-height: 20px;
+}
+
+.creditWrap{
+	width: 600px;
+}
+
+.movieList .credit{
+	display: inline-block;
+	margin: 2px 0;
+}
+
+.movieList .creditHeading{
+	float: left;
+	font-size: 23px;
+	font-weight: 600;
+	margin-top: 10px;
+	margin-right: 5px;
+}
+
+.movieList .creditData{
+	font-size: 23px;
+	float: left;
+	margin-top: 10px;
+	margin-right: 15px;
+}
+
+.addtoMylistBtn{
+	float: right;
+	width: 110;
+	border: 1px solid #212121;
+	border-radius: 10px;
+	background: #203450;
+	margin: 49px 10px 49px 0;
+}
+
+.addtoMylistBtn a{
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 700;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	padding: 10px;
+}
+
+.addtoMylistBtn a:hover{
+	text-decoration: none;
+	color: #99CED3;
+}
+
+.loveyou{
+	background: black;
+}
+
+/*========== CommentBox ==========*/
+.deleteMovieBtn{
+	float: right;
+	width: 110;
+	border: 1px solid #212121;
+	border-radius: 10px;
+	background: #203450;
+	margin: 60px 30px 60px 0;
+}
+
+.deleteMovieBtn a{
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 700;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	padding: 5px 10px;
+}
+
+.main .mToStoryRegDate{
+	margin: 50px 70px 5px 70px;
+	font-size: 13px;
+	text-align: right;
+}
+
+.CmovieList{
+	border-top: 1px solid #212121;
+}
+
+.cLi{
+	margin-top: 10px;
+}
+
+.cWrap{
+	width: 880px;
+	margin: auto;
+}
+
+.insertBox .cText{
+	font-size: 15px;
+	padding: 10px;
+	width: 800px;
+	height: 100px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	border: 2px solid #2121216e;
+}
+
+.updateBox{
+	display: none;
+}
+
+.updateBox .cText{
+	font-size: 15px;
+	padding: 10px;
+	width: 800px;
+	height: 100px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	border: 2px solid #2121216e;
+}
+
+.submitCBtn{
+	float: right;
+	width: 70px;
+	height: 60px;
+	font-size: 15px;
+	font-weight: 600;
+	tex-align: center;
+	color: #203450;
+	padding: 6px 10px;
+	background: white;
+	border-radius: 10px;
+	margin: 20px 0px 20px 10px;
+}
+
+/*나의 스토리 뿌려주는 영역*/
+.storybox{
+	display: inline-block;
+	width: 880px;
+	margin-top: 5px;
+}
+
+.story{
+	width: 880px;
+	background: #4d6d9a14;
+	border-radius: 10px;
+}
+
+.storyBoard{
+	font-size: 15px;
+	padding: 10px;
+}
+
+.wDay{
+	float: right;
+	width: 220px;
+	font-size: 13px;
+	padding: 10px 5px 5px 5px;
+}
+
+.supdelWrap{
+	display: block;
+	background: yellow;
+	width: 200px;
+	margin: 10px auto;
+}
+
+.updateBtn, .deleteBtn{
+	display: block;
+	float: left;
+	width: 60px;
+	font-size: 15px;
+	color: #203450;
+	font-weight: 600;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 2px 8px;
+	margin: 0px 20px; 
+	background: white;
+}
+
+
+
