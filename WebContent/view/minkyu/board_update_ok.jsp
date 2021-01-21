@@ -19,14 +19,15 @@ String content = multi.getParameter("content");
 String fname = multi.getFilesystemName("fname");
 String sung  =  multi.getParameter("sung");
 String pwd = multi.getParameter("pwd");
+String kind = multi.getParameter("kind");
 
 StockBoardDAO dao = new StockBoardDAO();
 String sql = "select * from stockboard where sbno="+sbno;
 dao.select(sql);
 
 if(pwd.equals(dao.getDto().getPwd())){
-	sql = "update stockboard set name=?, title=?, content=?, fname=?, sung=? where sbno="+sbno;
-	dao.update(sql,name,title,content,fname,sung);
+	sql = "update stockboard set name=?, title=?, content=?, fname=?, sung=?, kind=? where sbno="+sbno;
+	dao.update(sql,name,title,content,fname,sung,kind);
 	response.sendRedirect("board.jsp?sbno="+sbno);
 }else{
 	response.sendRedirect("board_update.jsp?sbno="+sbno+"&chk=1");

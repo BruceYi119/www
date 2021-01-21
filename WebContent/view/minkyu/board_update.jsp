@@ -6,12 +6,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
-<% 
+<%
 String sbno = request.getParameter("sbno");
 StockBoardDAO dao = new StockBoardDAO();
 String sql = "select * from stockboard where sbno="+sbno;
 dao.select(sql);
-
 Header header = new Header();
 String css = header.getCss();
 String js = header.getJs();
@@ -30,33 +29,6 @@ String footerUrl = footer.getFooterUrl();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title><%=title%></title>
-<style type="text/css">
-
-	h2{ text-align: center;}
-	#first li{
-		list-style-type: none;
-		display: inline-block;
-		margin-left: 30px;
-		padding-left:15px;
-		padding-top: 10px;
-		}
-	.base_wrap{text-align:center;}
-	
-	#board{
-		width: 600px;
-		height:500px;
-		margin: auto;
-	}
-	
-	#board td{
-		padding-left: 20px;
-		 border:1px solid #cccccc;
-	}
-	#fail{
-	color:red;
-	}
-</style>
-
 <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 
@@ -67,7 +39,6 @@ function main(){
 			return false;
 		}
 	}
-
 
 function aaa(my) {
 	if(my.pwd.value !=my.pwd2.value){
@@ -84,9 +55,10 @@ document.frm.kind.value="<%=dao.getDto().getKind()%>"
 });
 </script>
 
-
 <%=css%>
+<link rel="stylesheet" href="/view/css/minkyu_board_update.css">
 <%=js%>
+<!-- <script defer src="/view/js/minkyu_board_update.js"></script> -->
 </head>
 <body>
 	<input type="hidden" id="color_class" value="minkyu" />
@@ -105,7 +77,7 @@ document.frm.kind.value="<%=dao.getDto().getKind()%>"
 	<table id="board">
 		<tr>
 			<td>카테고리</td>
-			<td><select name="kind">
+			<td><select name="kind" id="kindSelect">
 					<option value="수익자랑">수익자랑				
 					<option value="노하우공유">노하우공유			
 				</select>

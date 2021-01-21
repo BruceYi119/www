@@ -1,0 +1,27 @@
+@charset "UTF-8";
+h2{ text-align: center;}
+#first li{ list-style-type: none; display: inline-block; margin-left: 30px;	padding-left:15px; padding-top: 10px; }
+#board{	margin: auto; width: 900px; }
+#title{ background: #cccccc; border-top:1px solid black; border-bottom:1px solid #E7E7E7; }
+#name{ border-bottom:1px solid #E7E7E7;	}
+#good{ color:red; }
+#bad{ color:blue; }
+#content{ border-bottom:1px solid #E7E7E7; }
+#img{ border-bottom:1px solid #E7E7E7; padding: 30px; text-align:center; }
+#goodbtn{ text-align:center; }
+#link{ float: right;margin-right: 245px; }
+#datboard{ width:900px;	margin:auto; }
+#container{	margin:auto; width:900px; height:230px; border-bottom: 1px solid #cccccc; text-align:center; padding-bottom: 20px; }
+#datname{ padding: 5px; float:left; margin-left: 268px; margin-right: 275px; margin-bottom: 10px; }
+#datcontent{ text-align:center; }
+#datsubmit{ width:150px; height:40px; border:1px solid #f15657; background:#f15657; color:white; border-radius: 45px; }
+#del{ visibility: hidden; position: absolute; }
+#datboardname{ text-align:left; }
+#datboardsub{ border-bottom:1px solid #E7E7E7; }
+#datboardcontent{ border-bottom:1px solid #cccccc; text-align:left; }
+#datdelbtn{	text-align: right; padding-bottom: 10px; }
+.btn1{ width: 100px; height: 35px; font-family: 'Roboto', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;
+	  color: #000; background-color: #fff; border: none; border-radius: 45px;box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	  transition: all 0.3s ease 0s; cursor: pointer; outline: none; font-size:20px; }
+.btn1:hover { background-color: #D5D5D5; box-shadow: 0px 15px 20px rgba(220, 220, 220, 0.4); color: #fff; transform: translateY(-7px); }
+.td1{ padding: 10px;}

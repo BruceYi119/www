@@ -137,13 +137,16 @@ StringBuilder sb = new StringBuilder();
 								</thead>
 								<tbody>
 									<tr>
-										<td><a href="../minkyu/minkyu.jsp">주요 증시(지수/금/비트코인/환율/삼성전자/애플/테슬라/현대)살펴보기</a></td>
+										<td><a href="/view/minkyu/minkyu.jsp">주요 증시(지수/금/비트코인/환율/삼성전자/애플/테슬라/현대)살펴보기</a></td>
 									</tr>
 									<tr>
-										<td><a href="../minkyu/finance_state.jsp">상장기업 실적 및 전체내역 확인하기</a></td>
+										<td><a href="/view/minkyu/finance_state.jsp">상장기업 실적 및 전체내역 확인하기</a></td>
 									</tr>
 									<tr>
-										<td><a href="../minkyu/ratio_divide.jsp">국내 주요 기업 배당금 조회</a></td>
+										<td><a href="/view/minkyu/ratio_divide.jsp">국내 주요 기업 배당금 조회</a></td>
+									</tr>
+									<tr>
+										<td><a href="/view/minkyu/stock_fund.jsp">주식과 펀드 제대로 알고 투자하기</a></td>
 									</tr>
 								</tbody>
 							</table>							
@@ -160,10 +163,16 @@ StringBuilder sb = new StringBuilder();
 										<td><a href="/view/henry/henry.jsp">현재상영 영화</a></td>
 									</tr>
 									<tr>
-										<td><a href="/view/henry/henry.jsp">현재상영 영화</a></td>
+										<td><a href="/view/henry/henry_name.jsp">현재상영 영화 (이름순)</a></td>
 									</tr>
 									<tr>
-										<td><a href="/view/henry/henry.jsp">현재상영 영화</a></td>
+										<td><a href="/view/henry/henry_viewrating.jsp">현재상영 영화 (관람평순)</a></td>
+									</tr>
+									<tr>
+										<td><a href="/view/henry/henry_salesrating.jsp">현재상영 영화 (에매율순)</a></td>
+									</tr>
+									<tr>
+										<td><a href="/view/henry/henry_releasedate.jsp">현재상영 영화 (개봉일순)</a></td>
 									</tr>
 								</tbody>
 							</table>

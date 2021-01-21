@@ -52,16 +52,16 @@ insert into member values(s_member.nextval, 'admin', '38252f54a15f38fe15c2bb2304
 
 -- 주식 테이블 (강민규)
 drop table stock;
-drop sequence s_stock_;
+drop sequence s_stock;
 create sequence s_stock start with 1;
 create table stock(
-	sno number,									-- 키값
-	title varchar2(50),							-- 기업명	
-	siga number,								-- 현재가
-	gijun varchar2(20),							-- 기준일자	
-	beadang number(10,2),						-- 배당금액			
-	suik number(10,2),							-- 배당수익률		
-	beadang1 number(10,2),						-- 배당성향
+	sno number,										-- 키값
+	title varchar2(50),								-- 기업명	
+	siga number,									-- 현재가
+	gijun varchar2(20),								-- 기준일자	
+	beadang number(10,2),							-- 배당금액			
+	suik number(10,2),								-- 배당수익률		
+	beadang1 number(10,2),							-- 배당성향
 	CONSTRAINT stock_sno_p PRIMARY KEY (sno)
 );
 
@@ -70,31 +70,30 @@ drop table stockboard;
 drop sequence s_stockboard;
 create sequence s_stockboard start with 1;
 create table stockboard(
-	sbno number,										-- 키값
-	name varchar2(50),									-- 이름
-	pwd varchar2(100),									-- 비밀번호
-	title varchar2(30),									-- 제목
-	content varchar2(1000),								-- 내용
-	fname varchar2(100),								-- 사진이름
-	writeday date default sysdate,						-- 작성일
-	readnum number,										-- 조회수
-	good number,										-- 공감
-	bad number,											-- 비공감
-	sung varchar2(10),									-- 성별
-	kind varchar2(100),									-- 카테고리
+	sbno number,											-- 키값
+	name varchar2(50),										-- 이름
+	pwd varchar2(100),										-- 비밀번호
+	title varchar2(30),										-- 제목
+	content varchar2(1000),									-- 내용
+	fname varchar2(100),									-- 사진이름
+	writeday date default sysdate,							-- 작성일
+	readnum number default 0,								-- 조회수
+	good number default 0,									-- 공감
+	bad number default 0,									-- 비공감
+	sung varchar2(10),										-- 성별
+	kind varchar2(100),										-- 카테고리
 	CONSTRAINT stockboard_sbno_p PRIMARY KEY (sbno)
-);
-
+);	
 -- 주식 게시판 댓글 테이블 (강민규)
 drop table stockboarddat;
 drop sequence s_stockboarddat;
 create sequence s_stockboarddat start with 1;
 create table stockboarddat(
-	sbdno number,											--키값
-	name varchar2(100),										--이름			
-	content varchar2(600),									--내용		
-	writeday date default sysdate,							--작성일			
-	sbno number,											--stockboard 키값
+	sbdno number,												--키값
+	name varchar2(100),											--이름			
+	content varchar2(600),										--내용		
+	writeday date default sysdate,								--작성일			
+	sbno number,												--stockboard 키값
 	CONSTRAINT stockboarddat_sbdno_p PRIMARY KEY (sbdno)
 );
 

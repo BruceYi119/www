@@ -22,3 +22,7 @@ function setKindSelect() {
 };
 
 setKindSelect();
+
+function login(){
+	alert("권한이 없습니다. 가입하세요");
+}

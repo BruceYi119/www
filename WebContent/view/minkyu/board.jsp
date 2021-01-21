@@ -1,3 +1,4 @@
+<%@page import="www.member.Member"%>
 <%@page import="com.sun.org.apache.bcel.internal.generic.Select"%>
 <%@page import="www.db.dto.StockBoardDTO"%>
 <%@page import="www.db.dao.StockBoardDAO"%>
@@ -11,6 +12,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <%
+
 request.setCharacterEncoding("utf-8");
 
 Header header = new Header();
@@ -27,7 +29,7 @@ String footerUrl = footer.getFooterUrl();
 
 request.setCharacterEncoding("utf-8");
 String pager = request.getParameter("pager") != null ? request.getParameter("pager") : "1";
-String dspCount = "10"; // 보여지는 갯수
+String dspCount = "13"; // 보여지는 갯수
 String index = pager.equals("1") ? "1" : ((Integer.parseInt(pager) - 1) * Integer.parseInt(dspCount) + 1) + ""; // start값
 String kind = request.getParameter("kind") != null ? request.getParameter("kind") : null;
 String search = request.getParameter("search") == null ? "" : request.getParameter("search");
@@ -89,98 +91,18 @@ else if(search !="")
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title><%=title%></title>
-<style type="text/css">
-h2 {
-	text-align: center;
-}
 
-#tdbtn{
-	text-align: right;
-	}
-#tdbtn #btn{
-	margin-bottom : 5px;
-}
-#first li {
-	list-style-type: none;
-	display: inline-block;
-	margin-left: 30px;
-	padding-left: 15px;
-	padding-top: 10px;
-}
-
-.first {
-	text-align: center;
-}
-
-.container {
-	overflow: hidden;
-}
-/* 	--------------------------------- */
-#table {
-	margin: auto;
-	width: 800px;
-}
-/* 	.board tr td{ */
-/* 		border: 1px solid black; */
-/* 		text-align: center; */
-/* 		} */
-.nav {
-		float: left;  
-		width: 180px;
-		background: #7b9acc;
-		color: #fff;
-		padding: 10px;
-	}
-	
-	.nav-list {
-		list-style: none;
-		padding: 10px 0;
-		
-	}
-	
-	.nav-item {
-		margin: 4px 0;
-	}
-	
-	.nav-link {
-		display: block;
-		text-decoration: none;
-		color: #FCF6F5;
-		text-align: center;
-	}
-	.nav-link:visited{
-		color:#FCF6F5;
-	}
-	.nav-link:hover {
-		background: #5CC8D7;
-	}
-
-.td1 {
-	padding: 5px;
-	border-bottom: 1px solid #cccccc;
-	border-top: 1px solid #cccccc;
-	height: 20px;
-	text-align: center;
-}
-
-.td2 {
-	text-align: center;
-	border-bottom: 1px solid #cccccc;
-}
-
-#seraform{
-	margin-top: 10px;
-}
-</style>
 <%=css%>
+<link rel="stylesheet" href="/view/css/minkyu_board.css">
 <%=js%>
 <script defer src="/view/js/minkyu_board.js"></script>
+<script defer src="/view/js/minkyu_finance.js"></script>
 </head>
 <body>
 	<input type="hidden" id="color_class" value="minkyu" />
 	<div id="wrap">
-		<input type="hidden" value="${pager }" id="pager" />
-		<input type="hidden" value="${kind }" id="kind" />
+		<input type="hidden" value="${pager}" id="pager" />
+		<input type="hidden" value="${kind}" id="kind" />
 		<jsp:include page="<%=headerUrl%>" flush="true" />
 		<nav>
 			<div class="base_wrap">
@@ -205,14 +127,31 @@ h2 {
 				</div>
 				<div class="content">
 					<table id="table">
+					<tr>
 						<h1 class="first">주식 토론 게시판</h1>
-						<tr>
-							<td id="tdbtn" colspan="7">
+						<td id="tdbtn" colspan="7">
+							<% 
+							Member m = new Member();
+
+							boolean login = m.isLogin(session);
+							pageContext.setAttribute("login", login);
+
+							if (login)
+								pageContext.setAttribute("name", session.getAttribute("name"));
+							%>
+							<c:if test="${name != null}">
 								<button onclick="location='board_write.jsp'" id="btn">
 								✎글쓰기
 								</button>
+							</c:if>
+							<c:if test="${name == null }">
+							<button onclick="login()" id="btn">
+								✎글쓰기
+								</button>
+							</c:if>
 							</td>
 						</tr>
+						
 						<tr>
 							<td class="td1">
 								<select id="kindSelect">
@@ -237,8 +176,13 @@ h2 {
 						<tr>
 							<td class="td2">&#60;${dto.kind }&#62;
 							</td>
-							<td class="td2"><a
-								href="board_readnum.jsp?sbno=${dto.sbno }&pager=${pager}&search=${search}&sword=${sword}">${dto.title }</a></td>
+							<td class="td2">
+							<c:if test="${name != null }">
+							<a href="board_readnum.jsp?sbno=${dto.sbno }&pager=${pager}&search=${search}&sword=${sword}">${dto.title }</a></td>
+							</c:if>
+							<c:if test="${name == null }">
+							<a href="#" onclick="login()">${dto.title }</a></td>
+							</c:if>
 							<td class="td2">${dto.name}</td>
 							<td class="td2">${dto.good}</td>
 							<td class="td2">${dto.bad}</td>
@@ -292,10 +236,10 @@ h2 {
 								pageContext.setAttribute("pend", pend);
 								%>
 								 <c:if test="${pstart != 1}">
-								 <a href="board.jsp?pager=${pstart-1 }&search=${search}&sword=${sword}">◀◀</a>
+								 <a href="board.jsp?pager=${pstart-1 }&search=${search}&sword=${sword}">☜</a>
 								 </c:if>
 								 <c:if test="${pstart == 1}">
-								 ◀◀ 
+								 ☜
 								 </c:if>
 								
 								<c:if test="${pager != 1}">
@@ -319,10 +263,10 @@ h2 {
 									다음
 								</c:if>
 								<c:if test="${page_cnt != pend }">
-									<a href="board.jsp?pager=${pend+1 }&search=${search}&sword=${sword}">▶▶</a>
+									<a href="board.jsp?pager=${pend+1 }&search=${search}&sword=${sword}">☞</a>
 								</c:if>
 								<c:if test="${page_cnt == pend }">
-								 	▶▶
+								 	☞
 								</c:if>
 							</td>
 						<tr>

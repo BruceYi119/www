@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.container { overflow: hidden; }
+.first{ text-align: center; }
+.nav { float: left; width: 180px; background: #7b9acc; color: #fff; padding: 10px; }
+.nav-list { list-style: none; padding: 10px 0; }
+.nav-item { margin: 4px 0; }
+.nav-link { display: block; text-decoration: none; color: #FCF6F5; text-align: center; }
+.nav-link:visited{ color:#FCF6F5; }
+.nav-link:hover { background: #5CC8D7; }
+.company { margin: auto; }
+.company td{ border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc; width:800px; }
+#td1{ padding: 20px; border-bottom: 1px solid #cccccc; }
+.hold{ text-align: center; }
+#info{ color:red; font-size: 15px; text-align: center; }

@@ -112,7 +112,7 @@ public class StockBoarddatDAO implements Idao{
 			while(db.rs.next()) {
 			ddto.setSbdno(db.rs.getString("sbdno"));
 			ddto.setName(db.rs.getString("name"));
-			ddto.setCotent(db.rs.getString("content"));
+			ddto.setContent(db.rs.getString("content"));
 			ddto.setWriteday(db.rs.getString("writeday"));
 			ddto.setSbno(db.rs.getString("sbno"));
 			}
@@ -130,7 +130,7 @@ public class StockBoarddatDAO implements Idao{
 				StockBoarddatDTO ddto = new StockBoarddatDTO();
 				ddto.setSbdno(db.rs.getString("sbdno"));
 				ddto.setName(db.rs.getString("name"));
-				ddto.setCotent(db.rs.getString("content"));
+				ddto.setContent(db.rs.getString("content"));
 				ddto.setWriteday(db.rs.getString("writeday"));
 				ddto.setSbno(db.rs.getString("sbno"));
 				list.add(ddto);

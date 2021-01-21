@@ -1,3 +1,4 @@
+<%@page import="www.member.Member"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="www.db.dao.CompanyCodeDAO"%>
 <%@page import="www.db.dto.CompanyCodeDTO"%>
@@ -75,71 +76,10 @@ String footerUrl = footer.getFooterUrl();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title><%=title%></title>
-<script type="text/javascript">
-
-function view()
-{
-	   window.open("API3.jsp","재무재표조회","width=400,height=200");
-}
-	
-</script>
-<style type="text/css">
-	.container {
-  	overflow: hidden;
-	}
-	.first{
-		text-align: center;
-	}
-	.nav {
-		float: left;  
-		width: 180px;
-		background: #7b9acc;
-		color: #fff;
-		padding: 10px;
-	}
-	
-	.nav-list {
-		list-style: none;
-		padding: 10px 0;
-		
-	}
-	
-	.nav-item {
-		margin: 4px 0;
-	}
-	
-	.nav-link {
-		display: block;
-		text-decoration: none;
-		color: #FCF6F5;
-		text-align: center;
-	}
-	.nav-link:visited{
-		color:#FCF6F5;
-	}
-	.nav-link:hover {
-		background: #5CC8D7;
-	}
-
-	}
-	.company {
-		margin: auto;
-	}
-	.company td{
-		border-top: 1px solid #cccccc;
-		border-bottom: 1px solid #cccccc;
-		width:800px;
-	}
-	#td1{
-		padding: 20px;
-		border-bottom: 1px solid #cccccc;
-	}
-	.hold{
-		text-align: center;
-	}
-</style>
 <%=css%>
+<link rel="stylesheet" href="/view/css/minkyu_finance_state.css">
 <%=js%>
+<script defer src="/view/js/minkyu_finance.js"></script>
 </head>
 <body>
 	<input type="hidden" id="color_class" value="minkyu" />
@@ -166,7 +106,8 @@ function view()
 					<div class="content">
 				<form method="post" action="finance_state.jsp">
 				<table class="company">
-					<h1 class="first">상장기업 재무정보</h1>
+					<h2 class="first">금융감독원 전자공시시스템을 활용한 상장기업 정보조회</h2>
+					<div id="info">{ DART 공시서류는 공시의무자인 제출인의 책임하에 작성되었으며, 금감원은 DART 정보의 정확성 및 완전성을 보장하는 것은 아닙니다. } </div>
 				<tr>
 					<td colspan="2" align="center" id="td1">
 					<select name="search">
@@ -184,11 +125,17 @@ function view()
 					<%
 						ArrayList<CompanyCodeDTO> list = dao.getList();
 						pageContext.setAttribute("list", list);
+							
 					%>
 					<c:forEach items="${list}" var="cdto">
 						<tr>
 						<td align="center" width="50%">${cdto.company}</td>
+						<c:if test="${name != null}">
 						<td align="center"><a href="#" onclick='window.open("API3.jsp?code=${cdto.code}","기업정보","width=470, height=250")'>${cdto.code}</a></td>
+						</c:if>
+						<c:if test="${name == null}">
+						<td align="center"><a href="#" onclick='login()'>${cdto.code}</a></td>
+						</c:if>
 					</tr>
 					</c:forEach>
 					<tr> <!-- 사용자가 클릭하여 이동할 수 있는 페이지 출력 -->

@@ -3,7 +3,7 @@ package www.db.dto;
 public class StockBoarddatDTO {
 	String sbdno = null;
 	String name = null;
-	String cotent = null;
+	String content = null;
 	String writeday = null;
 	String sbno = null;
 	public String getSbdno() {
@@ -18,11 +18,11 @@ public class StockBoarddatDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCotent() {
-		return cotent;
+	public String getContent() {
+		return content;
 	}
-	public void setCotent(String cotent) {
-		this.cotent = cotent;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getWriteday() {
 		return writeday;
@@ -39,7 +39,7 @@ public class StockBoarddatDTO {
 	
 	@Override
 	public String toString() {
-		return "StockBoarddatDTO [sbdno=" + sbdno + ", name=" + name + ", cotent=" + cotent + ", writeday=" + writeday
+		return "StockBoarddatDTO [sbdno=" + sbdno + ", name=" + name + ", content=" + content + ", writeday=" + writeday
 				+ ", sbno=" + sbno + "]";
 	}
 	

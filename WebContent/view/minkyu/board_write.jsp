@@ -1,6 +1,8 @@
+<%@page import="www.member.Member"%>
 <%@page import="www.html.header.Header"%>
 <%@page import="www.html.nav.Nav"%>
 <%@page import="www.html.footer.Footer"%>
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>  
 <%-- <%@ include file="/include/top.jsp" %> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,67 +25,10 @@ String footerUrl = footer.getFooterUrl();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title><%=title%></title>
-<style type="text/css">
-
-	h2{ text-align: center;}
-	#first li{
-		list-style-type: none;
-		display: inline-block;
-		margin-left: 30px;
-		padding-left:15px;
-		padding-top: 10px;
-		}
-/* 	.base_wrap{text-align:center;} */
-	
-	#board{
-		width: 600px;
-		height:500px;
-		margin: auto;
-	}
-	
-	#board td{
-		padding-left: 20px;
-		 border:1px solid #cccccc;
-	}
-</style>
-<script type="text/javascript">
-
-function main(){
-		frm=document.frm;
-		if(frm.name.value ==""){
-			alert("이름을 입력하세요")
-			return false;
-		}
-		if(frm.title.value ==""){
-			alert("제목 입력은 필수 입니다")
-			return false;
-		}
-		if(frm.pwd.value!=frm.pwd2.value){
-			alert("비밀번호가 다릅니다");
-			return false;
-		}
-		if(frm.pwd.value ==""){
-			alert("비밀번호를 입력하세요")
-			return false;
-		}
-	}
-
-
-function aaa(my) {
-	if(my.pwd.value !=my.pwd2.value){
-		document.getElementById("pwc").innerText="비번이 틀립니다";
-		document.getElementById("pwc").style.color="blue";
-	}else{
-		document.getElementById("pwc").innerText="비번이 일치합니다";
-		document.getElementById("pwc").style.color="red";
-	}
-}
-
-</script>
-
-
 <%=css%>
+<link rel="stylesheet" href="/view/css/minkyu_board_write.css">
 <%=js%>
+<script defer src="/view/js/minkyu_board_write.js?ver=1"></script>
 </head>
 <body>
 	<input type="hidden" id="color_class" value="minkyu" />
@@ -110,11 +55,14 @@ function aaa(my) {
 		</tr>
 		<tr>
 			<td>제목</td>
-			<td><input type="text" name="title"></td>
+			<td><input type="text" name="title" onkeyup="aaa(this.form)">
+			<span id="title"></span></td>
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td><input type="text" name="name"></td>
+			<td><input type="text" name="name" value="${name}" readonly="readonly" onkeyup="aaa(this.form)"></td>
+<%-- 			<td><input type="text" name="name" value="${name}" onkeyup="aaa(this.form)"> --%>
+					<span id="name"></span></td>
 		</tr>
 		<tr>
 			<td>성별</td>

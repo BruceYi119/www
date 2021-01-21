@@ -1,0 +1,5 @@
+@charset "UTF-8";
+h2{ text-align: center;}
+#first li{ list-style-type: none; display: inline-block; margin-left: 30px; padding-left:15px; padding-top: 10px; }
+#board{ width: 600px; height:500px; margin: auto; }
+#board td{ padding-left: 20px; border:1px solid #cccccc; }

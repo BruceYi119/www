@@ -28,81 +28,9 @@ String footerUrl = footer.getFooterUrl();
 <title><%=title%></title>
 <style type="text/css">
 
-	h2{ text-align: center;}
-	#first li{
-		list-style-type: none;
-		display: inline-block;
-		margin-left: 30px;
-		padding-left:15px;
-		padding-top: 10px;
-		text-align: center;
-		}
-/* --------------------------------------------- */
-	.container {
-  	overflow: hidden;
-	}
-	.first{
-		text-align: center;
-	}
-	.nav {
-		float: left;  
-		width: 180px;
-		background: #7b9acc;
-		color: #fff;
-		padding: 10px;
-	}
-	
-	.nav-list {
-		list-style: none;
-		padding: 10px 0;
-		
-	}
-	
-	.nav-item {
-		margin: 4px 0;
-	}
-	
-	.nav-link {
-		display: block;
-		text-decoration: none;
-		color: #FCF6F5;
-		text-align: center;
-	}
-	.nav-link:visited{
-		color:#FCF6F5;
-	}
-	.nav-link:hover {
-		background: #5CC8D7;
-	}
-	.content{
-		width:930px;
-		height:1350px;
-		float: right;
-	}
-	#second{
-	
-		width:100%;
-		height:600px;
-	}
-	#table{
-		padding-left: 20px;
-		border: 1px solid #cccccc;
-		margin: auto;
-		width:800px;
-	}
-	#table #tr1 td{
-		padding: 20px;
-		border: 1px solid #cccccc;
-		
-		}
-		
-	#table #tr2 td{
-	text-align: center;
-	border: 1px solid #cccccc;
-		
-		}
 </style>
 <%=css%>
+<link rel="stylesheet" href="/view/css/minkyu_minkyu.css">
 <%=js%>
 </head>
 <body>
@@ -129,10 +57,10 @@ String footerUrl = footer.getFooterUrl();
 					</div>
 				
 			<div class="content">
-			<h1>오늘의 증시</h1>
-     		 <iframe width="100%" style="height:100%" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSmT6rcdguvt1m-t81z2TCagyqCoMZ_GiB6Rim3v3svDJGa7c9JaF7FJnqBJ3qVhn7NiClUJqzzWbrI/pubhtml?widget=true&amp;headers=false"></iframe>
+			<h1>오늘의 증시</h1> 
+     		 <iframe width="100%" style="height:95%" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSmT6rcdguvt1m-t81z2TCagyqCoMZ_GiB6Rim3v3svDJGa7c9JaF7FJnqBJ3qVhn7NiClUJqzzWbrI/pubhtml?widget=true&amp;headers=false"></iframe>
 			</div>		
-		
+			
 			</div>
 		</main>
 		<jsp:include page="<%=footerUrl%>" flush="true"/>

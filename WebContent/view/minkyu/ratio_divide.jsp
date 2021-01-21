@@ -11,6 +11,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
 <%
+
 request.setCharacterEncoding("utf-8");
 String pager = request.getParameter("pager") != null ? request.getParameter("pager") : "1";
 String dspCount = "20"; // 보여지는 갯수
@@ -76,7 +77,6 @@ else if (search != "")
 	dao.selectAll(sb.toString(), sword, index, dspCount);
 else if (search == "")
 	dao.selectAll(sb.toString(), index, dspCount);
-out.print(sb.toString());
 
 // 	pageContext.setAttribute("list",list);
 
@@ -98,88 +98,8 @@ String footerUrl = footer.getFooterUrl();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title><%=title%></title>
-<style type="text/css">
-
-	h1{ text-align: center;}
-	#first li{
-		list-style-type: none;
-		display: inline-block;
-		margin-left: 30px;
-		padding-left:15px;
-		padding-top: 10px;
-		text-align: center;
-		}
-/* --------------------------------------------- */
-	
-	.container {
-  	overflow: hidden;
-	}
-	.first{
-		text-align: center;
-	}
-	.nav {
-		float: left;  
-		width: 180px;
-		background: #7b9acc;
-		color: #fff;
-		padding: 10px;
-	}
-	
-	.nav-list {
-		list-style: none;
-		padding: 10px 0;
-		
-	}
-	
-	.nav-item {
-		margin: 4px 0;
-	}
-	
-	.nav-link {
-		display: block;
-		text-decoration: none;
-		color: #FCF6F5;
-		text-align: center;
-	}
-	.nav-link:visited{
-		color:#FCF6F5;
-	}
-	.nav-link:hover {
-		background: #5CC8D7;
-	}
-	#second{
-	
-		width:100%;
-		height:600px;
-	}
-	
-	h3{text-align: center;}
-	
-	#table{
-		margin: auto;
-	}
-	.td1{
-		padding: 20px;
-		border-top: 1px solid #cccccc;
-		border-bottom: 1px solid #cccccc;
-		height: 50px;
-		
-		}
-	.td3{
-		padding: 10px;
-		
-		height: 25px;
-		}
-	.td4{
-		border-bottom: 1px solid #cccccc;
-		}
-	#table #tr2 td{
-		text-align: center;
-		border-bottom: 1px solid #cccccc;
-		height: 35px;
-		}
-</style>
 <%=css%>
+<link rel="stylesheet" href="/view/css/minkyu_ratio_divide.css">
 <%=js%>
 </head>
 <body>
