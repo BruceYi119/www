@@ -1,11 +1,8 @@
 package www.db.dao;
 
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-
 
 import www.db.Db;
 import www.db.Idao;
@@ -22,7 +19,7 @@ public class Main_customDAO implements Idao {
 	}
 
 	@Override
-	public void select(String sql, String ...args) {
+	public void select(String sql, String... args) {
 		try {
 			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
 			db.pstmt = db.con.prepareStatement(sql);
@@ -37,7 +34,7 @@ public class Main_customDAO implements Idao {
 	}
 
 	@Override
-	public void selectAll(String sql, String ...args) {
+	public void selectAll(String sql, String... args) {
 		try {
 			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
 			db.pstmt = db.con.prepareStatement(sql);
@@ -52,7 +49,7 @@ public class Main_customDAO implements Idao {
 	}
 
 	@Override
-	public int insert(String sql, String ...args) {
+	public int insert(String sql, String... args) {
 		int i = 0;
 
 		try {
@@ -71,28 +68,9 @@ public class Main_customDAO implements Idao {
 	}
 
 	@Override
-	public int update(String sql, String ...args) {
+	public int update(String sql, String... args) {
 		int i = 0;
-		
-		try {
-			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
-			db.pstmt = db.con.prepareStatement(sql);
-			setPstmt(args);
-			i = db.pstmt.executeUpdate();
-			db.con.commit();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			db.finalize();
-		}
-		
-		return i;	
-	}
 
-	@Override
-	public int delete(String sql, String ...args) {
-		int i = 0;
-		
 		try {
 			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
 			db.pstmt = db.con.prepareStatement(sql);
@@ -109,7 +87,26 @@ public class Main_customDAO implements Idao {
 	}
 
 	@Override
-	public void setPstmt(String ...args) {
+	public int delete(String sql, String... args) {
+		int i = 0;
+
+		try {
+			db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
+			db.pstmt = db.con.prepareStatement(sql);
+			setPstmt(args);
+			i = db.pstmt.executeUpdate();
+			db.con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.finalize();
+		}
+
+		return i;
+	}
+
+	@Override
+	public void setPstmt(String... args) {
 		if (args.length > 0) {
 			int i = 1;
 
@@ -134,17 +131,17 @@ public class Main_customDAO implements Idao {
 				if (i == 0)
 					dto = new Main_customDTO();
 
-					dto.setRownum(db.rs.getString("rownum"));
-					dto.setMcno(db.rs.getString("mcno"));
-					dto.setCpu(db.rs.getString("cpu"));
-					dto.setVga(db.rs.getString("vga"));
-					dto.setPower(db.rs.getString("power"));
-					dto.setMb(db.rs.getString("mb"));
-					dto.setRam1(db.rs.getString("ram1"));
-					dto.setRam2(db.rs.getString("ram2"));
-					dto.setHdd(db.rs.getString("hdd"));
-					dto.setSsd(db.rs.getString("ssd"));
-					dto.setPrice(db.rs.getString("price"));
+				dto.setRownum(db.rs.getString("rownum"));
+				dto.setMcno(db.rs.getString("mcno"));
+				dto.setCpu(db.rs.getString("cpu"));
+				dto.setVga(db.rs.getString("vga"));
+				dto.setPower(db.rs.getString("power"));
+				dto.setMb(db.rs.getString("mb"));
+				dto.setRam1(db.rs.getString("ram1"));
+				dto.setRam2(db.rs.getString("ram2"));
+				dto.setHdd(db.rs.getString("hdd"));
+				dto.setSsd(db.rs.getString("ssd"));
+				dto.setPrice(db.rs.getString("price"));
 
 				i++;
 			}
@@ -158,7 +155,7 @@ public class Main_customDAO implements Idao {
 		list = new ArrayList<Main_customDTO>();
 
 		try {
-			while(db.rs.next()) {
+			while (db.rs.next()) {
 				Main_customDTO dto = new Main_customDTO();
 
 				dto.setRownum(db.rs.getString("rownum"));
@@ -190,22 +187,54 @@ public class Main_customDAO implements Idao {
 		db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
 		db.stmt = db.con.createStatement();
 		db.rs = db.stmt.executeQuery(sql);
-    	ArrayList<Main_customDTO> list = new ArrayList<Main_customDTO>();
-    	while(db.rs.next())
-    	{
-    		Main_customDTO mdto = new Main_customDTO();
-    		mdto.setMcno(db.rs.getString("mcno"));
-    		mdto.setCpu(db.rs.getString("cpu"));
-    		mdto.setVga(db.rs.getString("vga"));
-    		mdto.setPower(db.rs.getString("power"));
-    		mdto.setMb(db.rs.getString("mb"));
-    		mdto.setRam1(db.rs.getString("ram1"));
-    		mdto.setRam2(db.rs.getString("ram2"));
-    		mdto.setHdd(db.rs.getString("hdd"));
-    		mdto.setSsd(db.rs.getString("ssd"));
-    		mdto.setPrice(db.rs.getString("price"));
-    		list.add(mdto);
-    	}
+		ArrayList<Main_customDTO> list = new ArrayList<Main_customDTO>();
+		while (db.rs.next()) {
+			Main_customDTO mdto = new Main_customDTO();
+			mdto.setMcno(db.rs.getString("mcno"));
+			mdto.setCpu(db.rs.getString("cpu"));
+			mdto.setVga(db.rs.getString("vga"));
+			mdto.setPower(db.rs.getString("power"));
+			mdto.setMb(db.rs.getString("mb"));
+			mdto.setRam1(db.rs.getString("ram1"));
+			mdto.setRam2(db.rs.getString("ram2"));
+			mdto.setHdd(db.rs.getString("hdd"));
+			mdto.setSsd(db.rs.getString("ssd"));
+			mdto.setPrice(db.rs.getString("price"));
+			list.add(mdto);
+		}
 		return list;
+	}
+
+	public Main_customDTO content(String mcno) throws SQLException {
+		// 쿼리 생성
+		String sql = "select * from main_custom where mcno=" + mcno;
+		// 심부름꾼 실행 => ResultSet
+		db.con = DriverManager.getConnection(db.getUrl(), db.getId(), db.getPw());
+		db.stmt = db.con.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		// db.rs.next();
+		Main_customDTO mdto = new Main_customDTO();
+		while (db.rs.next()) {
+			mdto.setMcno(db.rs.getString("mcno"));
+			mdto.setCpu(db.rs.getString("cpu"));
+			mdto.setVga(db.rs.getString("vga"));
+			mdto.setPower(db.rs.getString("power"));
+			mdto.setMb(db.rs.getString("mb"));
+			mdto.setRam1(db.rs.getString("ram1"));
+			mdto.setRam2(db.rs.getString("ram2"));
+			mdto.setHdd(db.rs.getString("hdd"));
+			mdto.setSsd(db.rs.getString("ssd"));
+			mdto.setPrice(db.rs.getString("price"));
+
+			mdto.setCpu_price(db.rs.getString("cpu_price"));
+			mdto.setVga_price(db.rs.getString("vga_price"));
+			mdto.setPower_price(db.rs.getString("power_price"));
+			mdto.setMb_price(db.rs.getString("mb_price"));
+			mdto.setRam1_price(db.rs.getString("ram1_price"));
+			mdto.setRam2_price(db.rs.getString("ram2_price"));
+			mdto.setHdd_price(db.rs.getString("hdd_price"));
+			mdto.setSsd_price(db.rs.getString("ssd_price"));
+		}
+		return mdto;
 	}
 }

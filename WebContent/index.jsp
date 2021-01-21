@@ -48,14 +48,14 @@ StringBuilder sb = new StringBuilder();
 // pageContext.setAttribute("cafeList", cafeDao.getList());
 
 // 뚝딱조립PC
-// Main_customDAO mainCustomDao = new Main_customDAO();
-// Main_customDTO mainCustomDto = new Main_customDTO();
-// sb.setLength(0);
-// sb.append("select ");
-// sb.append(mainCustomDto.toString(true));
-// sb.append(" from (select rownum seq, t.* from (select * from main_custom order by mcno desc) t) tt where seq >= 1) where rownum <= 3");
-// mainCustomDao.selectAll(sb.toString());
-// pageContext.setAttribute("pcList", mainCustomDao.getList());
+Main_customDAO mainCustomDao = new Main_customDAO();
+Main_customDTO mainCustomDto = new Main_customDTO();
+sb.setLength(0);
+sb.append("select ");
+sb.append(mainCustomDto.toString(true));
+sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from main_custom order by mcno desc) t) tt where seq >= 1) where rownum <= 4");
+mainCustomDao.selectAll(sb.toString());
+pageContext.setAttribute("pcList", mainCustomDao.getList());
 
 // 갈비대첩 예약현황
 // ReservationDAO reservationDao = new ReservationDAO();
@@ -225,15 +225,11 @@ StringBuilder sb = new StringBuilder();
 									<tr><th>뚝딱조립PC</th></tr>
 								</thead>
 								<tbody>
+									<c:forEach items="${pcList}" var="dto">
 									<tr>
-										<td>1</td>
+										<td><a href="/view/yongsoon/pcEstimate_content.jsp?mcno=${dto.mcno}">CPU: ${dto.cpu}, VGA: ${dto.vga}, MB: ${dto.mb}, POWER: ${dto.power}, HDD: ${dto.hdd} ...</a></td>
 									</tr>
-									<tr>
-										<td>2</td>
-									</tr>
-									<tr>
-										<td>3</td>
-									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>

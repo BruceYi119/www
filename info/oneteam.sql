@@ -113,38 +113,40 @@ drop table main_custom;
 drop sequence s_main_custom;
 create sequence s_main_custom;
 create table main_custom(
-	mcno number,														-- 키값
-	cpu varchar2(50),													-- cpu
-	vga varchar2(50),													-- 그래픽카드
-	power varchar2(50),													-- 파워
-	mb varchar2(50),													-- 메인보드
-	ram1 varchar2(50),													-- 램1
-	ram2 varchar2(50),													-- 램2
-	hdd varchar2(50),													-- 하드
-	ssd varchar2(50),													-- ssd
-	price varchar2(200),												-- 총 가격
-	constraint main_custom_mcno_p primary key(mcno)
+   mcno number not null,                         	-- 조립 완성품 식별번호
+   cpu varchar(20),                              	-- cpu
+   vga varchar(20),                              	-- 그래픽카드
+   power varchar(20),                            	-- 파워
+   mb varchar(20),                               	-- 메인보드
+   ram1 varchar(20),                             	-- 램1
+   ram2 varchar(20),                             	-- 램2
+   hdd varchar(20),                              	-- 하드
+   ssd varchar(20),                              	-- ssd  부품들 전부 varchar(20)으로 수정
+   cpu_price number default 0,                              -- cpu가격
+   vga_price number default 0,                              -- 그래픽카드가격
+   power_price number default 0,                            -- 파워가격
+   mb_price number default 0,                               -- 메인보드가격
+   ram1_price number default 0,                             -- 램1가격
+   ram2_price number default 0,                             -- 램2가격
+   hdd_price number default 0,                              -- 하드가격
+   ssd_price number default 0,                              -- ssd가격
+   price number default 0,                                  -- 총가격
+   pw varchar2(15),                                          -- 비밀번호(삭제,수정용)
+   constraint main_custom_mcno_p primary key(mcno)
 );
 
--- 조립피씨 댓글 테이블 (박용순)
+-- 수정된 sub_custom 이거 사용
 drop table sub_custom;
 drop sequence s_sub_custom;
 create sequence s_sub_custom;
 create table sub_custom(
-	scno number not null,											-- 키값
-	cpu varchar2(50),												-- cpu
-	vga varchar2(50),												-- 그래픽카드
-	power varchar2(50),												-- 파워
-	mb varchar2(50),												-- 메인보드
-	ram1 varchar2(50),												-- 램1
-	ram2 varchar2(50),												-- 램2
-	hdd varchar2(50),												-- 하드
-	ssd varchar2(50),												-- ssd
-	mcno number, 													-- main_custom 키값
-	price varchar2(200),											-- 총 가격
-	constraint sub_custom_scno_p primary key(scno),
-	constraint sub_custom_mcno_f foreign key(mcno) references main_custom(mcno)
+   scno number not null,									-- 댓글 식별번호
+   sname varchar(15),										-- 댓글 작성자
+   scontent varchar(50),									-- 댓글 내용
+   spw varchar(15),											-- 댓글 비밀번호
+   constraint sub_custom_scno_p primary key(scno)
 );
+
 
 -- 레시피게시판 테이블 (정지원)
 drop table recipe_board;

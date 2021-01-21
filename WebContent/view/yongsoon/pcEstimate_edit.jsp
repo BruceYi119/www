@@ -24,7 +24,9 @@
 	String footerUrl = footer.getFooterUrl();
 	
 	Main_customDAO mdao = new Main_customDAO();
-	Main_customDTO mdto = new Main_customDTO();
+	String mcno = request.getParameter("mcno");
+	Main_customDTO mdto = mdao.content(mcno);
+	pageContext.setAttribute("mdto", mdto);
 %>
 
 
@@ -55,11 +57,12 @@
 		</nav>
 		<main>
 			<div class="base_wrap">
-				<h2>견적 작성하기</h2>
+				<h2>자신의 견적 수정하기</h2>
 				<table class="table">
-					<form method="post" action="pcEstimate_ok.jsp">
+					<form method="post" action="pcEstimate_edit_ok.jsp">
+				    	<input type="hidden" name="mcno" value="<%=mcno%>"/>   
 						<tr>
-						   <td>CPU</td> 
+						   <td>CPU</td>
 						   <td><select id="cpu_com">
 					            <option value="0">기업선택</option>
 					            <option value="1">AMD</option>
@@ -88,13 +91,12 @@
 					       <!-- cpu 세대 선택후 제품군 -->
 					        <td>
 					        <select name="cpu">
-					            <option value="0">기업 또는 세대를 먼저 선택하시오</option>
+					            <option value="${mdto.cpu}">${mdto.cpu}</option>
 					        </select>
 					       </td>
 					       <td></td> 
 						</tr>
-						
-						
+												
 						<tr>
 						  <td>VGA</td>
 						   <td><select id="vga_com">
@@ -122,7 +124,7 @@
 					       <!-- vga 브랜드 및 시리즈 선택후 제품군 -->
 					        <td>
 					        <select name="vga">
-					            <option value="0">기업 또는 시리즈를 먼저 선택하시오</option>
+					            <option value="${mdto.vga}">${mdto.vga}</option>
 					        </select>
 					       </td> 
 						</tr>
@@ -139,11 +141,11 @@
 			            <td></td>
 		             	<td>
 					        <select name="power">
-					            <option value="0">기업을 먼저 선택하시오</option>
+					            <option value="${mdto.power}">${mdto.power}</option>
 					        </select>
 				       	</td> 		      
 				   		</tr>
-							
+						
 						<tr>
 						<td>MB</td>
 						<td><select id="mb_com">
@@ -157,10 +159,11 @@
 				        <td></td>
 				        <td>
 					        <select name="mb">
-					            <option value="0">기업을 먼저 선택하시오</option>
+					            <option value="${mdto.mb}">${mdto.mb}</option>
 					        </select>
 			       		</td> 
 						</tr>
+							
 						<tr>
 						<td>RAM1</td>
 						<td><select id="ram1_com">
@@ -172,7 +175,7 @@
 						<td></td>
 						<td>
 					        <select name="ram1">
-					            <option value="0">기업을 먼저 선택하시오</option>
+					            <option value="${mdto.ram1}">${mdto.ram1}</option>
 					        </select>
 				       	</td> 	
 						</tr>
@@ -188,7 +191,7 @@
 						<td></td>
 						<td>
 					        <select name="ram2">
-					            <option value="0">기업을 먼저 선택하시오</option>
+					            <option value="${mdto.ram2}">${mdto.ram2}</option>
 					        </select>
 				       	</td> 	
 						</tr>
@@ -206,7 +209,7 @@
 				        <td></td>
 						<td>
 					        <select name="hdd">
-					            <option value="0">기업을 먼저 선택하시오</option>
+					            <option value="${mdto.hdd}">${mdto.hdd}</option>
 					        </select>
 				       	</td>    	
 						</tr>
@@ -223,24 +226,24 @@
 						<td></td>
 						<td>
 					        <select name="ssd">
-					            <option value="0">기업을 먼저 선택하시오</option>
+					            <option value="${mdto.ssd}">${mdto.ssd}</option>
 					        </select>
 				       	</td>  	
 						</tr>
 						
 						<tr>
-						    <td>비밀번호</td>
-							<td><input type="password" name="pw"></td>
+						    <td>수정 확인 비밀번호</td>
+							<td><input type="password" name="edit_pw"></td>
 						</tr>
 						
 						
 					<!-- 	<tr><td>PRICE</td><td><input type = "text" name="price"></td></tr> -->
 						<tr>
-							<td><input type="submit" value="견적완료" id="submit"></td>
+							<td><input type="submit" value="견적 수정완료" id="submit"></td>
 						</tr>
 						
 						<tr>
-							<td><a href="pcEstimate_list.jsp">견적게시판으로 가기</a></td>
+							<!--  <td><a href="pcEstimate_list.jsp">견적게시판으로 가기</a></td>-->
 					    </tr>
 					</form>
 				</table>
