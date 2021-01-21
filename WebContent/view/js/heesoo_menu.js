@@ -1,7 +1,9 @@
-$('#sbob').click(function(){
-	$('#show').css('background-image','url(/view/heesoo/img/sbob.png)');
-	$('#show').css('background-repeat','no-repeat');
-	$('#show').css('background-size','80%');
-	$('#show').css('background-position','0px -1000px');
-	
+$(function(){
+	var menu=$('.rmenu')
+	$('.rmenu').click(function(){
+		var n = menu.index(this);
+		var url='url(/view/heesoo/img/' + n + '.jpg)';
+		$('#show').css('background-image',url);
+		
+	})
 })

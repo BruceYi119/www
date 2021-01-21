@@ -1,7 +1,7 @@
 main{
 	width:1900px;
 	margin:auto;
-	border:1px solid black;
+	/* border:1px solid black; */
 }
 #home{
 	position: fixed;
@@ -44,14 +44,96 @@ main{
 #show{
 	width:1900px;
 	height:700px; 	
-	border:1px solid black;
+	/* background-img:url(); */
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
-#sbob{
+#img0{
 	background-size: cover;
-	background-image: url(/view/heesoo/img/sbob.png);
+	background-image: url(/view/heesoo/img/0.jpg);
 	background-repeat:no-repeat;
 	background-position:-90px;
 	/* opacity:1!important;	 */
-	
+	color: white;
+}
+#img1{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/1.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	color: white;
+}
+#img2{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/2.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	color: white;
+}
+#img3{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/3.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	color: white;
+}
+#img4{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/4.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	color: white;
+}
+#img5{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/5.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	color: white;
+}
+#img6{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/6.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	color: white;
+}
+#img7{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/7.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	color: white;
+}
+#img8{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/8.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	color: white;
+}
+#img9{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/9.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
+	color: white;
+}
+#img10{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/10.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	/* opacity:1!important;	 */
 	color: white;
 }

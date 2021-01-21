@@ -20,17 +20,18 @@
 	<main>
 	<div class="container">
 		<div class="rtitle">구이류</div>
-			<div class="rmenu" id="pork">돼지갈비</div>
-			<div class="rmenu" id="">소양념갈비</div>
-			<div class="rmenu" id="">소갈비살</div>
-			<div class="rmenu" id="">소생갈비</div>
-			<div class="rmenu" id="">목살구이</div>
+			<div class="rmenu" id="img0">돼지갈비</div>
+			<div class="rmenu" id="img1">소양념갈비</div>
+			<div class="rmenu" id="img2">소갈비살</div>
+			<div class="rmenu" id="img3">소생갈비</div>
+			<div class="rmenu" id="img4">목살구이</div>
 		<div class="rtitle">식사류</div>
-			<div class="rmenu" id="">갈비탕</div>
-			<div class="rmenu" id="">돼지갈비찜</div>
-			<div class="rmenu" id="">소갈비찜</div>
-			<div class="rmenu" id="coolnoodle">냉면</div>
-			<div class="rmenu" id="sbob">솥밥</div>
+			<div class="rmenu" id="img5">갈비탕</div>
+			<div class="rmenu" id="img6">돼지갈비찜</div>
+			<div class="rmenu" id="img7">소갈비찜</div>
+			<div class="rmenu" id="img8">김치전골</div>
+			<div class="rmenu" id="img9">냉면</div>
+			<div class="rmenu" id="img10">솥밥</div>
 	</div>
 	<div id="show"></div>
 	</main>	

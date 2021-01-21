@@ -7,6 +7,7 @@
 <%@page import="www.db.dto.ReservationDTO"%>
 <%@page import="www.pagination.Pagination"%>
 <%
+request.setCharacterEncoding("utf-8");
 int cpage = request.getParameter("cpage") != null ? Integer.parseInt(request.getParameter("cpage")) : 1;
 int range = request.getParameter("range") != null ? Integer.parseInt(request.getParameter("range")) : 1;
 
@@ -15,22 +16,34 @@ String css = h.getCss("admin");
 String js = h.getJs("admin");
 
 Pagination p = new Pagination();
-ReservationDAO rdao = new ReservationDAO();
-ReservationDTO rdto = new ReservationDTO();
+ReservationDAO dao = new ReservationDAO();
+ReservationDTO dto = new ReservationDTO();
 StringBuilder sb = new StringBuilder();
 
+//총 게시글 수 쿼리
 sb.append("select count(*) total from reservation");
 
-int listCnt =rdao.count(sb.toString());
+//총 게시글 수 가져오기
+int listCnt = dao.count(sb.toString());
 
+//페이징 정보 생성
 p.setInfo(cpage, range, listCnt);
+
+//페이징 정보 json string으로 저장
 String pageInfo = p.getInfo();
+
+//sb초기화
 sb.setLength(0);
 
-String sql = "select * from reservation";
-rdao.selectAll(sql);
+//list조회 쿼리
+sb.append("select ");
+sb.append(dto.toString(true));
+sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from reservation order by rwritedate desc) t) tt where seq >= ?) where rownum <= ?");
 
-pageContext.setAttribute("list",rdao.getList());
+//list조회
+dao.selectAll(sb.toString(), Integer.toString(p.getStartList()), Integer.toString(p.getListSize()));
+
+pageContext.setAttribute("list", dao.getList());
 %>
 <!DOCTYPE html>
 <html>
@@ -41,12 +54,17 @@ pageContext.setAttribute("list",rdao.getList());
 <link rel="icon" href="/view/img/favicon.ico" type="image/x-icon" />
 <title>관리자</title>
 <%=css%>
-<%=js%>
 <link rel="stylesheet" href="css/reservation.css">
+<%=js%>
+<script defer src="/admin/js/pagination.js"></script>
 </head>
 <body>
 	<div id="wrap">
 		<input type="hidden" id="active" value="3" />
+		<input type="hidden" name="url" value="/admin/reservation.jsp" />
+		<input type="hidden" name="page" value='<%=cpage%>' />
+		<input type="hidden" name="listCnt" value='<%=listCnt%>' />
+		<input type="hidden" name="info" value='<%=pageInfo%>' />
 		<%@ include file="/admin/layout/header.jsp" %>
 		<main>
 			<div class="container-fluid">
@@ -71,13 +89,6 @@ pageContext.setAttribute("list",rdao.getList());
 							</thead>
 							<tbody>
 								<c:forEach items="${list}" var="dto">
-								<%-- <c:if test=""><tr></c:if>
-								<c:if test=""><tr></c:if>
-								<c:if test=""><tr></c:if>
-								<c:if test=""><tr></c:if>
-								<c:if test=""><tr></c:if>
-								<c:if test=""><tr></c:if>
-								<c:if test=""><tr></c:if> --%>
 								<tr>
 									<td>${dto.rno}</td>
 									<c:if test="${dto.rchk==0 }"><td><button type="button" class="btn btn-secondary btn-sm">예약 취소</button></td></c:if>

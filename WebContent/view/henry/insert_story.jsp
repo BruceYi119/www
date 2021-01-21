@@ -8,9 +8,6 @@ request.setCharacterEncoding("utf-8");
 String content=request.getParameter("content");
 String movietitle=request.getParameter("title");
 String id=request.getParameter("id");
-out.print(content);
-out.print(movietitle);
-out.print(id);
 
 MystoryDAO sdao = new MystoryDAO();
 String sql="insert into storyboard(sno, content, movietitle, id)";

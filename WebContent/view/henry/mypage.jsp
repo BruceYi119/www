@@ -7,8 +7,9 @@
 <%@page import="www.db.dao.MystoryDAO" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
-<%@page import="java.net.URLEncoder" %> 
 <%@page import="www.pagination.Pagination"%>
+<%@page import="java.net.URLEncoder" %> 
+<%-- <%@ include file="/include/top.jsp" %> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -19,9 +20,44 @@ boolean login = m.isLogin(session);
 if (!login)
 	response.sendRedirect("/view/member/login.jsp");
 
+
+request.setCharacterEncoding("utf-8");
+int cpage = request.getParameter("cpage") != null ? Integer.parseInt(request.getParameter("cpage")) : 1;
+int range = request.getParameter("range") != null ? Integer.parseInt(request.getParameter("range")) : 1;
+
+Header h = new Header();
+String css = h.getCss("admin");
+String js = h.getJs("admin");
+
+Pagination p = new Pagination();
+MymovielistDAO mydao = new MymovielistDAO();
+MymovielistDTO mydto = new MymovielistDTO();
+StringBuilder sb = new StringBuilder();
+
+//***** SESSION ID & NAME 저장
+String id = session.getAttribute("id").toString();
+String name = session.getAttribute("name").toString();
+
+//String sql = "select rownum, t.* from mymovielist t";
+//mydao.selectAll(sql);
+//pageContext.setAttribute("list", mydao.getList());
+
+sb.append("select count(*) total from mymovielist");
+int listCnt = mydao.count(sb.toString());
+p.setInfo(cpage, range, listCnt);
+String pageInfo = p.getInfo();
+sb.setLength(0);
+sb.append("select ");
+sb.append(mydto.toString(true));
+sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from mymovielist where id='"+id+"' order by writedate desc) t) tt where seq >= ?) where rownum <= ?");
+mydao.selectAll(sb.toString(), Integer.toString(p.getStartList()), Integer.toString(p.getListSize()));
+
+//***** LIST
+pageContext.setAttribute("list", mydao.getList());
+
 Header header = new Header();
-String css = header.getCss();
-String js = header.getJs();
+css = header.getCss();
+js = header.getJs();
 String title = header.getTitle();
 String headerUrl = header.getHeaderUrl();
 
@@ -30,34 +66,6 @@ String menu = nav.getMenu();
 
 Footer footer = new Footer();
 String footerUrl = footer.getFooterUrl();
-
-request.setCharacterEncoding("utf-8");
-int cpage = request.getParameter("cpage") != null ? Integer.parseInt(request.getParameter("cpage")) : 1;
-int range = request.getParameter("range") != null ? Integer.parseInt(request.getParameter("range")) : 1;
-
-Pagination p = new Pagination();
-MymovielistDAO mydao = new MymovielistDAO();
-MymovielistDTO mydto = new MymovielistDTO();
-MystoryDAO sdao = new MystoryDAO();
-StringBuilder sb = new StringBuilder();
-
-//***** SESSION ID & NAME 저장
-String id = session.getAttribute("id") != null ? session.getAttribute("id").toString() : "";
-String name = session.getAttribute("name") != null ? session.getAttribute("name").toString() : "";
-
-sb.append("select count(*) total from mymovielist where id = ?");
-int listCnt = mydao.count(sb.toString(), id);
-p.setInfo(cpage, range, listCnt);
-String pageInfo = p.getInfo();
-
-sb.setLength(0);
-sb.append("select ");
-sb.append(mydto.toString(true));
-sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from mymovielist where id = ? order by writedate desc) t) tt where seq >= ?) where rownum <= ?");
-mydao.selectAll(sb.toString(), id, Integer.toString(p.getStartList()), Integer.toString(p.getListSize()));
-
-//***** LIST
-pageContext.setAttribute("list", mydao.getList());
 %>
 <!DOCTYPE html>
 <html>
@@ -73,7 +81,7 @@ pageContext.setAttribute("list", mydao.getList());
 <script defer type="text/javascript" src="/view/js/pagination.js"></script>
 <script defer type="text/javascript" src="/view/js/henry.js"></script>
 </head>
-<body>
+<body onclick="boundary()">
 	<input type="hidden" id="color_class" value="henry" />
 	<div id="wrap">
 	<input type="hidden" name="url" value="/view/henry/mypage.jsp" />
@@ -96,7 +104,7 @@ pageContext.setAttribute("list", mydao.getList());
 					<div class="main">
 						<c:set var="k" value="0"/>
 						<c:forEach var="mdto" items="${list}">
-						<c:set var="movietitle" value="${mdto.title}"/>
+						<c:set var="movietitle" value="${mdto.title }"/>
 						<h5 class="mToStoryRegDate">찜 목록 등록일 : ${mdto.writedate}</h5>
 						<ul class="movieList CmovieList">
 							<li class="cLi">
@@ -151,12 +159,13 @@ pageContext.setAttribute("list", mydao.getList());
 								String movietitle=pageContext.getAttribute("movietitle").toString();
 							%>
 							<div class="deleteMovieBtn">
-								<a href="deletemymovie.jsp?title=<%=URLEncoder.encode(movietitle)%>&id=<%=id%>">삭제</a>
+								<a onclick="return mymoviedel()" href="deletemymovie.jsp?title=<%=URLEncoder.encode(movietitle)%>&id=<%=id%>">삭제</a>
 							</div>
 						</ul>
 						<%
-								String sql = "select rownum, t.* from storyboard t where t.movietitle = ? and t.id = ?";
-								sdao.select(sql, movietitle, id);
+								MystoryDAO sdao = new MystoryDAO();
+								String sql = "select rownum, t.* from storyboard t where movietitle="+"'"+movietitle+"'"+" and id="+"'"+id+"'";
+								sdao.select(sql);
 								pageContext.setAttribute("sdto", sdao.getDto());
 						%>
 						<div class="cWrap">
@@ -186,7 +195,7 @@ pageContext.setAttribute("list", mydao.getList());
 								</tr>
 								<tr class="supdelWrap">
 									<td class="updateBtn"><a href="#" onclick="showUpdate(${k})">수정</a></td>
-									<td class="deleteBtn"><a href="deletemystory.jsp?sno=${sdto.sno}&id=<%=id%>">삭제</a></td>
+									<td class="deleteBtn"><a onclick="return mystorydel()" href="deletemystory.jsp?sno=${sdto.sno}&id=<%=id%>">삭제</a></td>
 								</tr>
 							</table>
 							<c:set var="k" value="${k+1}"/>
@@ -199,7 +208,7 @@ pageContext.setAttribute("list", mydao.getList());
 									<tr>
 										<td class="cBoxContents"  onclick="event.stopPropagation()">
 											<textarea class="cText" name="content" maxlength="250">${sdto.content }</textarea>
-											<input type="submit" class="submitCBtn" value="수정">
+											<input onclick="return mystoryupdate()" type="submit" class="submitCBtn" value="수정">
 										</td>
 									</tr>
 								</table>
@@ -207,9 +216,15 @@ pageContext.setAttribute("list", mydao.getList());
 						  </c:if>
 						</div>
 						</c:forEach>
-						<div>
-							<ul class="pagination justify-content-center" id="pageWrap"></ul>
-						</div>
+						<tfoot>
+							<tr>
+								<td colspan="11">
+									<ul class="pagination justify-content-center" id="pageWrap">
+										
+									</ul>
+								</td>
+							</tr>
+						</tfoot>
 					</div>
 				</div>
 			</div>

@@ -27,7 +27,7 @@
 		<dl id="location_wrap">
 	<dt class="come_content">이용시간</dt>
 	<div class="gap"></div>
-	<dd class="come_detail">연중무휴 11:00~22:00<br/><span class="sub_detail_e"></span>방문 전 예약 바랍니다.</dd>
+	<dd class="come_detail">연중무휴 11:00~22:00<br/><span class="sub_detail_e"></span>단체 방문 전 예약 바랍니다.</dd>
 </dl>
 <dl>
 	<dt class="come_content">전화번호</dt>

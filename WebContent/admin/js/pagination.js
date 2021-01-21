@@ -29,7 +29,7 @@ class Pagination {
 		this.startPage = page == 1 ? 1 : (this.range - 1) * this.rangeSize + 1;
 
 		// 끝 페이지
-		this.endPage = this.range * this.rangeSize;
+		this.endPage = this.range * this.rangeSize + 1;
 
 		// 게시판 시작번호
 		this.startList = this.page == 1 ? 1 : (this.page - 1) * this.listSize + 1;

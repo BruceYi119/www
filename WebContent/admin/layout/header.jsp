@@ -4,8 +4,8 @@
 <%
 Member m = new Member();
 
-// if (!m.isAdminLogin(session))
-// 	response.sendRedirect("/view/member/login.jsp");
+if (!m.isAdminLogin(session))
+	response.sendRedirect("/view/member/login.jsp");
 
 pageContext.setAttribute("name", session.getAttribute("name"));
 %>

@@ -9,7 +9,7 @@
 		</div>
 		<nav>
 			<ul>
-				<li><a href="#">매장소개</a></li>
+				<li><a href="../floor/floor.jsp">매장소개</a></li>
 				<li><a href="../menu/menu.jsp">메뉴소개</a></li>
 				<li><a href="../location/location.jsp">오시는길</a></li>
 				<li><a href="../reservation/reservation_write_cal.jsp">예약하기</a></li>

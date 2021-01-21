@@ -246,6 +246,11 @@ li{
 	padding: 5px 10px;
 }
 
+.deleteMovieBtn a:hover{
+	text-decoration: none;
+	color: #99CED3;
+}
+
 .main .mToStoryRegDate{
 	margin: 50px 70px 5px 70px;
 	font-size: 13px;
@@ -335,6 +340,16 @@ li{
 	background: yellow;
 	width: 200px;
 	margin: 10px auto;
+}
+
+.supdelWrap a{
+	text-decoration: none;
+	color: black;
+}
+
+.supdelWrap a:hover{
+	text-decoration: none;
+	color: #99CED3;
 }
 
 .updateBtn, .deleteBtn{

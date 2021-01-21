@@ -104,8 +104,7 @@ pageContext.setAttribute("TimeBtn",ReservationDTO.getTimebtn());
 				</tr>
 				<tr>
 					<td class="title">비고</td>
-					<td class="input"><textarea name="rbigo" cols="42" rows="5" placeholder="가족 모임입니다~ / 4인분 포장인데 1인분씩 포장해주세요">
-	                        </textarea></td>
+					<td class="input"><textarea name="rbigo" cols="42" rows="5" placeholder="가족 모임입니다~ / 4인분 포장인데 1인분씩 포장해주세요"></textarea></td>
 				</tr>
 				<tr align="center">
 					<td colspan="2">

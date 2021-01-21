@@ -14,7 +14,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	Header header = new Header();
+Header header = new Header();
 String css = header.getCss();
 String js = header.getJs();
 String title = header.getTitle();
@@ -257,6 +257,7 @@ pageContext.setAttribute("reservationList", reservationDao.getList());
 											 / 예약자 : ${dto.rname} / 
 											<c:if test="${dto.reat=='s'}">매장식사</c:if>
 											<c:if test="${dto.reat=='p'}">포장</c:if>
+											 / 
 											${dto.rbigo}
 										</td>
 									</tr>

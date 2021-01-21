@@ -114,8 +114,7 @@
 				</tr>
 				<tr>
 					<td class="title">비고</td>
-					<td class="input"><textarea name="rbigo" cols="42" rows="5">${rdto.rbigo }
-	                        </textarea></td>
+					<td class="input"><textarea name="rbigo" cols="42" rows="5">${rdto.rbigo }</textarea></td>
 				</tr>
 				<tr align="center">
 					<td colspan="2">

@@ -1,0 +1,53 @@
+main{
+	width:1200px;
+	margin: 10px auto;
+	margin-bottom: 50px;
+}
+#title{
+	margin: auto;
+    width: 1200px;
+    border-bottom: 1px solid black;
+    font-size: 50px;
+    text-align:left;
+	
+}
+#home{
+	position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 110px;
+    height: 35px;
+    border-radius: 25px;
+    border: none;
+    background-color: gray;
+    text-align:center;
+    padding-top:10px;
+    opacity: 30%;
+}
+.f{
+	margin-top:10px;
+    width: 550px;
+}
+#container{
+	display:flex;
+	justify-content: flex-start;
+	flex-direction: row; 
+}
+.f3{
+	width:650px;
+	margin-right:40px;
+} 
+.detail{
+	font-size:30px;
+}
+#item p{
+	font-size:30px;
+}
+/* #floor2{
+	background-size: cover;
+	background-image: url(/view/heesoo/img/10.jpg);
+	background-repeat:no-repeat;
+	background-position:-90px;
+	opacity:1!important;	
+	color: white;
+} */

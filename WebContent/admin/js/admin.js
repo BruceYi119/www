@@ -8,7 +8,5 @@ const activeMenu = () => {
 };
 
 $(function() {
-
 	activeMenu();
-
 });
