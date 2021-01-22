@@ -1,3 +1,4 @@
+<%@page import="www.member.Member"%>s
 <%@page import="www.db.dao.Recipe_boardDAO"%>
 <%@page import="www.html.header.Header"%>
 <%@page import="www.html.nav.Nav"%>
@@ -20,6 +21,10 @@ String footerUrl = footer.getFooterUrl();
 
 Recipe_boardDAO dao = new Recipe_boardDAO();
 pageContext.setAttribute("rcategorys", dao.rcategorys);
+
+Member m = new Member();
+
+boolean login = m.isLogin(session);
 %>
 
 <!DOCTYPE html>
@@ -33,21 +38,7 @@ pageContext.setAttribute("rcategorys", dao.rcategorys);
 <%=css%>
 <%=js%>
 <script defer src="/view/js/recipe_write.js"></script>
-<style>
-
-</style>
-<script>
- </script>
- <style>
-.contents{
-	width:800px;
- 	margin:auto;
- }
- #recipeWrite {
- 	width:800px;
- 	height:500px;
- }
- </style>
+<link rel="stylesheet" href="/view/css/recipe_write.css">
 </head>
 <body>
 	<input type="hidden" id="color_class" value="jiwon" />
@@ -60,63 +51,91 @@ pageContext.setAttribute("rcategorys", dao.rcategorys);
 		</nav>
 		<main>
 			<div class="base_wrap">
-				<h2>지원 페이지</h2>
-				<table class="table">
-					<tr><td>컨텐츠1</td></tr>
-					<tr><td>컨텐츠2</td></tr>
-					<tr><td>컨텐츠3</td></tr>
-				</table>
 			<div class="contents">
 				<h2>RecipeWrite</h2>
-				<form method="post" action="recipe_write_ok.jsp" enctype="multipart/form-data">
-				<!-- <form method="post" action="recipe_write_ok.jsp"> -->
-					<table id="recipeWrite" width="800" align="center">
-						<tr>
-							<td> 제목 </td>
-							<td><input type="text" name="title" size="60"></td>
-						</tr>
-						<tr>
-							<td> 카테고리 </td>
-							<td>
+				<hr>
+				<form method="post" action="recipe_write_ok.jsp" enctype="multipart/form-data" onsubmit="return check(this)">
+				<input type="hidden" name="name" value="<%=session.getAttribute("name").toString() %>">
+					<div id="recipe_write">
+						<div class="cont_wrap">
+							<p class="cont_tit"> 카테고리 </p>
+							<div class="sub">
 								<select name="rcategory">
-									<option>--선택--</option>
+									<option> - - 카테고리를 선택해주세요 - - </option>
 									<c:forEach items="${rcategorys}" var="rcategory">
 										<option value="${rcategory}">${rcategory}</option>
 									</c:forEach>
 								</select>
-							</td>
-						</tr>
-						<tr>
-							<td> 완성사진 </td>
-							<td><input type="file" name="img" class="inputImg[1]"></td>
-						</tr>
-						<tr>
-							<td> 메뉴 </td>
-							<td><input type="text" name="rname" size="60"></td>
-						</tr>
-						<tr>
-							<td> 재료 </td>
-							<td id="ingredients">
-								<input type="text" name="ingredients" class="ingredients" placeholder="예) 돼지고기 300g" /> <input type="button" class="delIngre" value="X" /><p>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center"><input type="button" onclick="addIngre()" value="재료추가" /></td>
-						</tr>
-						<tr>
-							<td>순서</td>
-							<td id="content">
-								<textarea cols="50" rows="4" name="content"  class="content"></textarea>
-								<input type="file" name="img" class="inputImg[2]" multiple /><input type="button" class="delContent" value="X" />
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center"><input type="button" onclick="addContent()" value="순서추가"></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center"><input type="submit" value="레시피 저장"></td>
-						</tr>
-					</table>
+								<span id="cateMsg">카테고리를 선택하세요</span>
+							</div>
+						</div>
+						<div class="cont_wrap">
+							<p class="cont_tit"> 제 목 </p>
+							<input type="text" name="title" id="title" size="90" placeholder="당신의 레시피에 제목을 입력해주세요.">
+							<div id="titMsg">제목을 입력해주세요.</div>
+						</div>
+						<div class="cont_wrap">
+							<p class="cont_tit"> 작성자 </p>
+							<div id="nameBox"><%=session.getAttribute("name").toString() %></div>
+						</div>
+						<div class="intro_wrap">
+							<p class="cont_tit"> 음식소개 </p>
+							<textarea cols="90" rows="5" name="intro" id="intro" placeholder="음식을 간단히 소개해주세요"></textarea>
+							<div id="introMsg">음식 소개를 작성해주세요.</div>
+						</div>
+						<div id="mainImg">
+							<div id="mainImg_tit"><p class="cont_tit"> 메인이미지 </p></div>
+							<div id="mainImg_cont">
+								<div class="imgUpload">
+									<img class="mainimg" width="300" height="300" alt="">
+									<div class="imgBtn">							
+										<input type="file" id="addMainImg" name="mainimg" onchange="readMainImg(this)" multiple/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<div class="ingre">
+							<div id="ingre_main">
+								<div class="ingre_tit">
+									<p class="cont_tit"> 재 료 </p>
+									<div id="ingreBtn"><input type="button" class="btn" onclick="addMainIngre()" value="재료추가" /></div>
+								</div>
+								<div class="ingre_container">
+									<p id=msg>※ 재료는 재료명과 재료의 양에 간격을 두어 입력해주세요 ※ </p>
+									<span class="el"><input type="text" name="ingredients" class="ingredients" placeholder="예) 돼지고기 400g" /> <input type="button" class="delIngre" value="X" /></span>
+									<span class="el"><input type="text" name="ingredients" class="ingredients" placeholder="예) 새송이버섯 2개 " /> <input type="button" class="delIngre" value="X" /></span>
+									<span class="el"><input type="text" name="ingredients" class="ingredients" placeholder="예) 양파 1개 " /> <input type="button" class="delIngre" value="X" /></span>
+								</div>
+								<div id="ingreMsg">빈칸을 모두 채워주세요</div>
+							</div>
+						</div>
+						<hr>
+						<div id="step_wrap">
+							<div class="step_tit">
+								<p class="cont_tit"> 요리 순서 </p>
+								<div id="stepBtn"><input type="button" class="btn" onclick="addContent()" value="순서추가"></div>
+							</div>
+							<div class="cont_container">
+								<div class="contInner">
+									<div class="imgUpload">
+										<img class="img" width="200" height="200" alt="">
+										<div class="imgBtn">							
+											<input type="file" class="addImg" name="imgStep[]" onchange="readImg(this)" multiple/>
+										</div>
+									</div>
+									<div class="contText">
+										<textarea cols="50" rows="7" name="content"  id="step" class="content" placeholder="레시피를 순서대로 작성해주세요."></textarea>
+									</div>
+								</div>
+							</div>
+							<div id="stepMsg">빈칸을 모두 채워주세요</div>
+						</div>
+						<div id="last">
+							<div id="submit"><input id="submitBtn" type="submit" value="레시피 작성"></div>
+							<div id="cancel"><a id=""href="recipe_list.jsp?rbno=">취소</a></div>
+						</div>
+					</div>
 				</form>
 			</div>
 			</div>

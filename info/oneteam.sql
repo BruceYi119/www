@@ -147,25 +147,24 @@ create table sub_custom(
    constraint sub_custom_scno_p primary key(scno)
 );
 
-
 -- 레시피게시판 테이블 (정지원)
 drop table recipe_board;
 drop sequence s_recipe_board;
 create sequence s_recipe_board;
 create table recipe_board(
-	rbno number,													-- 키값
-	name varchar2(20),												-- 작성자
-	pwd varchar2(20),												-- 비번
-	title varchar2(100),											-- 제목
-	rcategory varchar2(100),										-- 카테고리 반찬류,메인메뉴,...
-	rname varchar2(20),												-- 음식이름
-	ingredients varchar2(100),										-- 재료
-	content varchar2(4000),											-- 내용
-	img varchar2(500),												-- 음식사진
-	readnum number,													-- 조회수
-	liked number,													-- 좋아요수
-	writeday date default sysdate,									-- 작성일
-	constraint recipe_board_rbno_p primary key(rbno)
+	rbno number constraint recipe_board_ebno_p primary key,		-- 키값
+	name varchar2(50),			-- 작성자
+	title varchar2(150),			-- 제목				**글자수 증가
+	rcategory varchar2(100),		-- 카테고리 반찬류,메인메뉴,...
+	intro varchar2(1000),		-- 음식소개			**메뉴이름에서 변경
+	ingredients varchar2(500),		-- 재료				**글자수증가
+	content varchar2(4000),		-- 내용
+	mainimg varchar2(100),		-- 메인사진			**추가
+	img varchar2(500),			-- 음식사진
+	readnum number default 0,			-- 조회수
+	liked number default 0,			-- 좋아요수
+	writeday date default sysdate,	-- 작성일
+	addtype char(1) default 'u'		-- 크롤링,신규작성구분(c,u)		**추가
 );
 
 -- 레시피게시판 댓글 테이블 (정지원)
@@ -173,11 +172,11 @@ drop table rcomment;
 drop sequence s_rcomment;
 create sequence s_rcomment;
 create table rcomment(
-	rcno number,													-- 키값
-	name varchar2(20),												-- 작성자			
-	content varchar2(100),											-- 내용	
-	writeday date default sysdate,									-- 작성일			
-	rbno number,													-- recipe_board 키값			
+	rcno number not null,		-- 키값
+	name varchar2(20),			-- 작성자			
+	content varchar2(100),		-- 내용	
+	writeday date default sysdate,	-- 작성일			
+	rbno number,			-- recipe_board 키값			
 	constraint rcomment_rcno_p primary key(rcno),
 	constraint rcomment_rno_f foreign key(rbno) references recipe_board(rbno)
 );

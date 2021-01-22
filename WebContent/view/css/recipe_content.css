@@ -1,0 +1,192 @@
+a {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #f1b950;
+}
+
+#recipe_menu {
+	margin: auto;
+	width: 1000px;
+	font-weight: 800;
+	text-align: right;
+	color: #145724;
+}
+
+#recipe_menu span {
+	display: inline-block;
+	margin: 5px 10px;
+}
+
+#cate {
+	float: left;
+	font-weight: 800;
+	border: 2px solid #f1b950;
+	width: 200px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 10px;
+	font-size: 0.9em;
+}
+
+#writer {
+	float: right;
+	font-weight: 800;
+	border: 2px solid #f1b950;
+	width: 200px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 10px;
+	font-size: 0.9em;
+}
+
+#topCont:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.contents {
+	text-align: center;
+	border: 1px solid #f1b950;
+	border-radius: 10px;
+	padding: 50px;
+	margin-bottom: 30px;
+	width: 1000px;
+	margin: auto;
+}
+
+#img_box {
+	float: left;
+	width: 550px;
+	height: 550px;
+	margin-top: 50px;
+}
+
+#container {
+	margin: auto;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+#sub_container {
+	width: 900px;
+	height: 700px;
+	margin-top: 30px;
+}
+
+#sub_container:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+/* 제목 */
+#title_box {
+	border-radius: 10px;
+	padding: 10px 0;
+}
+/* 재료 */
+#ingredients {
+	margin: auto;
+	float: right;
+	width: 300px;
+	height: 600px;
+	padding: 10px 10px;
+	border-radius: 10px;
+	border: 2px solid #f1b950;
+	border-radius: 10px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.cont_tit {
+	text-align: center;
+	margin: 20px 15px;
+	width: 250px;
+	font-size: 1.2em;
+	font-weight: 800;
+	border: 1px solid #145724;
+}
+
+.ingre_box {
+	width: 250px;
+	height: 500px;
+	margin: 0 15px;
+}
+
+#ingre_el {
+	padding: 5px;
+	margin: 5px;
+}
+
+/* process */
+#process {
+	padding: 10px 0;
+	border: 1px solid #f1b950;
+	text-align: center;
+	width: 800px;
+	margin:auto;
+	margin-top:50px;
+	border-radius: 10px;
+	padding: 20px 0;
+}
+
+#cont_el {
+	text-align: center;
+	margin: 10px 0;
+	padding:5px 0;
+}
+
+#liked a {
+	font-size: 2em;
+}
+
+/* comment */
+.comment_list {
+	border: 1px solid black;
+	width: 600px;
+}
+
+.rcontent_box, .update_box {
+	border: 1px solid black;
+	margin: 10px;
+	padding: 10px;
+	text-align: left;
+	width: 600px;
+}
+
+.comment_info {
+	color: gray;
+	font-size: 0.8em;
+}
+
+.comment_info a {
+	color: gray;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}

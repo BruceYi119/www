@@ -161,6 +161,7 @@ const setMemberInfo = () => {
 		r.then((res) => {
 			if (res.data.update === true) {
 				setFormData(res.data.info);
+				hideUpdateAddrBtns();
 				alert('주소가 수정되었습니다');
 			} else {
 				updateAddrCancel();

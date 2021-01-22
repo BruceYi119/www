@@ -18,7 +18,7 @@ Header header = new Header();
 String css = header.getCss();
 String js = header.getJs();
 String title = header.getTitle();
-String headerUrl = header.getHeaderUrl();
+String headerUrl = header.getHeaderUrl();	
 
 Nav nav = new Nav();
 String menu = nav.getMenu();
@@ -29,14 +29,14 @@ String footerUrl = footer.getFooterUrl();
 StringBuilder sb = new StringBuilder();
 
 // 레시피
-// Recipe_boardDAO recipeDao = new Recipe_boardDAO();
-// Recipe_boardDTO recipeDto = new Recipe_boardDTO();
-// sb.setLength(0);
-// sb.append("select ");
-// sb.append(recipeDto.toString(true));
-// sb.append(" from (select rownum seq, t.* from (select * from recipe_board order by writeday desc) t) tt where seq >= 1) where rownum <= 3");
-// recipeDao.selectAll(sb.toString());
-// pageContext.setAttribute("recipeList", recipeDao.getList());
+Recipe_boardDAO recipeDao = new Recipe_boardDAO();
+Recipe_boardDTO recipeDto = new Recipe_boardDTO();
+sb.setLength(0);
+sb.append("select ");
+sb.append(recipeDto.toString(true));
+sb.append(" from (select seq, tt.* from (select rownum seq, t.* from (select * from recipe_board order by writeday desc) t) tt where seq >= 1) where rownum <= 3");
+recipeDao.selectAll(sb.toString());
+pageContext.setAttribute("recipeList", recipeDao.getList());
 
 // 애완동물카패
 CafeDAO cafeDao = new CafeDAO();
@@ -188,15 +188,11 @@ pageContext.setAttribute("reservationList", reservationDao.getList());
 									<tr><th>레시피</th></tr>
 								</thead>
 								<tbody>
+									<c:forEach items="${recipeList}" var="dto">
 									<tr>
-										<td>1</td>
+										<td><a href="/view/jiwon/recipe_content.jsp?rbno=${dto.rbno}">${dto.title}</a></td>
 									</tr>
-									<tr>
-										<td>2</td>
-									</tr>
-									<tr>
-										<td>3</td>
-									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>

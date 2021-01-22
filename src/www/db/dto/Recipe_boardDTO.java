@@ -5,16 +5,17 @@ public class Recipe_boardDTO {
 	private String rownum = null;
 	private String rbno = null;
 	private String name = null;
-	private String pwd = null;
 	private String title = null;
 	private String rcategory = null;
-	private String rname = null;
+	private String intro = null;
 	private String ingredients = null;
 	private String content = null;
 	private String img = null;
+	private String mainimg = null;
 	private String readnum = null;
 	private String liked = null;
 	private String writeday = null;
+	private String addtype = null;
 	
 	public String getRownum() {
 		return rownum;
@@ -34,12 +35,7 @@ public class Recipe_boardDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -52,11 +48,11 @@ public class Recipe_boardDTO {
 	public void setRcategory(String rcategory) {
 		this.rcategory = rcategory;
 	}
-	public String getRname() {
-		return rname;
+	public String getIntro() {
+		return intro;
 	}
-	public void setRname(String rname) {
-		this.rname = rname;
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 	public String getIngredients() {
 		return ingredients;
@@ -69,6 +65,12 @@ public class Recipe_boardDTO {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getMainimg() {
+		return mainimg;
+	}
+	public void setMainimg(String mainimg) {
+		this.mainimg = mainimg;
 	}
 	public String getImg() {
 		return img;
@@ -94,17 +96,23 @@ public class Recipe_boardDTO {
 	public void setWriteday(String writeday) {
 		this.writeday = writeday;
 	}
+	public String getAddtype() {
+		return addtype;
+	}
+	public void setAddtype(String addtype) {
+		this.addtype = addtype;
+	}
 	
 	@Override
 	public String toString() {
-		return "Recipe_boardDTO [rownum=" + rownum + ", rbno=" + rbno + ", name=" + name + ", pwd=" + pwd + ", title="
-				+ title + ", rcategory=" + rcategory + ", rname=" + rname + ", ingredients=" + ingredients
-				+ ", content=" + content + ", img=" + img + ", readnum=" + readnum + ", liked=" + liked + ", writeday="
-				+ writeday + "]";
+		return "Recipe_boardDTO [rownum=" + rownum + ", rbno=" + rbno + ", name=" + name + ", title="
+				+ title + ", rcategory=" + rcategory + ", intro=" + intro + ", ingredients=" + ingredients
+				+ ", content=" + content + ", mainimg=" + mainimg + ", img=" + img + ", readnum=" + readnum + ", liked=" + liked + ", writeday="
+				+ writeday +", addtype="+ addtype + "]";
 	}
 	
 	public String toString(boolean t) {
-		return "rownum, rbno, name, pwd, title, rcategory, rname, ingredients, content, img, readnum, liked, writeday";
+		return "rownum, rbno, name, title, rcategory, intro, ingredients, content, mainimg, img, readnum, liked, writeday, addtype";
 	}
 
 }
